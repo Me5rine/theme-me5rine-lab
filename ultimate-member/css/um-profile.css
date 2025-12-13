@@ -1,0 +1,121 @@
+.um-form {
+    position: relative;
+}
+
+.um-profile-badge-partenaire {
+    position: absolute;
+    display: inline-block;
+    top: 30px;
+    right: 30px;
+}
+
+.um-profile-badge-partenaire img {
+    width: 100px;
+}
+
+.um-profile-layout {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.um-profile-menu-wrapper {
+    width: 25%;
+    flex-shrink: 0;
+}
+
+
+.um-profile-menu-toggle {
+    display: none;
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 0 0 1em 0;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+  
+.um-profile-menu-vertical a {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background: #f1f1f1;
+    text-decoration: none;
+    color: #333;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+  
+.um-profile-menu-vertical a:hover,
+.um-profile-menu-vertical a.active {
+    background: #0073aa;
+    color: #fff;
+}
+
+.um-profile-menu-vertical .submenu {
+    display: none;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+
+.um-profile-menu-vertical .has-sub.open .submenu {
+    display: block;
+}
+
+.um-profile-menu-vertical .has-sub > a::after {
+    content: '▼';
+    float: right;
+    font-size: 0.7em;
+    margin-top: 4px;
+    transition: transform 0.2s ease;
+}
+
+.um-profile-menu-vertical .has-sub.open > a::after {
+    transform: rotate(180deg);
+}
+  
+.um-profile-main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.um-tab-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 1024px) {
+    .um-profile-layout {
+        flex-direction: column;
+    }
+
+    .um-profile-menu-wrapper {
+        width: 100%;
+    }
+
+    .um-profile-menu-toggle {
+        display: block;
+    }
+
+    #um-profile-menu {
+        display: none;
+        border-top: 1px solid #ccc;
+        padding-top: 1em;
+    }
+
+    #um-profile-menu.open {
+        display: block;
+    }
+
+    #um-profile-menu .submenu {
+        margin-left: 0;
+        padding-left: 1em;
+        border-left: 2px solid #eee;
+    }
+}
+  

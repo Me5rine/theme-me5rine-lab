@@ -1,0 +1,85 @@
+/*
+Theme Name: Me5rine LAB
+Theme URI: https://me5rine-lab.com
+Template: hello-elementor
+Author: Me5rine
+Author URI: https://me5rine.com
+Description: Thème personnalisé, optimisé pour les sites du réseau Me5rine LAB. Léger, rapide, et conçu pour intégrer des fonctionnalités avancées sur-mesure
+Tags: accessibility-ready,flexible-header,custom-colors,custom-menu,custom-logo,featured-images,rtl-language-support,threaded-comments,translation-ready
+Version: 3.50
+Updated: 2025-06-06 01:18:45
+
+*/
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+.admin-lab-after-title-decoration .elementor-heading-title:before {
+    content: "";
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-left: 9px solid var(--e-global-color-secondary);
+    border-bottom: 5px solid transparent;
+    margin: 0 10px 0 0;
+}
+.admin-lab-after-title-decoration .elementor-heading-title {
+    position: relative;
+}
+.admin-lab-after-title-decoration .elementor-heading-title:after {
+    content: '';
+    margin-left: 15px;
+    background-color: #dee5ec;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px;
+}
+.elementor-heading-title {
+    overflow: hidden;
+}
+.admin-lab-contact-form-container {
+    min-width: 300px;
+}
+.admin-lab-contact-form .wpcf7-form {
+    margin-top: 0 !important;
+}
+.elementor-273 .elementor-element.elementor-element-f2ff3c5 .wpcf7-form > p:not(:last-child) {
+    margin-bottom: 15px !important;
+}
+.admin-lab-contact-form label, .admin-lab-contact-form .wpcf7-form-control-wrap, .admin-lab-contact-form .wpcf7-select {
+    width: 100%;
+}
+.admin-lab-contact-form .wpcf7-select, .admin-lab-contact-form .wpcf7-textarea {
+    font-size: 14px;
+    font-family: 'Poppins';
+    color: var(--e-global-color-59418b9);
+}
+.admin-lab-contact-form .wpcf7-response-output {
+    border: none !important;
+    font-weight: 400;
+    color: var(--e-global-color-59418b9);
+    background-color: #dee5ec;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0 !important;
+    padding: 5px !important;
+}
+
+/* GIVEAWAYS */
+.rafflepress-iframe-container.loading iframe {
+    -moz-transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
