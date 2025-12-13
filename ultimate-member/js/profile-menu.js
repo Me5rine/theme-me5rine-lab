@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // --- TOGGLE MENU MOBILE
+    const menuToggle = document.querySelector('.um-profile-menu-toggle');
+    const profileMenu = document.querySelector('#um-profile-menu');
+    
+    if (menuToggle && profileMenu) {
+        menuToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            profileMenu.classList.toggle('open');
+        });
+    }
+
     // --- MENU déroulant vertical
     const items = document.querySelectorAll(".um-profile-menu-vertical .has-sub > a");
     items.forEach(link => {
