@@ -1,0 +1,30 @@
+name: Deploy theme me5rine-lab
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy theme
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_WORDPRESS_HOST }}
+          username: ${{ secrets.SSH_USER }}   # ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            echo "Deploying theme me5rine-lab..."
+
+            sudo -u www-data bash -lc "
+              cd /var/www/me5rine-lab.com/htdocs/wp-content/themes/me5rine-lab && \
+              git fetch origin main && \
+              git reset --hard origin/main
+            "
+
+            echo "Deploy OK for theme me5rine-lab"
