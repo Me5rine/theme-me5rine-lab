@@ -210,9 +210,9 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 
 		<div class="um-profile-layout">
 			<div class="um-profile-menu-wrapper">
-				<button class="um-profile-menu-toggle" aria-expanded="false" aria-controls="um-profile-menu">
-				☰ <?php _e( 'Menu', 'me5rine' ); ?>
-				</button>
+			<button class="um-profile-menu-toggle" aria-expanded="false" aria-controls="um-profile-menu">
+				<span class="um-menu-toggle-text"><?php _e( 'Menu', 'me5rine' ); ?></span>
+			</button>
 				<nav id="um-profile-menu" class="um-profile-menu-vertical">
 
 					<a href="?tab=profile" class="<?= $current_tab === 'profile' ? 'active' : '' ?>">
