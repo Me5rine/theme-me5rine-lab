@@ -143,11 +143,11 @@
     padding: 12px 20px;
     background: transparent;
     text-decoration: none;
-    color: var(--um-text);
+    color: var(--um-primary);
     border-radius: 0;
     font-weight: 400;
     font-size: 15px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     border: none;
     position: relative;
     font-family: var(--um-font);
@@ -176,26 +176,39 @@
     flex: 1;
 }
 
+.um-profile-menu-vertical a .um-menu-label {
+    color: var(--um-primary);
+    transition: color 0.2s ease;
+}
+
 .um-profile-menu-vertical a::before {
     display: none;
 }
 
 .um-profile-menu-vertical a:hover {
     background: var(--um-bg-secondary);
-    color: var(--um-text);
+    color: var(--um-secondary);
 }
 
 .um-profile-menu-vertical a:hover .um-menu-icon i {
     color: var(--um-secondary);
 }
 
+.um-profile-menu-vertical a:hover .um-menu-label {
+    color: var(--um-secondary);
+}
+
 .um-profile-menu-vertical a.active {
     background: var(--um-bg-secondary);
-    color: var(--um-text);
+    color: var(--um-secondary);
     font-weight: 700;
 }
 
 .um-profile-menu-vertical a.active .um-menu-icon i {
+    color: var(--um-secondary);
+}
+
+.um-profile-menu-vertical a.active .um-menu-label {
     color: var(--um-secondary);
 }
 
@@ -242,17 +255,18 @@
     font-weight: 400;
     background: transparent;
     border: none;
-    color: var(--um-text-light);
+    color: var(--um-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .um-profile-menu-vertical .submenu a:hover {
     background: var(--um-bg-secondary);
-    color: var(--um-text);
+    color: var(--um-secondary);
 }
 
 .um-profile-menu-vertical .submenu a.active {
     background: transparent;
-    color: var(--um-text);
+    color: var(--um-secondary);
     font-weight: 700;
 }
 
@@ -1188,35 +1202,89 @@
     grid-column: 1 / -1;
 }
 
-/* Messages */
+/* Messages - Notifications stylisées */
 .me5rine-lab-form-message {
     border-radius: 8px;
-    padding: 14px 16px;
+    padding: 18px 24px !important;
+    margin: 10px;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+    line-height: 1.5 !important;
+    border-left: 4px solid !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+}
+
+.me5rine-lab-form-message::before {
+    flex-shrink: 0;
+    font-weight: bold;
+    line-height: 1;
+    display: inline-block;
 }
 
 .me5rine-lab-form-message p {
     margin: 0;
     font-weight: 500;
+    flex: 1;
+    padding: 0;
 }
 
 .me5rine-lab-form-message-success {
-    background: rgba(4, 133, 200, 0.1);
-    border: 1px solid var(--ph-secondary, #0485C8);
-    color: var(--ph-secondary, #0485C8);
+    background: rgba(76, 175, 80, 0.1);
+    border-left-color: #4CAF50 !important;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    border-left-width: 4px !important;
+    color: #4CAF50 !important;
+}
+
+.me5rine-lab-form-message-success::before {
+    content: '✓';
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.me5rine-lab-form-message-success p {
+    color: #4CAF50 !important;
 }
 
 .me5rine-lab-form-message-error {
-    background: rgba(214, 54, 56, 0.1);
-    border: 1px solid #d63638;
-    color: #d63638;
+    background: rgba(244, 67, 54, 0.1);
+    border-left-color: #F44336 !important;
+    border: 1px solid rgba(244, 67, 54, 0.2);
+    border-left-width: 4px !important;
+    color: #F44336 !important;
+}
+
+.me5rine-lab-form-message-error::before {
+    content: '✕';
+    color: #F44336;
+    font-size: 20px;
+}
+
+.me5rine-lab-form-message-error p {
+    color: #F44336 !important;
 }
 
 .me5rine-lab-form-message-warning {
     background: rgba(255, 152, 0, 0.1);
-    border: 1px solid #ff9800;
-    color: #ff9800;
+    border-left-color: #FF9800 !important;
+    border: 1px solid rgba(255, 152, 0, 0.2) !important;
+    border-left-width: 4px !important;
+    color: #FF9800 !important;
+}
+
+.me5rine-lab-form-message-warning::before {
+    content: '⚠';
+    color: #FF9800;
+    font-size: 20px;
+}
+
+.me5rine-lab-form-message-warning p {
+    color: #FF9800 !important;
 }
 
 /* Responsive Global */
