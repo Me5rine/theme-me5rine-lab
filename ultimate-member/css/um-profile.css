@@ -100,7 +100,7 @@
     margin: 0;
     cursor: pointer;
     width: 100%;
-    color: var(--um-text);
+    color: var(--um-bg);
     border-radius: 0;
     transition: background-color 0.2s ease;
     font-family: var(--um-font);
@@ -129,7 +129,7 @@
 
 .um-profile-menu-toggle[aria-expanded="true"]::before {
     content: '✕';
-    color: var(--um-text);
+    color: var(--um-bg);
 }
 
 .um-menu-toggle-text {
