@@ -795,11 +795,17 @@
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border-bottom: none;
+    border-bottom: none !important;
+    margin: 10px;
 }
 
 .me5rine-lab-form-section:last-child {
     border-bottom: none;
+}
+
+/* Supprimer le border-bottom natif pour les blocs de formulaire */
+.me5rine-lab-form-block {
+    border-bottom: none !important;
 }
 
 /* Layout (Grid) */
@@ -982,7 +988,7 @@
     background: linear-gradient(135deg, var(--ph-secondary, #0485C8) 0%, var(--ph-primary, #2E576F) 100%) !important;
     color: var(--ph-bg, #ffffff) !important;
     border: none !important;
-    padding: 14px 32px !important;
+    padding: 8px 16px !important;
     border-radius: 8px !important;
     font-size: 15px !important;
     font-weight: 600 !important;
@@ -992,6 +998,7 @@
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
     font-family: var(--um-font) !important;
+    width: fit-content !important;
 }
 
 .me5rine-lab-form-button:hover {
@@ -1401,6 +1408,11 @@
     padding: 0;
 }
 
+/* Désactiver le mouvement au survol des récompenses dans les tuiles */
+.partner-giveaway-card .me5rine-lab-form-view-item:hover {
+    transform: none;
+}
+
 /* Bouton dans la carte - À droite du prix (adjacent au prix) */
 .partner-giveaway-content > .me5rine-lab-form-view-row-full:last-of-type + .me5rine-lab-form-field {
     margin-top: -36px;
@@ -1418,6 +1430,8 @@
     margin-bottom: 0;
     padding: 0;
     border: none;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .partner-giveaway-content .me5rine-lab-form-button {
