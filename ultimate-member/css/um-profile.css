@@ -499,7 +499,8 @@
     }
 
     .um-profile-connect.um-member-connect {
-        padding: 12px 16px;
+        padding: 12px 0px !important;
+        margin: 0 16px !important;
         gap: 6px;
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -523,8 +524,9 @@
     }
 
     .um-profile-connect.um-member-connect a {
-        width: 28px;
-        height: 28px;
+        width: 28px !important;
+        height: 28px !important;
+        line-height: 22px !important;
         flex-shrink: 0;
     }
 
@@ -1574,6 +1576,16 @@
 }
 
 /* ============================================
+   GIVEAWAY PARTICIPATIONS
+   ============================================ */
+
+/* Tableaux */
+.giveaway-my-giveaways-table {
+    margin-top: 15px !important;
+}
+
+
+/* ============================================
    TABLEAUX - Style Colorlib inspiré
    ============================================ */
 
@@ -1661,10 +1673,9 @@
 
 .giveaway-profil-promo-table td a,
 .um-giveaway-list-table td a {
-    color: var(--ph-secondary, #0485C8);
+    color: var(--ph-text-light, #5D697D);
     text-decoration: none;
     transition: color 0.2s ease;
-    font-weight: 500;
 }
 
 .giveaway-profil-promo-table td a:hover,
@@ -1688,7 +1699,6 @@
 
 .giveaway-title {
     flex: 1;
-    font-weight: 600;
     color: var(--ph-text, #11161E);
     font-size: 15px;
     line-height: 1.5;
@@ -1696,7 +1706,6 @@
 
 .giveaway-title a {
     color: var(--ph-text, #11161E);
-    font-weight: 600;
     transition: color 0.2s ease;
 }
 
@@ -1729,7 +1738,7 @@
 .toggle-row-btn::before {
     content: '▼' !important;
     font-size: 10px !important;
-    color: #ffffff !important;
+    color: var(--ph-text-light, #5D697D) !important;
     transition: transform 0.2s ease, color 0.2s ease !important;
     font-weight: 600 !important;
     display: flex !important;
@@ -1849,7 +1858,6 @@
         border-bottom: 2px solid var(--ph-border, #DEE5EC);
         margin-bottom: 0;
         background: var(--ph-bg-secondary, #F9FAFB);
-        font-weight: 600;
         font-size: 15px;
     }
 
