@@ -32,13 +32,8 @@ function me5rine_enqueue_um_profile_assets() {
 			filemtime(get_stylesheet_directory() . '/ultimate-member/js/profile-menu.js'),
 			true
 		);
-
-		wp_enqueue_style(
-			'me5rine-um-profile-style',
-			get_stylesheet_directory_uri() . '/ultimate-member/css/um-profile.css',
-			[],
-			filemtime(get_stylesheet_directory() . '/ultimate-member/css/um-profile.css')
-		);
+		// Les styles Ultimate Member sont maintenant dans style.css (chargé avec priorité 99999)
 	}
 }
 add_action('wp_enqueue_scripts', 'me5rine_enqueue_um_profile_assets');
+
