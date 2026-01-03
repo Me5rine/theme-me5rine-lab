@@ -118,19 +118,84 @@ document.addEventListener('DOMContentLoaded', function () {
     const editProfile = urlParams.get('edit-profile') === 'true';
     const editSocials = urlParams.get('edit-socials') === 'true';
 
-    // Cibler tous les blocs de formulaire
-    const allForms = document.querySelectorAll('.admin-lab-um-form');
-    allForms.forEach(form => form.style.display = 'none');
+    // Fonction pour masquer un form et son heading associé
+    function hideFormAndHeading(form) {
+        if (!form) return;
+        
+        // Masquer le form
+        form.style.display = 'none';
+        
+        // Trouver le heading précédent (um-row-heading juste avant ce form)
+        let previousElement = form.previousElementSibling;
+        while (previousElement) {
+            if (previousElement.classList.contains('um-row-heading')) {
+                previousElement.style.display = 'none';
+                break;
+            }
+            previousElement = previousElement.previousElementSibling;
+        }
+    }
 
-    // Afficher uniquement celui qu'on veut
+    // Fonction pour afficher un form et son heading associé
+    function showFormAndHeading(form) {
+        if (!form) return;
+        
+        // Afficher le form
+        form.style.display = 'block';
+        
+        // Trouver et afficher le heading précédent
+        let previousElement = form.previousElementSibling;
+        while (previousElement) {
+            if (previousElement.classList.contains('um-row-heading')) {
+                previousElement.style.display = 'block';
+                break;
+            }
+            previousElement = previousElement.previousElementSibling;
+        }
+    }
+
+    // Masquer toutes les rows vides (um-row sans contenu ou avec seulement um-col vide)
+    const allRows = document.querySelectorAll('.um-row');
+    allRows.forEach(row => {
+        const cols = row.querySelectorAll('.um-col-1, .um-col-2, .um-col-121, .um-col-122');
+        let isEmpty = true;
+        
+        cols.forEach(col => {
+            // Vérifier si la colonne a du contenu (en excluant um-clear)
+            const content = Array.from(col.childNodes).filter(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    return node.textContent.trim().length > 0;
+                }
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    return !node.classList.contains('um-clear');
+                }
+                return false;
+            });
+            
+            if (content.length > 0) {
+                isEmpty = false;
+            }
+        });
+        
+        // Si la row est vide ou n'a pas de colonnes avec contenu, la masquer
+        if (isEmpty && cols.length > 0) {
+            row.style.display = 'none';
+        }
+    });
+
+    // Cibler tous les blocs de formulaire et masquer avec leurs headings
+    const allForms = document.querySelectorAll('.admin-lab-um-form');
+    allForms.forEach(form => hideFormAndHeading(form));
+
+    // Afficher uniquement celui qu'on veut avec son heading
     if (editProfile) {
         const profileForm = document.querySelector('.admin-lab-profile-form');
-        if (profileForm) profileForm.style.display = 'block';
+        if (profileForm) showFormAndHeading(profileForm);
     }
 
     if (editSocials) {
         const socialsForm = document.querySelector('.admin-lab-socials-form');
-        if (socialsForm) socialsForm.style.display = 'block';
+        if (socialsForm) showFormAndHeading(socialsForm);
     }
 });
 

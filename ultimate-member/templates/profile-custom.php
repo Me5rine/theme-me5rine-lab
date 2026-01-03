@@ -210,20 +210,20 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 
 		<div class="um-profile-layout">
 			<div class="um-profile-menu-wrapper">
-			<button class="um-profile-menu-toggle" aria-expanded="false" aria-controls="um-profile-menu">
-				<span class="um-menu-toggle-text"><?php _e( 'Menu', 'me5rine' ); ?></span>
-			</button>
+				<button class="um-profile-menu-toggle" aria-expanded="false" aria-controls="um-profile-menu">
+				<p class="um-menu-toggle-text"><?php _e( 'Menu', 'me5rine' ); ?></p>
+				</button>
 				<nav id="um-profile-menu" class="um-profile-menu-vertical">
 
 					<a href="?tab=profile" class="<?= $current_tab === 'profile' ? 'active' : '' ?>">
 						<span class="um-menu-icon"><i class="fa fa-user"></i></span>
-						<span class="um-menu-label"><?php _e( 'Profile', 'me5rine' ); ?></span>
+						<span><?php _e( 'Profile', 'me5rine' ); ?></span>
 					</a>
 					<?php if ( is_user_logged_in() && get_current_user_id() === um_profile_id() ) : ?>
 						<div class="has-sub">
 							<a href="?tab=notifications" class="<?= um_get_menu_class($current_tab, 'notifications', ['notifications-new', 'notifications-archived'], $functional_tabs) ?>">
 								<span class="um-menu-icon"><i class="fa fa-bell"></i></span>
-								<span class="um-menu-label"><?php _e( 'Notifications', 'me5rine' ); ?></span>
+								<span><?php _e( 'Notifications', 'me5rine' ); ?></span>
 							</a>
 							<div class="submenu">
 							<a href="?tab=notifications-new" class="<?= $current_tab === 'notifications-new' ? 'active' : '' ?>"><?php _e( 'New notifications', 'me5rine' ); ?></a>
@@ -235,7 +235,7 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 						<div class="has-sub">
 							<a href="?tab=messaging" class="<?= um_get_menu_class($current_tab, 'messaging', ['messaging-received', 'messaging-pinned', 'messaging-send', 'messaging-new'], $functional_tabs) ?>">
 								<span class="um-menu-icon"><i class="fa fa-envelope"></i></span>
-								<span class="um-menu-label"><?php _e( 'Messaging', 'me5rine' ); ?></span>
+								<span><?php _e( 'Messaging', 'me5rine' ); ?></span>
 							</a>
 							<div class="submenu">
 							<a href="?tab=messaging-received" class="<?= $current_tab === 'messaging-received' ? 'active' : '' ?>"><?php _e( 'Inbox', 'me5rine' ); ?></a>
@@ -250,7 +250,7 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 						<div class="has-sub">
 							<a href="?tab=shop" class="<?= um_get_menu_class($current_tab, 'shop', ['shop-orders', 'shop-order-tracking', 'shop-downloads', 'shop-addresses', 'shop-payment-methods'], $functional_tabs) ?>">
 								<span class="um-menu-icon"><i class="fa fa-shopping-cart"></i></span>
-								<span class="um-menu-label"><?php _e( 'Shop', 'me5rine' ); ?></span>
+								<span><?php _e( 'Shop', 'me5rine' ); ?></span>
 							</a>
 							<div class="submenu">
 							<a href="?tab=shop-orders" class="<?= $current_tab === 'shop-orders' ? 'active' : '' ?>"><?php _e( 'Orders', 'me5rine' ); ?></a>
@@ -265,7 +265,7 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 					<div class="has-sub">
 						<a href="?tab=rewards" class="<?= um_get_menu_class($current_tab, 'rewards', ['rewards-points', 'rewards-badges', 'rewards-levels'], $functional_tabs) ?>">
 							<span class="um-menu-icon"><i class="fa fa-star"></i></span>
-							<span class="um-menu-label"><?php _e( 'Rewards', 'me5rine' ); ?></span>
+							<span><?php _e( 'Rewards', 'me5rine' ); ?></span>
 						</a>
 						<div class="submenu">
 						<a href="?tab=rewards-points" class="<?= $current_tab === 'rewards-points' ? 'active' : '' ?>"><?php _e( 'Points', 'me5rine' ); ?></a>
@@ -277,7 +277,7 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 					<div class="has-sub">
 						<a href="?tab=games" class="<?= um_get_menu_class($current_tab, 'games', ['game-pokemon-go'], $functional_tabs) ?>">
 							<span class="um-menu-icon"><i class="fa fa-gamepad"></i></span>
-							<span class="um-menu-label"><?php _e( 'Games', 'me5rine' ); ?></span>
+							<span><?php _e( 'Games', 'me5rine' ); ?></span>
 						</a>
 						<div class="submenu">
 						<a href="?tab=game-pokemon-go" class="<?= $current_tab === 'game-pokemon-go' ? 'active' : '' ?>"><?php _e( 'Pokémon GO', 'me5rine' ); ?></a>
@@ -286,13 +286,13 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 
 						<a href="?tab=servers" class="<?= $current_tab === 'servers' ? 'active' : '' ?> um-tab-disabled">
 							<span class="um-menu-icon"><i class="fa fa-server"></i></span>
-							<span class="um-menu-label"><?php _e( 'Servers', 'me5rine' ); ?></span>
+							<span><?php _e( 'Servers', 'me5rine' ); ?></span>
 						</a>
 
 					<?php if ( is_user_logged_in() && get_current_user_id() === um_profile_id() ) : ?>
 						<a href="?tab=giveaways" class="<?= $current_tab === 'giveaways' ? 'active' : '' ?>">
 							<span class="um-menu-icon"><i class="fa fa-gift"></i></span>
-							<span class="um-menu-label"><?php _e( 'Giveaways', 'me5rine' ); ?></span>
+							<span><?php _e( 'Giveaways', 'me5rine' ); ?></span>
 						</a>
 					<?php endif; ?>
 
@@ -300,7 +300,7 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 						<div class="has-sub">
 							<a href="?tab=account" class="<?= um_get_menu_class($current_tab, 'account', ['account-settings', 'linked-accounts', 'account-notifications', 'account-visibility', 'account-datas', 'edit-profile', 'edit-socials'], $functional_tabs) ?>">
 								<span class="um-menu-icon"><i class="fa fa-cog"></i></span>
-								<span class="um-menu-label"><?php _e( 'Account', 'me5rine' ); ?></span>
+								<span><?php _e( 'Account', 'me5rine' ); ?></span>
 							</a>
 							<div class="submenu">
 <?php if ( get_current_user_id() === um_profile_id() ) : ?>
@@ -340,10 +340,17 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 				</nav>
 			</div>
 
-		<!-- Contenu à droite -->
-		<main class="um-profile-main-content">
-			<?php
-			switch ($current_tab) {
+	<!-- Contenu à droite -->
+	<main class="um-profile-main-content">
+		<?php
+		// Affiche la notice EXACTEMENT ici
+		if ( function_exists('me5rine_display_profile_notice') ) {
+			me5rine_display_profile_notice();
+		}
+		?>
+
+		<?php
+		switch ($current_tab) {
 			case 'giveaways':
 				include get_stylesheet_directory() . '/ultimate-member/tabs/giveaways.php';
 				break;

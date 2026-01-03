@@ -1,0 +1,28 @@
+# French translation for Me5rine LAB theme
+# Copyright (C) 2025 Me5rine LAB
+msgid ""
+msgstr ""
+"Project-Id-Version: Me5rine LAB 4.1\n"
+"Report-Msgid-Bugs-To: https://me5rine-lab.com\n"
+"POT-Creation-Date: 2025-01-02 23:00:00+00:00\n"
+"PO-Revision-Date: 2025-01-02 23:00:00+00:00\n"
+"Last-Translator: Me5rine LAB <contact@me5rine-lab.com>\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: functions.php:104
+msgid "Social networks updated"
+msgstr "Réseaux sociaux mis à jour"
+
+#: functions.php:130
+msgid "Profile updated successfully"
+msgstr "Profil mis à jour avec succès"
+
+#: functions.php:137
+msgid "Social networks updated"
+msgstr "Réseaux sociaux mis à jour"
+
