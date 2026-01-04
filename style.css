@@ -6,7 +6,7 @@ Author: Me5rine
 Author URI: https://me5rine.com
 Description: Thème personnalisé, optimisé pour les sites du réseau Me5rine LAB. Léger, rapide, et conçu pour intégrer des fonctionnalités avancées sur-mesure
 Tags: accessibility-ready,flexible-header,custom-colors,custom-menu,custom-logo,featured-images,rtl-language-support,threaded-comments,translation-ready
-Version: 4.2
+Version: 4.2.3
 Updated: 2025-06-06 01:18:45
 
 */
@@ -616,6 +616,7 @@ Updated: 2025-06-06 01:18:45
     appearance: textfield;
 }
 
+
 /* --- Checkboxes --- */
 .me5rine-lab-form-checkbox-group {
     display: grid;
@@ -987,7 +988,7 @@ p.um-notice.error::before {
     .me5rine-lab-form-section,
     .um-profile-main-content,
     .me5rine-lab-form-view {
-        padding: 16px;
+        padding: 10px !important;
         border-radius: 8px;
     }
 
@@ -1199,346 +1200,549 @@ p.um-notice.error::before {
 }
 
 /* ============================================
-   TABLEAUX - Style WordPress List Table Modernisé
+   TABLEAUX - Style WordPress List Table Modernisé Unifié
    ============================================ */
 
-/* --- Tableaux généraux --- */
+/* Tableau générique - Style WordPress admin modernisé */
+.me5rine-lab-table,
 .giveaway-profil-promo-table,
 .um-giveaway-list-table,
 .wp-list-table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--ph-bg, #ffffff);
-    border: 1px solid var(--ph-border, #DEE5EC);
-    border-spacing: 0;
-    margin: 0 0 20px 0;
-    font-family: var(--um-font);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: var(--um-bg, var(--ph-bg, #ffffff));
+    border: 1px solid var(--um-border, var(--ph-border, #DEE5EC));
     border-radius: 4px;
     overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--um-text-light, var(--ph-text-light, #50575e));
 }
 
-/* --- Header --- */
+/* En-tête du tableau - Style WordPress admin */
+.me5rine-lab-table thead,
 .giveaway-profil-promo-table thead,
 .um-giveaway-list-table thead,
 .wp-list-table thead {
-    background: var(--ph-bg-secondary, #F9FAFB);
-    border-bottom: 2px solid var(--ph-border, #DEE5EC);
+    background: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
+    border-bottom: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
 }
 
-.giveaway-profil-promo-table thead tr,
-.um-giveaway-list-table thead tr,
-.wp-list-table thead tr {
-    border-bottom: none;
-}
-
+.me5rine-lab-table th,
 .giveaway-profil-promo-table th,
 .um-giveaway-list-table th,
 .wp-list-table th {
-    padding: 12px 15px;
+    padding: 12px 16px;
     text-align: left;
     font-weight: 600;
     font-size: 13px;
-    color: var(--ph-text, #11161E);
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    border: none;
-    background: transparent;
-    border-right: 1px solid var(--ph-border, #DEE5EC);
+    color: var(--um-text, var(--ph-text, #1d2327));
+    text-transform: none;
+    letter-spacing: 0;
+    border-bottom: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
     vertical-align: middle;
-    line-height: 1.4;
+    white-space: nowrap;
 }
 
+.me5rine-lab-table th:first-child,
+.giveaway-profil-promo-table th:first-child,
+.um-giveaway-list-table th:first-child,
+.wp-list-table th:first-child {
+    padding-left: 16px;
+}
+
+.me5rine-lab-table th:last-child,
 .giveaway-profil-promo-table th:last-child,
 .um-giveaway-list-table th:last-child,
 .wp-list-table th:last-child {
-    border-right: none;
+    padding-right: 16px;
 }
 
-/* --- Body --- */
-.giveaway-profil-promo-table tbody,
-.um-giveaway-list-table tbody,
-.wp-list-table tbody {
-    background: var(--ph-bg, #ffffff);
+.me5rine-lab-table th .unsorted-column,
+.giveaway-profil-promo-table th .unsorted-column,
+.um-giveaway-list-table th .unsorted-column,
+.wp-list-table th .unsorted-column {
+    display: inline-block;
 }
 
+/* Colonnes triables - Style WordPress */
+.me5rine-lab-table th.sortable a,
+.me5rine-lab-table th.sorted a,
+.giveaway-profil-promo-table th.sortable a,
+.giveaway-profil-promo-table th.sorted a,
+.um-giveaway-list-table th.sortable a,
+.um-giveaway-list-table th.sorted a,
+.wp-list-table th.sortable a,
+.wp-list-table th.sorted a {
+    color: var(--um-text, var(--ph-text, #1d2327));
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.me5rine-lab-table th.sortable a:hover,
+.me5rine-lab-table th.sorted a:hover,
+.giveaway-profil-promo-table th.sortable a:hover,
+.giveaway-profil-promo-table th.sorted a:hover,
+.um-giveaway-list-table th.sortable a:hover,
+.um-giveaway-list-table th.sorted a:hover,
+.wp-list-table th.sortable a:hover,
+.wp-list-table th.sorted a:hover {
+    color: var(--um-secondary, var(--ph-secondary, #2271b1));
+}
+
+.me5rine-lab-table th.sorted.asc a,
+.me5rine-lab-table th.sorted.desc a,
+.giveaway-profil-promo-table th.sorted.asc a,
+.giveaway-profil-promo-table th.sorted.desc a,
+.um-giveaway-list-table th.sorted.asc a,
+.um-giveaway-list-table th.sorted.desc a,
+.wp-list-table th.sorted.asc a,
+.wp-list-table th.sorted.desc a {
+    color: var(--um-secondary, var(--ph-secondary, #2271b1));
+}
+
+/* Indicateurs de tri */
+.me5rine-lab-table .sorting-indicators,
+.giveaway-profil-promo-table .sorting-indicators,
+.um-giveaway-list-table .sorting-indicators,
+.wp-list-table .sorting-indicators {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.me5rine-lab-table .sorting-indicator,
+.giveaway-profil-promo-table .sorting-indicator,
+.um-giveaway-list-table .sorting-indicator,
+.wp-list-table .sorting-indicator {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    margin: 1px 0;
+    opacity: 0.3;
+}
+
+.me5rine-lab-table .sorting-indicator.asc,
+.giveaway-profil-promo-table .sorting-indicator.asc,
+.um-giveaway-list-table .sorting-indicator.asc,
+.wp-list-table .sorting-indicator.asc {
+    border-bottom: 4px solid currentColor;
+    margin-bottom: 2px;
+}
+
+.me5rine-lab-table .sorting-indicator.desc,
+.giveaway-profil-promo-table .sorting-indicator.desc,
+.um-giveaway-list-table .sorting-indicator.desc,
+.wp-list-table .sorting-indicator.desc {
+    border-top: 4px solid currentColor;
+    margin-top: 2px;
+}
+
+.me5rine-lab-table th.sorted.asc .sorting-indicator.asc,
+.me5rine-lab-table th.sorted.desc .sorting-indicator.desc,
+.giveaway-profil-promo-table th.sorted.asc .sorting-indicator.asc,
+.giveaway-profil-promo-table th.sorted.desc .sorting-indicator.desc,
+.um-giveaway-list-table th.sorted.asc .sorting-indicator.asc,
+.um-giveaway-list-table th.sorted.desc .sorting-indicator.desc,
+.wp-list-table th.sorted.asc .sorting-indicator.asc,
+.wp-list-table th.sorted.desc .sorting-indicator.desc {
+    opacity: 1;
+}
+
+/* Corps du tableau - Style WordPress admin */
+.me5rine-lab-table tbody tr,
 .giveaway-profil-promo-table tbody tr,
 .um-giveaway-list-table tbody tr,
 .wp-list-table tbody tr {
-    background: var(--ph-bg, #ffffff);
+    border-bottom: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
     transition: background-color 0.15s ease;
-    border-bottom: 1px solid var(--ph-border, #DEE5EC);
 }
 
+.me5rine-lab-table tbody tr:last-child,
 .giveaway-profil-promo-table tbody tr:last-child,
 .um-giveaway-list-table tbody tr:last-child,
 .wp-list-table tbody tr:last-child {
     border-bottom: none;
 }
 
+.me5rine-lab-table tbody tr:hover,
 .giveaway-profil-promo-table tbody tr:hover,
 .um-giveaway-list-table tbody tr:hover,
 .wp-list-table tbody tr:hover {
-    background: var(--ph-bg-secondary, #F9FAFB);
+    background: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
 }
 
-/* --- Lignes alternées (striped) --- */
-.giveaway-profil-promo-table.striped tbody tr:nth-child(odd),
-.um-giveaway-list-table.striped tbody tr:nth-child(odd),
-.wp-list-table.striped tbody tr:nth-child(odd) {
-    background: var(--ph-bg, #ffffff);
+.me5rine-lab-table tbody tr.me5rine-lab-table-row-toggleable.is-expanded,
+.giveaway-profil-promo-table tbody tr.me5rine-lab-table-row-toggleable.is-expanded,
+.um-giveaway-list-table tbody tr.me5rine-lab-table-row-toggleable.is-expanded,
+.wp-list-table tbody tr.me5rine-lab-table-row-toggleable.is-expanded {
+    background: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
 }
 
-.giveaway-profil-promo-table.striped tbody tr:nth-child(even),
-.um-giveaway-list-table.striped tbody tr:nth-child(even),
-.wp-list-table.striped tbody tr:nth-child(even) {
-    background: var(--ph-bg-secondary, #F9FAFB);
-}
-
-.giveaway-profil-promo-table.striped tbody tr:nth-child(odd):hover,
-.um-giveaway-list-table.striped tbody tr:nth-child(odd):hover,
-.wp-list-table.striped tbody tr:nth-child(odd):hover,
-.giveaway-profil-promo-table.striped tbody tr:nth-child(even):hover,
-.um-giveaway-list-table.striped tbody tr:nth-child(even):hover,
-.wp-list-table.striped tbody tr:nth-child(even):hover {
-    background: rgba(4, 133, 200, 0.05);
-}
-
-/* --- Cellules --- */
+.me5rine-lab-table td,
 .giveaway-profil-promo-table td,
 .um-giveaway-list-table td,
 .wp-list-table td {
-    padding: 12px 15px;
-    font-size: 14px;
-    color: var(--ph-text, #11161E);
-    border-right: 1px solid var(--ph-border, #DEE5EC);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--um-text-light, var(--ph-text-light, #50575e));
     vertical-align: middle;
-    background: transparent;
-    line-height: 1.5;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 
-.giveaway-profil-promo-table td:last-child,
-.um-giveaway-list-table td:last-child,
-.wp-list-table td:last-child {
-    border-right: none;
+.me5rine-lab-table tbody tr:hover td,
+.giveaway-profil-promo-table tbody tr:hover td,
+.um-giveaway-list-table tbody tr:hover td,
+.wp-list-table tbody tr:hover td {
+    border-top-color: var(--um-border, var(--ph-border, #c3c4c7));
+    border-bottom-color: var(--um-border, var(--ph-border, #c3c4c7));
 }
 
-.giveaway-profil-promo-table td a,
-.um-giveaway-list-table td a,
-.wp-list-table td a {
-    color: var(--ph-secondary, #0485C8);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-weight: 500;
-}
-
-.giveaway-profil-promo-table td a:hover,
-.um-giveaway-list-table td a:hover,
-.wp-list-table td a:hover {
-    color: var(--ph-primary, #2E576F);
-    text-decoration: underline;
-}
-
-/* --- Colonne summary --- */
-.giveaway-profil-promo-table .summary,
-.um-giveaway-list-table .summary {
+/* Cellule de résumé (première colonne avec titre) - Style WordPress admin */
+.me5rine-lab-table td.summary,
+.giveaway-profil-promo-table td.summary,
+.um-giveaway-list-table td.summary,
+.wp-list-table td.summary {
     position: relative;
     padding-right: 50px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
+/* Ligne de résumé dans une cellule */
+.me5rine-lab-table-summary-row,
 .giveaway-summary-row {
     display: flex;
     align-items: center;
     gap: 12px;
+    justify-content: space-between;
 }
 
-.giveaway-title {
-    flex: 1;
-    color: var(--ph-text, #11161E);
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 500;
+/* Actions de ligne (Edit, View, etc.) - Style WordPress admin */
+.me5rine-lab-table .row-actions,
+.giveaway-profil-promo-table .row-actions,
+.um-giveaway-list-table .row-actions,
+.wp-list-table .row-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
 }
 
-.giveaway-title a {
-    color: var(--ph-text, #11161E);
-    transition: color 0.2s ease;
-    font-weight: 600;
+.me5rine-lab-table tbody tr:hover .row-actions,
+.giveaway-profil-promo-table tbody tr:hover .row-actions,
+.um-giveaway-list-table tbody tr:hover .row-actions,
+.wp-list-table tbody tr:hover .row-actions {
+    opacity: 1;
 }
 
-.giveaway-title a:hover {
-    color: var(--ph-secondary, #0485C8);
+.me5rine-lab-table .row-actions a,
+.me5rine-lab-table .row-actions button,
+.giveaway-profil-promo-table .row-actions a,
+.giveaway-profil-promo-table .row-actions button,
+.um-giveaway-list-table .row-actions a,
+.um-giveaway-list-table .row-actions button,
+.wp-list-table .row-actions a,
+.wp-list-table .row-actions button {
+    font-size: 12px;
+    padding: 2px 6px;
     text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.15s ease;
 }
 
-/* --- Bouton toggle mobile --- */
+.me5rine-lab-table .row-actions a:hover,
+.me5rine-lab-table .row-actions button:hover,
+.giveaway-profil-promo-table .row-actions a:hover,
+.giveaway-profil-promo-table .row-actions button:hover,
+.um-giveaway-list-table .row-actions a:hover,
+.um-giveaway-list-table .row-actions button:hover,
+.wp-list-table .row-actions a:hover,
+.wp-list-table .row-actions button:hover {
+    background: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
+}
+
+/* Titre dans une cellule de tableau - Style WordPress admin */
+.me5rine-lab-table-title,
+.giveaway-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--um-text, var(--ph-text, #1d2327));
+}
+
+.me5rine-lab-table-title a,
+.giveaway-title a {
+    color: var(--um-text, var(--ph-text, #1d2327));
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.me5rine-lab-table-title a:hover,
+.giveaway-title a:hover {
+    color: var(--um-secondary, var(--ph-secondary, #2271b1));
+}
+
+/* Bouton pour expander/réduire une ligne - Style WordPress admin */
+.me5rine-lab-table-toggle-btn,
 .toggle-row-btn {
-    display: none !important;
-    position: absolute !important;
-    right: 15px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    background: var(--ph-bg, #ffffff) !important;
-    border: 1px solid var(--ph-border, #DEE5EC) !important;
-    border-radius: 3px !important;
-    width: 28px !important;
-    height: 28px !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    transition: all 0.2s ease !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-    z-index: 1 !important;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
+    border-radius: 3px;
+    background: var(--um-bg, var(--ph-bg, #ffffff));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    padding: 0;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
-.toggle-row-btn::before {
-    content: '▼' !important;
-    font-size: 10px !important;
-    color: var(--ph-text-light, #5D697D) !important;
-    transition: transform 0.2s ease, color 0.2s ease !important;
-    font-weight: 600 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.toggle-row.is-expanded .toggle-row-btn::before {
-    transform: rotate(180deg) !important;
-}
-
+.me5rine-lab-table-toggle-btn:hover,
 .toggle-row-btn:hover {
-    background: var(--ph-bg-secondary, #F9FAFB) !important;
-    border-color: var(--ph-secondary, #0485C8) !important;
-    box-shadow: 0 1px 3px rgba(4, 133, 200, 0.15) !important;
+    border-color: var(--um-secondary, var(--ph-secondary, #2271b1));
+    background: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.me5rine-lab-table-toggle-btn:focus,
+.toggle-row-btn:focus {
+    outline: none;
+    border-color: var(--um-secondary, var(--ph-secondary, #2271b1));
+    box-shadow: 0 0 0 1px var(--um-secondary, var(--ph-secondary, #2271b1));
+}
+
+.me5rine-lab-table-toggle-btn::before,
+.toggle-row-btn::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--um-text-light, var(--ph-text-light, #50575e));
+    transition: transform 0.15s ease, border-top-color 0.15s ease;
+}
+
+.me5rine-lab-table-toggle-btn[aria-expanded="true"]::before,
+.me5rine-lab-table-row-toggleable.is-expanded .me5rine-lab-table-toggle-btn::before,
+.toggle-row.is-expanded .toggle-row-btn::before {
+    transform: rotate(180deg);
+}
+
+.me5rine-lab-table-toggle-btn:hover::before,
 .toggle-row-btn:hover::before {
-    color: var(--ph-secondary, #0485C8) !important;
+    border-top-color: var(--um-secondary, var(--ph-secondary, #2271b1));
 }
 
-/* --- Colonnes details --- */
-.giveaway-profil-promo-table .details,
-.um-giveaway-list-table .details {
+/* Texte accessible uniquement aux lecteurs d'écran */
+.me5rine-lab-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Colonnes de détails (masquées sur mobile) */
+.me5rine-lab-table td.details,
+.giveaway-profil-promo-table td.details,
+.um-giveaway-list-table td.details,
+.wp-list-table td.details {
     display: table-cell;
 }
 
-/* --- Style widefat (WordPress) --- */
-.um-giveaway-list-table.widefat,
-.wp-list-table.widefat {
-    border: 1px solid var(--ph-border, #DEE5EC);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+/* Masquer le bouton toggle sur desktop */
+@media screen and (min-width: 783px) {
+    .me5rine-lab-table .me5rine-lab-table-toggle-btn,
+    .me5rine-lab-table .toggle-row-btn,
+    .giveaway-profil-promo-table .me5rine-lab-table-toggle-btn,
+    .giveaway-profil-promo-table .toggle-row-btn,
+    .um-giveaway-list-table .me5rine-lab-table-toggle-btn,
+    .um-giveaway-list-table .toggle-row-btn,
+    .wp-list-table .me5rine-lab-table-toggle-btn,
+    .wp-list-table .toggle-row-btn {
+        display: none;
+    }
+
+    .me5rine-lab-table td.summary,
+    .giveaway-profil-promo-table td.summary,
+    .um-giveaway-list-table td.summary,
+    .wp-list-table td.summary {
+        padding-right: 16px;
+    }
 }
 
-/* --- Responsive Tableaux --- */
-@media (max-width: 782px) {
+/* Labels de colonnes sur mobile (via data-colname) */
+.me5rine-lab-table td[data-colname]::before,
+.giveaway-profil-promo-table td[data-colname]::before,
+.um-giveaway-list-table td[data-colname]::before,
+.wp-list-table td[data-colname]::before {
+    content: attr(data-colname) ": ";
+    font-weight: 600;
+    color: var(--um-text, var(--ph-text, #11161E));
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+/* Styles pour tableaux avec classe striped (lignes alternées) - Style WordPress admin */
+.me5rine-lab-table.striped tbody tr:nth-child(odd),
+.giveaway-profil-promo-table.striped tbody tr:nth-child(odd),
+.um-giveaway-list-table.striped tbody tr:nth-child(odd),
+.wp-list-table.striped tbody tr:nth-child(odd) {
+    background-color: var(--um-bg, var(--ph-bg, #ffffff));
+}
+
+.me5rine-lab-table.striped tbody tr:nth-child(even),
+.giveaway-profil-promo-table.striped tbody tr:nth-child(even),
+.um-giveaway-list-table.striped tbody tr:nth-child(even),
+.wp-list-table.striped tbody tr:nth-child(even) {
+    background-color: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
+}
+
+.me5rine-lab-table.striped tbody tr:nth-child(odd):hover,
+.me5rine-lab-table.striped tbody tr:nth-child(even):hover,
+.giveaway-profil-promo-table.striped tbody tr:nth-child(odd):hover,
+.giveaway-profil-promo-table.striped tbody tr:nth-child(even):hover,
+.um-giveaway-list-table.striped tbody tr:nth-child(odd):hover,
+.um-giveaway-list-table.striped tbody tr:nth-child(even):hover,
+.wp-list-table.striped tbody tr:nth-child(odd):hover,
+.wp-list-table.striped tbody tr:nth-child(even):hover {
+    background-color: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
+}
+
+/* Responsive : Mobile */
+@media screen and (max-width: 782px) {
+    .me5rine-lab-table,
     .giveaway-profil-promo-table,
     .um-giveaway-list-table,
     .wp-list-table {
         display: block;
-        border: 1px solid var(--ph-border, #DEE5EC);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 16px;
+        margin-bottom: 16px;
         border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
     }
 
+    .me5rine-lab-table thead,
     .giveaway-profil-promo-table thead,
     .um-giveaway-list-table thead,
     .wp-list-table thead {
         display: none;
     }
 
+    .me5rine-lab-table tbody,
     .giveaway-profil-promo-table tbody,
     .um-giveaway-list-table tbody,
     .wp-list-table tbody {
         display: block;
     }
 
+    .me5rine-lab-table tbody tr,
     .giveaway-profil-promo-table tbody tr,
     .um-giveaway-list-table tbody tr,
     .wp-list-table tbody tr {
         display: block;
-        border: 1px solid var(--ph-border, #DEE5EC);
-        border-radius: 4px;
         margin-bottom: 12px;
-        padding: 0;
-        background: var(--ph-bg, #ffffff);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
+        border-radius: 4px;
+        background: var(--um-bg, var(--ph-bg, #ffffff));
         overflow: hidden;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
     }
 
-    .giveaway-profil-promo-table tbody tr:last-child,
-    .um-giveaway-list-table tbody tr:last-child,
-    .wp-list-table tbody tr:last-child {
-        margin-bottom: 0;
-    }
-
+    .me5rine-lab-table td,
     .giveaway-profil-promo-table td,
     .um-giveaway-list-table td,
     .wp-list-table td {
         display: block;
-        padding: 12px 15px;
-        border: none;
+        padding: 10px 12px;
         text-align: left;
-        border-right: none !important;
-        border-bottom: 1px solid var(--ph-border, #DEE5EC);
-        background: transparent;
+        border-bottom: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
+        border-left: none;
+        border-right: none;
     }
 
+    .me5rine-lab-table td:last-child,
     .giveaway-profil-promo-table td:last-child,
     .um-giveaway-list-table td:last-child,
     .wp-list-table td:last-child {
         border-bottom: none;
     }
 
-    .giveaway-profil-promo-table .summary,
-    .um-giveaway-list-table .summary {
-        padding: 12px 15px;
-        padding-right: 55px;
-        padding-bottom: 12px;
-        margin-bottom: 0;
-        background: var(--ph-bg-secondary, #F9FAFB);
-        font-size: 14px;
+    .me5rine-lab-table td.summary,
+    .giveaway-profil-promo-table td.summary,
+    .um-giveaway-list-table td.summary,
+    .wp-list-table td.summary {
+        padding-right: 50px;
+        background: var(--um-bg-secondary, var(--ph-bg-secondary, #f6f7f7));
         font-weight: 600;
-        border-bottom: 2px solid var(--ph-border, #DEE5EC);
+        border-bottom: 1px solid var(--um-border, var(--ph-border, #c3c4c7));
     }
 
-    .toggle-row-btn {
-        display: flex !important;
-        right: 12px !important;
-    }
-
-    .giveaway-profil-promo-table .details,
-    .um-giveaway-list-table .details {
+    .me5rine-lab-table td.details,
+    .giveaway-profil-promo-table td.details,
+    .um-giveaway-list-table td.details,
+    .wp-list-table td.details {
         display: none;
-        padding: 12px 15px;
-        background: var(--ph-bg, #ffffff);
-        border-bottom: 1px solid var(--ph-border, #DEE5EC);
     }
 
+    .me5rine-lab-table-row-toggleable.is-expanded td.details,
     .toggle-row.is-expanded .details {
         display: block;
     }
 
-    .giveaway-profil-promo-table .details::before,
-    .um-giveaway-list-table .details::before {
+    .me5rine-lab-table .me5rine-lab-table-toggle-btn,
+    .me5rine-lab-table .toggle-row-btn,
+    .giveaway-profil-promo-table .me5rine-lab-table-toggle-btn,
+    .giveaway-profil-promo-table .toggle-row-btn,
+    .um-giveaway-list-table .me5rine-lab-table-toggle-btn,
+    .um-giveaway-list-table .toggle-row-btn,
+    .wp-list-table .me5rine-lab-table-toggle-btn,
+    .wp-list-table .toggle-row-btn {
+        display: flex;
+    }
+
+    /* Labels de colonnes sur mobile */
+    .me5rine-lab-table td[data-colname]::before,
+    .giveaway-profil-promo-table td[data-colname]::before,
+    .um-giveaway-list-table td[data-colname]::before,
+    .wp-list-table td[data-colname]::before {
         content: attr(data-colname) ": ";
         font-weight: 600;
+        color: var(--um-text, var(--ph-text, #1d2327));
+        text-transform: none;
+        letter-spacing: 0;
         font-size: 12px;
-        color: var(--ph-text-light, #5D697D);
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-        display: inline-block;
         margin-right: 8px;
     }
 
-    .giveaway-profil-promo-table .details,
-    .um-giveaway-list-table .details {
-        font-size: 14px;
-        color: var(--ph-text, #11161E);
+    .me5rine-lab-table td.summary[data-colname]::before,
+    .giveaway-profil-promo-table td.summary[data-colname]::before,
+    .um-giveaway-list-table td.summary[data-colname]::before,
+    .wp-list-table td.summary[data-colname]::before {
+        display: none;
     }
 }
 
@@ -1981,6 +2185,7 @@ label.me5rine-lab-form-button-file:hover {
 
 /* --- Select2 et Choices (Unifié) --- */
 .select2-container .select2-selection--single,
+.um-field .select2.select2-container .select2-selection,
 .choices__inner {
     min-height: 44px !important;
     padding: 9px 40px 9px 16px !important;
@@ -2000,8 +2205,48 @@ label.me5rine-lab-form-button-file:hover {
     box-sizing: border-box !important;
 }
 
+/* Éléments internes Select2 */
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 0 !important;
+    line-height: 1.5 !important;
+    color: var(--me5rine-lab-text-light, #5D697D) !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__placeholder {
+    color: var(--me5rine-lab-text-light, #5D697D) !important;
+    opacity: 0.7 !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__arrow {
+    display: none !important;
+}
+
+/* Annulation du ::before sur la flèche Select2 dans Ultimate Member */
+.um-field .select2.select2-container .select2-selection .select2-selection__arrow::before,
+.um-field .select2.select2-container .select2-selection .select2-selection__arrow:before,
+.um-form .select2.select2-container .select2-selection .select2-selection__arrow::before,
+.um-form .select2.select2-container .select2-selection .select2-selection__arrow:before,
+.um-profile-main-content .select2.select2-container .select2-selection .select2-selection__arrow::before,
+.um-profile-main-content .select2.select2-container .select2-selection .select2-selection__arrow:before,
+.um-field-area .select2.select2-container .select2-selection .select2-selection__arrow::before,
+.um-field-area .select2.select2-container .select2-selection .select2-selection__arrow:before {
+    display: none !important;
+    content: none !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__clear {
+    margin-top: 0 !important;
+    line-height: 1.2 !important;
+    font-size: 18px !important;
+    color: var(--me5rine-lab-text-light, #5D697D) !important;
+    padding: 0 8px !important;
+    font-weight: bold !important;
+    width: inherit !important;
+}
+
 .select2-container .select2-selection--single:focus,
 .select2-container--open .select2-selection--single,
+.um-field .select2.select2-container .select2-selection:focus,
 .choices__inner:focus,
 .choices.is-focused .choices__inner {
     outline: none !important;
@@ -2024,22 +2269,333 @@ label.me5rine-lab-form-button-file:hover {
 }
 
 .select2-results__option,
+.um-field .select2-container.select2-container--open .select2-dropdown .select2-results li,
 .choices__list--dropdown .choices__item {
     padding: 10px 16px !important;
     color: var(--me5rine-lab-text-light, #5D697D) !important;
     transition: var(--me5rine-lab-transition, all 0.2s ease) !important;
 }
 
+.um-field .select2-container.select2-container--open .select2-dropdown .select2-results li {
+    margin: 0 !important;
+    font-weight: 400;
+}
+
 .select2-results__option--highlighted,
+.um-field .select2-dropdown .select2-results li.select2-results__option.select2-results__option--highlighted,
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
     background: var(--me5rine-lab-bg-secondary, #F9FAFB) !important;
     color: var(--me5rine-lab-text, #11161E) !important;
 }
 
 .select2-results__option[aria-selected="true"],
+.um-field .select2-dropdown .select2-results li.select2-results__option[aria-selected=true],
 .choices__list--dropdown .choices__item--selectable.is-selected {
     background: var(--me5rine-lab-secondary, #0485C8) !important;
     color: var(--me5rine-lab-white, #ffffff) !important;
+}
+
+/* --- Ultimate Member - Select2 (Global) --- */
+.um-field .select2-container,
+.um-form .select2-container,
+.um-profile-main-content .select2-container,
+.um-field-area .select2-container {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.um-field .um-field-area {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.um-field-area {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Styles Select2 spécifiques pour Ultimate Member */
+.um-field .select2-container .select2-selection--single,
+.um-form .select2-container .select2-selection--single,
+.um-profile-main-content .select2-container .select2-selection--single,
+.um-field-area .select2-container .select2-selection--single {
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+    color: var(--ph-text, #11161E) !important;
+}
+
+.um-field .select2-container .select2-selection--single .select2-selection__rendered,
+.um-form .select2-container .select2-selection--single .select2-selection__rendered,
+.um-profile-main-content .select2-container .select2-selection--single .select2-selection__rendered,
+.um-field-area .select2-container .select2-selection--single .select2-selection__rendered {
+    color: var(--ph-text, #11161E) !important;
+    font-size: 15px !important;
+}
+
+.um-field .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-form .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-profile-main-content .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-field-area .select2-container .select2-selection--single .select2-selection__placeholder {
+    color: var(--ph-text-light, #5D697D) !important;
+}
+
+.um-field .select2-dropdown,
+.um-form .select2-dropdown,
+.um-profile-main-content .select2-dropdown,
+.um-field-area .select2-dropdown {
+    margin-top: 0 !important;
+}
+
+.um-field .select2-results__option,
+.um-form .select2-results__option,
+.um-profile-main-content .select2-results__option,
+.um-field-area .select2-results__option {
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+}
+
+/* --- Ultimate Member Select2 dans me5rine-lab-form-field --- */
+/* Faire en sorte que les Select2 Ultimate Member se comportent comme me5rine-lab-form-select */
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-selection--single,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single {
+    min-height: 44px !important;
+    padding: 9px 40px 9px 16px !important;
+    border: 2px solid var(--ph-border, #DEE5EC) !important;
+    border-radius: 8px !important;
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+    line-height: 1.5 !important;
+    transition: all 0.2s ease !important;
+    background-color: var(--ph-bg, #ffffff) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235D697D' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px !important;
+    cursor: pointer !important;
+    color: var(--ph-text, #11161E) !important;
+    box-sizing: border-box !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__rendered,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__rendered,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__rendered,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 0 !important;
+    line-height: 1.5 !important;
+    color: var(--ph-text, #11161E) !important;
+    font-size: 15px !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__placeholder,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__placeholder,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__placeholder,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__placeholder {
+    color: var(--ph-text-light, #5D697D) !important;
+    opacity: 0.7 !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__arrow,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__arrow,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__arrow,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single .select2-selection__arrow {
+    display: none !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:focus,
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container--open .select2-selection--single,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:focus,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container--open .select2-selection--single,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:focus,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container--open .select2-selection--single,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:focus,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container--open .select2-selection--single {
+    outline: none !important;
+    border-color: var(--ph-secondary, #0485C8) !important;
+    box-shadow: 0 0 0 3px rgba(4, 133, 200, 0.1) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230485C8' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:hover:not(:focus),
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:hover:not(:focus),
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:hover:not(:focus),
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-selection--single:hover:not(:focus) {
+    border-color: var(--ph-border-light, #B5C2CF) !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-dropdown,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-dropdown,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-dropdown,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-dropdown {
+    margin-top: 0 !important;
+    border: 2px solid var(--ph-border, #DEE5EC) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    background: var(--ph-bg, #ffffff) !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-results__option,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-results__option,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-results__option,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-results__option {
+    padding: 10px 16px !important;
+    color: var(--ph-text-light, #5D697D) !important;
+    transition: all 0.2s ease !important;
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-results__option--highlighted,
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-results__option--highlighted,
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-results__option--highlighted,
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-results__option--highlighted {
+    background: var(--ph-bg-secondary, #F9FAFB) !important;
+    color: var(--ph-text, #11161E) !important;
+}
+
+.me5rine-lab-form-field .um-s1.select2-hidden-accessible + .select2-container .select2-results__option[aria-selected="true"],
+.me5rine-lab-form-field select.um-s1.select2-hidden-accessible + .select2-container .select2-results__option[aria-selected="true"],
+.me5rine-lab-form-field .um-form-field.um-s1.select2-hidden-accessible + .select2-container .select2-results__option[aria-selected="true"],
+.me5rine-lab-form-field select.me5rine-lab-form-select.um-s1.select2-hidden-accessible + .select2-container .select2-results__option[aria-selected="true"] {
+    background: var(--ph-secondary, #0485C8) !important;
+    color: var(--ph-white, #ffffff) !important;
+}
+
+/* Champ de recherche dans le dropdown Select2 Ultimate Member */
+.um-field-area .select2-dropdown .select2-search__field,
+.um-field .select2-dropdown .select2-search__field,
+.um-form .select2-dropdown .select2-search__field,
+.um-profile-main-content .select2-dropdown .select2-search__field {
+    width: 100% !important;
+    padding: 8px 12px !important;
+    border: 2px solid var(--ph-border, #DEE5EC) !important;
+    border-radius: 6px !important;
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+    line-height: 1.5 !important;
+    color: var(--ph-text, #11161E) !important;
+    background-color: var(--ph-bg, #ffffff) !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.um-field-area .select2-dropdown .select2-search__field:focus,
+.um-field .select2-dropdown .select2-search__field:focus,
+.um-form .select2-dropdown .select2-search__field:focus,
+.um-profile-main-content .select2-dropdown .select2-search__field:focus {
+    border-color: var(--ph-secondary, #0485C8) !important;
+    box-shadow: 0 0 0 3px rgba(4, 133, 200, 0.1) !important;
+    outline: none !important;
+}
+
+.um-field-area .select2-dropdown .select2-search__field::placeholder,
+.um-field .select2-dropdown .select2-search__field::placeholder,
+.um-form .select2-dropdown .select2-search__field::placeholder,
+.um-profile-main-content .select2-dropdown .select2-search__field::placeholder {
+    color: var(--ph-text-light, #5D697D) !important;
+    opacity: 0.7 !important;
+}
+
+/* Survol des options dans le dropdown Select2 Ultimate Member */
+.um-field-area .select2-container--open .select2-selection--single:hover,
+.um-field .select2-container--open .select2-selection--single:hover,
+.um-form .select2-container--open .select2-selection--single:hover,
+.um-profile-main-content .select2-container--open .select2-selection--single:hover {
+    border-color: var(--ph-border-light, #B5C2CF) !important;
+}
+
+/* Survol des options dans la liste déroulante */
+.um-field-area .select2-results__option:hover,
+.um-field .select2-results__option:hover,
+.um-form .select2-results__option:hover,
+.um-profile-main-content .select2-results__option:hover {
+    background: var(--ph-bg-secondary, #F9FAFB) !important;
+    color: var(--ph-text, #11161E) !important;
+    cursor: pointer !important;
+}
+
+/* Styles pour le dropdown Select2 ouvert dans .um-field-area */
+/* Le dropdown peut être créé dynamiquement ailleurs dans le DOM */
+.um-field-area .select2-container--open .select2-selection--single,
+.um-field-area .select2-container.select2-container--open .select2-selection--single,
+.um-field-area .select2.select2-container.select2-container--open .select2-selection--single {
+    border-color: var(--ph-secondary, #0485C8) !important;
+    box-shadow: 0 0 0 3px rgba(4, 133, 200, 0.1) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230485C8' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+}
+
+/* Styles pour le dropdown lui-même (peut être en dehors du conteneur) */
+.select2-container--open.select2-container--above .select2-dropdown,
+.select2-container--open.select2-container--below .select2-dropdown {
+    border: 2px solid var(--ph-border, #DEE5EC) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    background: var(--ph-bg, #ffffff) !important;
+    margin-top: 0 !important;
+}
+
+/* Champ de recherche dans tous les dropdowns Select2 (même ceux créés dynamiquement) */
+.select2-container--open .select2-dropdown .select2-search__field {
+    width: 100% !important;
+    padding: 8px 12px !important;
+    border: 2px solid var(--ph-border, #DEE5EC) !important;
+    border-radius: 6px !important;
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+    line-height: 1.5 !important;
+    color: var(--ph-text, #11161E) !important;
+    background-color: var(--ph-bg, #ffffff) !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.select2-container--open .select2-dropdown .select2-search__field:focus {
+    border-color: var(--ph-secondary, #0485C8) !important;
+    box-shadow: 0 0 0 3px rgba(4, 133, 200, 0.1) !important;
+    outline: none !important;
+}
+
+.select2-container--open .select2-dropdown .select2-search__field::placeholder {
+    color: var(--ph-text-light, #5D697D) !important;
+    opacity: 0.7 !important;
+}
+
+/* Options dans tous les dropdowns Select2 */
+.select2-container--open .select2-dropdown .select2-results__option {
+    padding: 10px 16px !important;
+    color: var(--ph-text-light, #5D697D) !important;
+    transition: all 0.2s ease !important;
+    font-size: 15px !important;
+    font-family: var(--um-font) !important;
+}
+
+.select2-container--open .select2-dropdown .select2-results__option:hover {
+    background: var(--ph-bg-secondary, #F9FAFB) !important;
+    color: var(--ph-text, #11161E) !important;
+    cursor: pointer !important;
+}
+
+.select2-container--open .select2-dropdown .select2-results__option--highlighted {
+    background: var(--ph-bg-secondary, #F9FAFB) !important;
+    color: var(--ph-text, #11161E) !important;
+}
+
+.select2-container--open .select2-dropdown .select2-results__option[aria-selected="true"] {
+    background: var(--ph-secondary, #0485C8) !important;
+    color: var(--ph-white, #ffffff) !important;
 }
 
 .choices__list--multiple .choices__item {
@@ -2306,290 +2862,6 @@ label.me5rine-lab-form-button-file:hover {
     white-space: nowrap;
 }
 
-/* --- Tableaux Génériques Unifiés --- */
-.me5rine-lab-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--me5rine-lab-bg);
-    border: 1px solid var(--me5rine-lab-border);
-    border-spacing: 0;
-    margin: 0 0 20px 0;
-    font-family: var(--um-font);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.me5rine-lab-table thead {
-    background: var(--me5rine-lab-bg-secondary);
-    border-bottom: 2px solid var(--me5rine-lab-border);
-}
-
-.me5rine-lab-table th {
-    padding: 12px 15px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 13px;
-    color: var(--me5rine-lab-text);
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    border: none;
-    background: transparent;
-    border-right: 1px solid var(--me5rine-lab-border);
-    vertical-align: middle;
-    line-height: 1.4;
-}
-
-.me5rine-lab-table th:last-child {
-    border-right: none;
-}
-
-.me5rine-lab-table tbody tr {
-    border-bottom: 1px solid var(--me5rine-lab-border);
-    transition: background-color 0.15s ease;
-    background: var(--me5rine-lab-bg);
-}
-
-.me5rine-lab-table tbody tr:last-child {
-    border-bottom: none;
-}
-
-.me5rine-lab-table tbody tr:hover {
-    background: var(--me5rine-lab-bg-secondary);
-}
-
-.me5rine-lab-table tbody tr.me5rine-lab-table-row-toggleable.is-expanded {
-    background: rgba(4, 133, 200, 0.05);
-}
-
-.me5rine-lab-table.striped tbody tr:nth-child(odd) {
-    background-color: var(--me5rine-lab-bg);
-}
-
-.me5rine-lab-table.striped tbody tr:nth-child(even) {
-    background-color: var(--me5rine-lab-bg-secondary);
-}
-
-.me5rine-lab-table.striped tbody tr:nth-child(odd):hover,
-.me5rine-lab-table.striped tbody tr:nth-child(even):hover {
-    background: rgba(4, 133, 200, 0.05);
-}
-
-.me5rine-lab-table td {
-    padding: 12px 15px;
-    font-size: 14px;
-    color: var(--me5rine-lab-text);
-    border-right: 1px solid var(--me5rine-lab-border);
-    vertical-align: middle;
-    background: transparent;
-    line-height: 1.5;
-}
-
-.me5rine-lab-table td:last-child {
-    border-right: none;
-}
-
-.me5rine-lab-table td.summary {
-    position: relative;
-    padding-right: 50px;
-    font-weight: 500;
-}
-
-.me5rine-lab-table-summary-row {
-    display: flex;
-    align-items: center;
-    gap: var(--me5rine-lab-spacing-sm);
-}
-
-.me5rine-lab-table-title {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--me5rine-lab-text);
-}
-
-.me5rine-lab-table-title a {
-    color: var(--me5rine-lab-text);
-    text-decoration: none;
-    transition: color var(--me5rine-lab-transition);
-    font-weight: 600;
-}
-
-.me5rine-lab-table-title a:hover {
-    color: var(--me5rine-lab-secondary);
-    text-decoration: none;
-}
-
-.me5rine-lab-table td a {
-    color: var(--me5rine-lab-secondary);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-weight: 500;
-}
-
-.me5rine-lab-table td a:hover {
-    color: var(--me5rine-lab-primary);
-    text-decoration: underline;
-}
-
-.me5rine-lab-table-toggle-btn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    border: 1px solid var(--me5rine-lab-border);
-    border-radius: 3px;
-    background: var(--me5rine-lab-bg);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--me5rine-lab-transition);
-    padding: 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.me5rine-lab-table-toggle-btn:hover {
-    background: var(--me5rine-lab-bg-secondary);
-    border-color: var(--me5rine-lab-secondary);
-    box-shadow: 0 1px 3px rgba(4, 133, 200, 0.15);
-}
-
-.me5rine-lab-table-toggle-btn:focus {
-    outline: none;
-    border-color: var(--me5rine-lab-secondary);
-    box-shadow: 0 0 0 3px rgba(4, 133, 200, 0.1);
-}
-
-.me5rine-lab-table-toggle-btn::before {
-    content: '▼';
-    font-size: 10px;
-    color: var(--me5rine-lab-text-light);
-    transition: transform var(--me5rine-lab-transition), color var(--me5rine-lab-transition);
-    font-weight: 600;
-}
-
-.me5rine-lab-table-toggle-btn[aria-expanded="true"]::before,
-.me5rine-lab-table-row-toggleable.is-expanded .me5rine-lab-table-toggle-btn::before {
-    transform: rotate(180deg);
-}
-
-.me5rine-lab-table-toggle-btn:hover::before {
-    color: var(--me5rine-lab-secondary);
-}
-
-.me5rine-lab-sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-.me5rine-lab-table td.details {
-    display: table-cell;
-}
-
-/* Desktop : masquer le bouton toggle */
-@media screen and (min-width: 783px) {
-    .me5rine-lab-table .me5rine-lab-table-toggle-btn {
-        display: none;
-    }
-
-    .me5rine-lab-table td.summary {
-        padding-right: var(--me5rine-lab-spacing-md);
-    }
-}
-
-/* Mobile : affichage en cartes */
-@media screen and (max-width: 782px) {
-    .me5rine-lab-table {
-        display: block;
-        border: 1px solid var(--me5rine-lab-border);
-        border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-    }
-
-    .me5rine-lab-table thead {
-        display: none;
-    }
-
-    .me5rine-lab-table tbody {
-        display: block;
-    }
-
-    .me5rine-lab-table tbody tr {
-        display: block;
-        border: 1px solid var(--me5rine-lab-border);
-        border-radius: 4px;
-        margin-bottom: 12px;
-        background: var(--me5rine-lab-bg);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-    }
-
-    .me5rine-lab-table tbody tr:last-child {
-        margin-bottom: 0;
-    }
-
-    .me5rine-lab-table td {
-        display: block;
-        padding: 12px 15px;
-        text-align: left;
-        border: none;
-        border-right: none !important;
-        border-bottom: 1px solid var(--me5rine-lab-border);
-        background: transparent;
-    }
-
-    .me5rine-lab-table td:last-child {
-        border-bottom: none;
-    }
-
-    .me5rine-lab-table td.summary {
-        padding: 12px 15px;
-        padding-right: 55px;
-        padding-bottom: 12px;
-        background: var(--me5rine-lab-bg-secondary);
-        font-weight: 600;
-        font-size: 14px;
-        border-bottom: 2px solid var(--me5rine-lab-border);
-    }
-
-    .me5rine-lab-table td.details {
-        display: none;
-    }
-
-    .me5rine-lab-table-row-toggleable.is-expanded td.details {
-        display: block;
-    }
-
-    .me5rine-lab-table .me5rine-lab-table-toggle-btn {
-        display: flex;
-        right: 12px;
-    }
-
-    .me5rine-lab-table td[data-colname]::before {
-        content: attr(data-colname) ": ";
-        font-weight: 600;
-        color: var(--me5rine-lab-text-light);
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-        font-size: 12px;
-        margin-right: 8px;
-        display: inline-block;
-    }
-
-    .me5rine-lab-table td.summary[data-colname]::before {
-        display: none;
-    }
-}
 
 /* ============================================
    RESPONSIVE GLOBAL FRONT-END
@@ -3129,7 +3401,7 @@ label.me5rine-lab-form-button-file:hover {
     }
 
     .um-profile-main-content {
-        padding: 0;
+        padding: 20px !important;
         min-height: auto;
     }
 
@@ -3180,7 +3452,7 @@ label.me5rine-lab-form-button-file:hover {
     }
 
     .um-profile-main-content {
-        padding: 0;
+        padding: 10px !important;
     }
 
     .um-profile-badge-partenaire-wrapper {
@@ -3221,7 +3493,7 @@ label.me5rine-lab-form-button-file:hover {
 
     .um-profile-connect.um-member-connect {
         padding: 12px 0px !important;
-        margin: 0 16px !important;
+        margin: 0 10px !important;
         gap: 6px;
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -3267,7 +3539,7 @@ label.me5rine-lab-form-button-file:hover {
     }
 
     .um-profile-main-content {
-        padding: 0;
+        padding: 10px !important;
     }
 
     .um-profile-badge-partenaire-wrapper {
