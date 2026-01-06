@@ -1,0 +1,178 @@
+/* ============================================
+   INTÉGRATIONS ET PLUGINS
+   ============================================ */
+
+/* --- Google reCAPTCHA --- */
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+/* --- Elementor - Décorations de titres --- */
+.admin-lab-after-title-decoration .elementor-heading-title:before {
+    content: "";
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-left: 9px solid var(--e-global-color-secondary);
+    border-bottom: 5px solid transparent;
+    margin: 0 10px 0 0;
+}
+
+.admin-lab-after-title-decoration .elementor-heading-title {
+    position: relative;
+}
+
+.admin-lab-after-title-decoration .elementor-heading-title:after {
+    content: '';
+    margin-left: 15px;
+    background-color: var(--me5rine-lab-border, #DEE5EC);
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px;
+}
+
+.elementor-heading-title {
+    overflow: hidden;
+}
+
+/* --- Contact Form 7 --- */
+.admin-lab-contact-form-container {
+    min-width: 300px;
+}
+
+.admin-lab-contact-form .wpcf7-form {
+    margin-top: 0 !important;
+}
+
+.elementor-273 .elementor-element.elementor-element-f2ff3c5 .wpcf7-form > p:not(:last-child) {
+    margin-bottom: 15px !important;
+}
+
+.wpcf7-form .wpcf7-form-control-wrap {
+    width: 100%;
+    display: block;
+    margin-bottom: 0;
+    padding-top: 6px !important;
+}
+
+/* Messages de réponse Contact Form 7 - Style unifié */
+.wpcf7-response-output {
+    border-radius: 8px !important;
+    padding: 18px 24px !important;
+    margin: 10px 0 20px 0 !important;
+    font-size: 15px !important;
+    font-family: var(--me5rine-lab-font) !important;
+    line-height: 1.5 !important;
+    border-left: 4px solid !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+}
+
+.wpcf7-response-output::before {
+    flex-shrink: 0;
+    font-weight: bold;
+    line-height: 1;
+    display: inline-block;
+}
+
+.wpcf7-response-output p {
+    margin: 0;
+    font-weight: 500;
+    flex: 1;
+    padding: 0;
+}
+
+/* Message de succès */
+.wpcf7-mail-sent-ok {
+    background: var(--me5rine-lab-success-bg, rgba(76, 175, 80, 0.1)) !important;
+    border-left-color: var(--me5rine-lab-success, #4CAF50) !important;
+    border: 1px solid var(--me5rine-lab-success-border, rgba(76, 175, 80, 0.2)) !important;
+    border-left-width: 4px !important;
+    color: var(--me5rine-lab-success, #4CAF50) !important;
+}
+
+.wpcf7-mail-sent-ok::before {
+    content: '✓';
+    color: var(--me5rine-lab-success, #4CAF50);
+    font-size: 20px;
+}
+
+.wpcf7-mail-sent-ok p {
+    color: var(--me5rine-lab-success, #4CAF50) !important;
+}
+
+/* Message d'erreur */
+.wpcf7-validation-errors,
+.wpcf7-mail-sent-ng,
+.wpcf7-aborted {
+    background: var(--me5rine-lab-error-bg, rgba(244, 67, 54, 0.1)) !important;
+    border-left-color: var(--me5rine-lab-error, #F44336) !important;
+    border: 1px solid var(--me5rine-lab-error-border, rgba(244, 67, 54, 0.2)) !important;
+    border-left-width: 4px !important;
+    color: var(--me5rine-lab-error, #F44336) !important;
+}
+
+.wpcf7-validation-errors::before,
+.wpcf7-mail-sent-ng::before,
+.wpcf7-aborted::before {
+    content: '✕';
+    color: var(--me5rine-lab-error, #F44336);
+    font-size: 20px;
+}
+
+.wpcf7-validation-errors p,
+.wpcf7-mail-sent-ng p,
+.wpcf7-aborted p {
+    color: var(--me5rine-lab-error, #F44336) !important;
+}
+
+/* Message d'avertissement */
+.wpcf7-spam {
+    background: var(--me5rine-lab-warning-bg, rgba(255, 152, 0, 0.1)) !important;
+    border-left-color: var(--me5rine-lab-warning, #FF9800) !important;
+    border: 1px solid var(--me5rine-lab-warning-border, rgba(255, 152, 0, 0.2)) !important;
+    border-left-width: 4px !important;
+    color: var(--me5rine-lab-warning, #FF9800) !important;
+}
+
+.wpcf7-spam::before {
+    content: '⚠';
+    color: var(--me5rine-lab-warning, #FF9800);
+    font-size: 20px;
+}
+
+.wpcf7-spam p {
+    color: var(--me5rine-lab-warning, #FF9800) !important;
+}
+
+/* Spinner Contact Form 7 */
+.wpcf7-spinner {
+    margin-left: 8px;
+    display: none !important;
+}
+
+/* Champs cachés et quiz */
+.wpcf7-form .hidden-fields-container,
+.wpcf7-form .akismet-fields-container {
+    display: none !important;
+}
+
+/* --- RafflePress (Giveaways) --- */
+.rafflepress-iframe-container.loading iframe {
+    -moz-transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+

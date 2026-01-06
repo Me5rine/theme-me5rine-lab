@@ -1,37 +1,45 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // --- TOGGLE MENU MOBILE avec animation améliorée
-    const menuToggle = document.querySelector('.um-profile-menu-toggle');
-    const profileMenu = document.querySelector('#um-profile-menu');
-    
-    // Initialiser l'affichage selon la taille d'écran
-    function initMenuDisplay() {
-        if (window.innerWidth > 1024) {
-            // Desktop : toujours afficher le menu
-            if (profileMenu) {
+// Fonction pour initialiser le menu (appelée au chargement ou immédiatement si DOM déjà chargé)
+function initMenuSystem() {
+    // --- TOGGLE MENU MOBILE avec animation améliorée (UM et me5rine-lab)
+    // Fonction pour initialiser un menu spécifique
+    function initMenu(menuToggleSelector, menuSelector) {
+        const menuToggle = document.querySelector(menuToggleSelector);
+        const profileMenu = document.querySelector(menuSelector);
+        
+        if (!menuToggle || !profileMenu) {
+            return; // Menu non présent sur cette page
+        }
+        
+        // Initialiser l'affichage selon la taille d'écran
+        function initMenuDisplay() {
+            if (window.innerWidth > 1024) {
+                // Desktop : toujours afficher le menu
                 profileMenu.style.display = 'flex';
-            }
-            if (menuToggle) {
                 menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        } else {
-            // Mobile : cacher le menu par défaut
-            if (profileMenu) {
+            } else {
+                // Mobile : cacher le menu par défaut
                 profileMenu.style.display = 'none';
             }
         }
-    }
-    
-    // Initialiser au chargement
-    initMenuDisplay();
-    
-    if (menuToggle && profileMenu) {
+        
+        // Initialiser au chargement
+        initMenuDisplay();
+        
+        // Variable pour suivre si on vient de toggle
+        let isToggling = false;
+
+        // Gérer le clic sur le toggle
         menuToggle.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            isToggling = true;
+            
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             const newState = !isExpanded;
             
-            this.setAttribute('aria-expanded', newState);
+            this.setAttribute('aria-expanded', newState ? 'true' : 'false');
             
             if (newState) {
                 profileMenu.style.display = 'flex';
@@ -47,24 +55,37 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }, 300);
             }
-        });
+            
+            // Réinitialiser le flag après que l'événement soit complètement traité
+            setTimeout(() => {
+                isToggling = false;
+            }, 200);
+        }, true); // Utiliser capture phase pour intercepter en premier
 
         // Fermer le menu si on clique en dehors (mobile uniquement)
-        function handleOutsideClick(e) {
-            if (window.innerWidth <= 1024 &&
-                profileMenu && menuToggle && 
-                !profileMenu.contains(e.target) && 
-                !menuToggle.contains(e.target) &&
-                profileMenu.classList.contains('open')) {
+        document.addEventListener('click', function(e) {
+            // Ignorer si on vient juste de toggle
+            if (isToggling) {
+                return;
+            }
+            
+            // Vérifier si le clic vient du toggle (y compris ses enfants) ou du menu
+            const clickedToggle = e.target.closest('.me5rine-lab-menu-toggle, .um-profile-menu-toggle');
+            const clickedMenu = e.target.closest('#me5rine-lab-menu, #um-profile-menu');
+            
+            if (clickedToggle === menuToggle || clickedMenu === profileMenu) {
+                return;
+            }
+            
+            // Fermer seulement si on est en mobile et que le menu est ouvert
+            if (window.innerWidth <= 1024 && profileMenu.classList.contains('open')) {
                 menuToggle.setAttribute('aria-expanded', 'false');
                 profileMenu.classList.remove('open');
                 setTimeout(() => {
                     profileMenu.style.display = 'none';
                 }, 300);
             }
-        }
-        
-        document.addEventListener('click', handleOutsideClick);
+        }, false); // Utiliser bubble phase pour s'exécuter après le toggle
 
         // Gérer le redimensionnement de la fenêtre
         let resizeTimer;
@@ -76,31 +97,83 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- MENU déroulant vertical
-    const items = document.querySelectorAll(".um-profile-menu-vertical .has-sub > a");
-    items.forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const parent = this.parentElement;
+    // Initialiser les deux menus séparément
+    initMenu('.um-profile-menu-toggle', '#um-profile-menu');
+    initMenu('.me5rine-lab-menu-toggle', '#me5rine-lab-menu');
 
-            document.querySelectorAll(".um-profile-menu-vertical .has-sub.open").forEach(item => {
-                if (item !== parent) {
-                    item.classList.remove("open");
-                }
-            });
-
-            parent.classList.toggle("open");
+    // --- MENU déroulant vertical (UM et me5rine-lab)
+    function initSubmenus() {
+        // Fermer TOUS les sous-menus par défaut (UM et me5rine-lab)
+        const allHasSub = document.querySelectorAll(".um-profile-menu-vertical .has-sub, .me5rine-lab-menu-vertical .has-sub");
+        allHasSub.forEach(item => {
+            item.classList.remove("open");
         });
-    });
 
-    const current = document.querySelector(".um-profile-menu-vertical .submenu .active");
-    if (current) {
-        const parent = current.closest(".has-sub");
-        if (parent) {
-            parent.classList.add("open");
+        // Ouvrir uniquement le sous-menu actif au chargement (UM et me5rine-lab)
+        const current = document.querySelector(".um-profile-menu-vertical .submenu .active, .me5rine-lab-menu-vertical .submenu .active");
+        if (current) {
+            const parent = current.closest(".has-sub");
+            if (parent) {
+                parent.classList.add("open");
+            }
         }
     }
 
+    // Initialiser les sous-menus immédiatement
+    initSubmenus();
+
+    // Réinitialiser après un court délai pour gérer les menus chargés dynamiquement
+    setTimeout(initSubmenus, 100);
+
+    // Attacher les événements de clic sur les liens avec sous-menus
+    function attachSubmenuEvents() {
+        const items = document.querySelectorAll(".um-profile-menu-vertical .has-sub > a, .me5rine-lab-menu-vertical .has-sub > a");
+        
+        items.forEach(link => {
+            // Éviter d'ajouter plusieurs fois le même listener
+            if (link.dataset.submenuListener === 'attached') {
+                return;
+            }
+            link.dataset.submenuListener = 'attached';
+
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                const menuContainer = this.closest('.um-profile-menu-vertical, .me5rine-lab-menu-vertical');
+
+                // Fermer les autres sous-menus dans le même menu
+                if (menuContainer) {
+                    menuContainer.querySelectorAll(".has-sub.open").forEach(item => {
+                        if (item !== parent) {
+                            item.classList.remove("open");
+                        }
+                    });
+                }
+
+                parent.classList.toggle("open");
+            });
+        });
+    }
+
+    // Attacher les événements
+    attachSubmenuEvents();
+    
+    // Réattacher après un court délai pour gérer les menus chargés dynamiquement
+    setTimeout(attachSubmenuEvents, 100);
+}
+
+// Initialiser immédiatement si le DOM est déjà chargé, sinon attendre DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMenuSystem);
+} else {
+    // DOM déjà chargé, initialiser immédiatement
+    initMenuSystem();
+}
+
+// Réinitialiser après un court délai pour gérer les menus chargés dynamiquement
+setTimeout(initMenuSystem, 500);
+
+document.addEventListener('DOMContentLoaded', function () {
     // --- Suppression du bouton "modifier"
     const editMenu = document.querySelector('.um-profile-edit');
     if (editMenu) {

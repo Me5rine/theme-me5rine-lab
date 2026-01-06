@@ -1,0 +1,22 @@
+﻿/* ============================================
+   LABELS DE FILTRES RESPONSIVE
+   ============================================ */
+
+/* Labels de filtres avec affichage conditionnel mobile/desktop */
+.me5rine-lab-filter-label-mobile {
+    display: none;
+}
+
+.me5rine-lab-filter-label-desktop {
+    display: inline-flex;
+}
+
+@media screen and (max-width: 782px) {
+    .me5rine-lab-filter-label-desktop {
+        display: none;
+    }
+    .me5rine-lab-filter-label-mobile {
+        display: inline-flex;
+    }
+}
+

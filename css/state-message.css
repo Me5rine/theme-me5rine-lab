@@ -1,0 +1,16 @@
+﻿/* ============================================
+   MESSAGES D'Ã‰TAT
+   ============================================ */
+
+/* Message d'Ã©tat gÃ©nÃ©rique (vide, erreur, info) */
+.me5rine-lab-state-message {
+    color: var(--me5rine-lab-text-light);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    padding: var(--me5rine-lab-spacing-md);
+    background: var(--me5rine-lab-bg-secondary);
+    border-radius: var(--me5rine-lab-radius-md);
+    border-left: 4px solid var(--me5rine-lab-border);
+}
+

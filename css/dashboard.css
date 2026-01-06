@@ -1,0 +1,147 @@
+﻿/* --- Containers et Layout --- */
+.me5rine-lab-dashboard {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--me5rine-lab-text-light);
+    font-size: 14px;
+    padding: var(--me5rine-lab-spacing-md);
+}
+
+.me5rine-lab-dashboard-header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.me5rine-lab-dashboard-header .me5rine-lab-form-button {
+    margin-top: 0 !important;
+}
+
+.me5rine-lab-dashboard-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Notices dans les dashboards */
+.me5rine-lab-dashboard .notice {
+    margin: 1em 0;
+    padding: 1em;
+    border-left: 4px solid var(--me5rine-lab-border);
+    background-color: var(--me5rine-lab-bg-secondary);
+    border-radius: var(--me5rine-lab-radius-sm);
+}
+
+/* Liens dans les dashboards */
+.me5rine-lab-dashboard a {
+    color: var(--me5rine-lab-secondary);
+    text-decoration: none;
+    transition: color var(--me5rine-lab-transition);
+}
+
+.me5rine-lab-dashboard a:hover {
+    text-decoration: underline;
+    color: var(--me5rine-lab-button-primary-hover);
+}
+
+.me5rine-lab-section {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+.me5rine-lab-wrapper {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+/* Panneau d'options d'écran (générique) */
+.me5rine-lab-screen-options-panel {
+    background: var(--admin-lab-color-white, #ffffff);
+    border: 1px solid var(--admin-lab-color-borders, #DEE5EC);
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.me5rine-lab-screen-options-panel-content h4 {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--admin-lab-color-header-text, #11161E);
+}
+
+.me5rine-lab-screen-options-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.me5rine-lab-screen-options-column-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.me5rine-lab-screen-options-column-item:hover {
+    background-color: var(--admin-lab-color-th-background, #F9FAFB);
+}
+
+.me5rine-lab-screen-options-column-item input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.me5rine-lab-screen-options-column-item span {
+    font-size: 13px;
+    color: var(--admin-lab-color-text, #5D697D);
+    user-select: none;
+}
+
+.me5rine-lab-screen-options-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid var(--admin-lab-color-borders, #DEE5EC);
+}
+
+.me5rine-lab-screen-options-apply {
+    min-width: 100px;
+}
+
+/* Bouton toggle pour les options d'écran - utilise les styles de .me5rine-lab-form-button */
+
+/* Responsive pour le header */
+@media screen and (max-width: 768px) {
+    .me5rine-lab-dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .me5rine-lab-dashboard-header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .me5rine-lab-dashboard-header-actions .me5rine-lab-form-button {
+        width: 100%;
+    }
+    
+    .me5rine-lab-screen-options-columns {
+        grid-template-columns: 1fr;
+    }
+}
+

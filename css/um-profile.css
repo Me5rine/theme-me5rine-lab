@@ -1,0 +1,156 @@
+﻿/* ============================================
+   ULTIMATE MEMBER - PROFIL
+   ============================================ */
+
+/* Reset et base */
+.um-form {
+    position: relative;
+    background: var(--me5rine-lab-bg);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    font-family: var(--me5rine-lab-font);
+    overflow: visible;
+}
+
+/* Badge Partenaire - Wrapper pour positionnement */
+.um-profile-badge-partenaire-wrapper {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.um-profile-badge-partenaire {
+    position: relative;
+    display: inline-block;
+    z-index: 5;
+    transition: opacity 0.15s ease;
+    pointer-events: auto;
+}
+
+.um-profile-badge-partenaire:hover {
+    opacity: 0.8;
+}
+
+.um-profile-badge-partenaire img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+}
+
+/* Les styles de menu ont été déplacés dans css/menu.css (source unique pour UM et me5rine-lab) */
+  
+/* Contenu Principal - Style Twitter */
+.um-profile-main-content {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    border: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sections de contenu style Twitter */
+.um-profile-main-content > *:last-child {
+    border-bottom: none;
+}
+
+/* Les styles .um-tab-disabled ont été déplacés dans css/menu.css */
+
+/* RÃ©seaux Sociaux - Style Twitter */
+.um-profile-connect.um-member-connect {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 16px 20px;
+    background: var(--me5rine-lab-bg);
+    border: none;
+    border-bottom: 1px solid var(--me5rine-lab-border);
+    border-radius: 0;
+}
+
+.um-profile-connect.um-member-connect a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--me5rine-lab-white, #ffffff);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    opacity: 0.9;
+}
+
+.um-profile-connect.um-member-connect a:hover {
+    opacity: 1;
+}
+
+.um-profile-connect.um-member-connect a i {
+    font-size: 18px;
+}
+
+
+/* Style pour les sections de contenu */
+.um-profile-main-content section,
+.um-profile-main-content div[class*="section"],
+.um-profile-main-content .um-field {
+    padding: 0 0 24px;
+}
+
+.um-profile-main-content section:last-child,
+.um-profile-main-content div[class*="section"]:last-child {
+    border-bottom: none;
+}
+
+/* Retirer le padding du dernier .um-field dans chaque colonne */
+.um-profile-main-content .um-col-121 > .um-field:last-child,
+.um-profile-main-content .um-col-122 > .um-field:last-child,
+.um-profile-main-content .um-col-1 > .um-field:last-child,
+.um-profile-main-content .um-col-2 > .um-field:last-child,
+.um-profile-main-content [class*="um-col"] > .um-field:last-child {
+    padding-bottom: 0 !important;
+}
+
+/* Conteneur de contenu style Twitter */
+.um-profile-main-content > div,
+.um-profile-main-content > form {
+    padding: 0;
+}
+
+.um-profile-main-content .um-field-group,
+.um-profile-main-content .um-field-wrap {
+    padding: 20px;
+    border-bottom: 1px solid var(--me5rine-lab-border);
+}
+
+.um-profile-main-content .um-field-group:last-child,
+.um-profile-main-content .um-field-wrap:last-child {
+    border-bottom: none;
+}
+
+.um-half {
+    width: fit-content !important;
+}
+
+.um-right {
+    float: left;
+    margin-left: 20px;
+}
+
+/* GIVEAWAY PARTICIPATIONS */
+.giveaway-my-giveaways-table {
+    margin-top: 15px !important;
+}
+
+/* Les styles d'accessibilité et scrollbar du menu ont été déplacés dans css/menu.css */
+
+

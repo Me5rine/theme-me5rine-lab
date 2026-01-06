@@ -1,0 +1,314 @@
+﻿/* --- Boutons Génériques --- */
+.me5rine-lab-form-button,
+.wpcf7-form-control.wpcf7-submit,
+/* Boutons Ultimate Member - Unifiés avec le design global */
+.um .um-button,
+.um input[type="submit"].um-button,
+.um input[type="button"].um-button,
+.um button.um-button,
+input[type="submit"].um-button,
+button.um-button {
+    /* Styles communs à tous les boutons */
+    padding: 6px 8px !important;
+    min-height: auto !important;
+    border-radius: var(--me5rine-lab-radius-sm, 6px) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out !important;
+    box-shadow: none;
+    text-transform: uppercase !important;
+    letter-spacing: normal;
+    text-decoration: none !important;
+    display: inline-block;
+    margin-top: 20px !important;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    line-height: 1.5 !important;
+    width: fit-content !important;
+    border: none !important;
+    vertical-align: middle !important;
+    
+    /* Styles spécifiques au bouton principal */
+    background: linear-gradient(135deg, var(--me5rine-lab-secondary, #0485C8) 0%, var(--me5rine-lab-primary, #2E576F) 100%) !important;
+    background-color: var(--me5rine-lab-secondary, #0485C8) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-secondary, #0485C8) 0%, var(--me5rine-lab-primary, #2E576F) 100%) !important;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+    
+    /* Reset pour Ultimate Member */
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    height: auto !important;
+    outline: 0 !important;
+    overflow: visible !important;
+    text-shadow: none !important;
+    position: relative !important;
+}
+
+/* Variante avec text-transform uppercase */
+.me5rine-lab-form-button.uppercase {
+    text-transform: uppercase !important;
+}
+
+.wpcf7-form-control.wpcf7-submit {
+    margin-top: 44px !important;
+}
+
+/* Comportement hover commun à tous les boutons - Inversion du gradient */
+.me5rine-lab-form-button:hover,
+.wpcf7-form-control.wpcf7-submit:hover,
+.um .um-button:hover,
+.um input[type="submit"].um-button:hover,
+.um input[type="button"].um-button:hover,
+.um button.um-button:hover,
+input[type="submit"].um-button:hover,
+button.um-button:hover {
+    background: linear-gradient(135deg, var(--me5rine-lab-primary, #2E576F) 0%, var(--me5rine-lab-secondary, #0485C8) 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-primary, #2E576F) 0%, var(--me5rine-lab-secondary, #0485C8) 100%) !important;
+    background-color: var(--me5rine-lab-primary, #2E576F) !important;
+    box-shadow: none;
+    transform: none;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+}
+
+/* Empêcher le clignotement blanc spécifiquement pour les inputs submit */
+input[type="submit"].um-button,
+.um input[type="submit"].um-button {
+    background: linear-gradient(135deg, var(--me5rine-lab-secondary, #0485C8) 0%, var(--me5rine-lab-primary, #2E576F) 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-secondary, #0485C8) 0%, var(--me5rine-lab-primary, #2E576F) 100%) !important;
+    background-color: var(--me5rine-lab-secondary, #0485C8) !important;
+}
+
+input[type="submit"].um-button:hover,
+.um input[type="submit"].um-button:hover {
+    background: linear-gradient(135deg, var(--me5rine-lab-primary, #2E576F) 0%, var(--me5rine-lab-secondary, #0485C8) 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-primary, #2E576F) 0%, var(--me5rine-lab-secondary, #0485C8) 100%) !important;
+    background-color: var(--me5rine-lab-primary, #2E576F) !important;
+}
+
+/* État active (classe CSS) - Style distinct pour indiquer la sélection - Utilise les couleurs des boutons secondaires */
+.me5rine-lab-form-button.active,
+.wpcf7-form-control.wpcf7-submit.active,
+.um .um-button.active,
+.um input[type="submit"].um-button.active,
+.um input[type="button"].um-button.active,
+.um button.um-button.active,
+input[type="submit"].um-button.active,
+button.um-button.active {
+    background: var(--me5rine-lab-text, #11161E) !important;
+    background-image: none !important;
+    background-color: var(--me5rine-lab-text, #11161E) !important;
+    transform: none;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+}
+
+/* État :active (clic) - Pas de changement visuel, juste éviter les effets indésirables */
+.me5rine-lab-form-button:active,
+.wpcf7-form-control.wpcf7-submit:active,
+.um .um-button:active,
+.um input[type="submit"].um-button:active,
+.um input[type="button"].um-button:active,
+.um button.um-button:active,
+input[type="submit"].um-button:active,
+button.um-button:active {
+    transform: none;
+    box-shadow: none;
+}
+
+.me5rine-lab-form-button:focus,
+.wpcf7-form-control.wpcf7-submit:focus,
+.um .um-button:focus,
+.um input[type="submit"].um-button:focus,
+.um input[type="button"].um-button:focus,
+.um button.um-button:focus,
+input[type="submit"].um-button:focus,
+button.um-button:focus {
+    outline: 2px solid var(--me5rine-lab-secondary, #0485C8);
+    outline-offset: 2px;
+}
+
+.me5rine-lab-form-button:disabled,
+.me5rine-lab-form-button.disabled,
+.um .um-button.um-disabled,
+.um .um-button:disabled,
+.um input[type="submit"].um-button:disabled,
+.um input[type="button"].um-button:disabled,
+.um button.um-button:disabled,
+input[type="submit"].um-button:disabled,
+button.um-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--me5rine-lab-border, #DEE5EC) !important;
+    color: var(--me5rine-lab-text-light, #5D697D) !important;
+}
+
+.um .um-button.um-disabled:hover,
+.um .um-button.um-disabled:focus,
+.um .um-button.um-disabled:active,
+.um .um-button:disabled:hover,
+.um .um-button:disabled:focus,
+.um .um-button:disabled:active {
+    background: var(--me5rine-lab-border, #DEE5EC) !important;
+    color: var(--me5rine-lab-text-light, #5D697D) !important;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Ajustements spÃ©cifiques pour Ultimate Member */
+.um-field .um-button {
+    margin-top: 0 !important;
+}
+
+/* Bouton secondaire - Gradient noir à gris foncé */
+.me5rine-lab-form-button-secondary,
+.um .um-button.um-alt,
+.um input[type=submit].um-button.um-alt {
+    background: linear-gradient(135deg, var(--me5rine-lab-text, #11161E) 0%, var(--me5rine-lab-text-light, #5D697D) 100%) !important;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: normal;
+    box-shadow: none;
+    font-weight: 500;
+    padding: 6px 8px !important;
+    min-height: auto !important;
+}
+
+.me5rine-lab-form-button-secondary:hover,
+.um .um-button.um-alt:hover,
+.um input[type=submit].um-button.um-alt:hover {
+    background: linear-gradient(135deg, var(--me5rine-lab-text-light, #5D697D) 0%, var(--me5rine-lab-text, #11161E) 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-text-light, #5D697D) 0%, var(--me5rine-lab-text, #11161E) 100%) !important;
+    background-color: var(--me5rine-lab-text-light, #5D697D) !important;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+    transform: none;
+    box-shadow: none;
+}
+
+/* État active pour boutons secondaires - Style distinct pour indiquer la sélection */
+.me5rine-lab-form-button-secondary.active,
+.um .um-button.um-alt.active,
+.um input[type=submit].um-button.um-alt.active {
+    background: var(--me5rine-lab-text, #11161E) !important;
+    background-image: none !important;
+    background-color: var(--me5rine-lab-text, #11161E) !important;
+    border: 2px solid var(--me5rine-lab-text-light, #5D697D) !important;
+    box-shadow: 0 0 0 3px var(--me5rine-lab-focus-ring-secondary, rgba(93, 105, 125, 0.2)), var(--me5rine-lab-shadow-md, 0 2px 4px rgba(0, 0, 0, 0.1)) !important;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+    transform: none;
+}
+
+.me5rine-lab-form-button-secondary:active,
+.um .um-button.um-alt:active,
+.um input[type=submit].um-button.um-alt:active {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Bouton de suppression - Seulement les diffÃ©rences de couleurs */
+.me5rine-lab-form-button-remove {
+    background: var(--me5rine-lab-button-remove, #dc3545) !important;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+    border: 2px solid var(--me5rine-lab-button-remove, #dc3545) !important;
+    text-transform: none;
+    letter-spacing: normal;
+    box-shadow: none;
+    font-weight: 500;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    margin-top: 0.5rem;
+}
+
+.me5rine-lab-form-button-remove:hover {
+    background: var(--me5rine-lab-button-remove-hover, #c82333) !important;
+    border-color: var(--me5rine-lab-button-remove-hover, #c82333) !important;
+    color: var(--me5rine-lab-white, #ffffff) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--me5rine-lab-shadow-sm);
+}
+
+.me5rine-lab-form-button-remove:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Bouton de type file - Gradient gris clair/gris foncÃ© - Uniquement le bouton "Select file" */
+input[type="file"].me5rine-lab-form-button-file::file-selector-button,
+input[type="file"].me5rine-lab-form-button-file::-webkit-file-upload-button {
+    background: linear-gradient(135deg, var(--me5rine-lab-border, #DEE5EC) 0%, var(--me5rine-lab-border-light, #B5C2CF) 100%) !important;
+    color: var(--me5rine-lab-text, #11161E) !important;
+    border: none !important;
+    border-radius: var(--me5rine-lab-radius-sm, 6px) !important;
+    padding: 6px 10px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+    text-transform: uppercase !important;
+    margin-right: 12px !important;
+}
+
+input[type="file"].me5rine-lab-form-button-file::file-selector-button:hover,
+input[type="file"].me5rine-lab-form-button-file::-webkit-file-upload-button:hover {
+    background: linear-gradient(135deg, var(--me5rine-lab-border-light, #B5C2CF) 0%, var(--me5rine-lab-border, #DEE5EC) 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--me5rine-lab-shadow-sm) !important;
+    color: var(--me5rine-lab-text, #11161E) !important;
+}
+
+input[type="file"].me5rine-lab-form-button-file::file-selector-button:active,
+input[type="file"].me5rine-lab-form-button-file::-webkit-file-upload-button:active {
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+}
+
+/* Annulation des styles sur l'input file lui-mÃªme - seul le bouton est stylÃ© */
+input[type="file"].me5rine-lab-form-button-file {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: inherit !important;
+    width: 300px !important;
+    max-width: none !important;
+    min-width: auto !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    display: inline-block !important;
+    /* EmpÃªcher le troncage du texte "Aucun fichier choisi" */
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    /* Surcharger les styles gÃ©nÃ©raux des inputs */
+    box-sizing: content-box !important;
+}
+
+/* Texte du fichier sÃ©lectionnÃ© - Ã©viter le troncage */
+input[type="file"].me5rine-lab-form-button-file::file-selector-button {
+    margin-right: 12px !important;
+}
+
+input[type="file"].me5rine-lab-form-button-file::-webkit-file-upload-button {
+    margin-right: 12px !important;
+}
+
+/* Support pour les labels personnalisÃ©s avec la classe */
+input[type="file"].me5rine-lab-form-button-file + label.me5rine-lab-form-button,
+label.me5rine-lab-form-button-file {
+    background: linear-gradient(135deg, var(--me5rine-lab-border, #DEE5EC) 0%, var(--me5rine-lab-border-light, #B5C2CF) 100%) !important;
+    color: var(--me5rine-lab-text, #11161E) !important;
+    border: none !important;
+    text-transform: uppercase;
+}
+
+input[type="file"].me5rine-lab-form-button-file + label.me5rine-lab-form-button:hover,
+label.me5rine-lab-form-button-file:hover {
+    background: linear-gradient(135deg, var(--me5rine-lab-border-light, #B5C2CF) 0%, var(--me5rine-lab-border, #DEE5EC) 100%) !important;
+}
+
+/* Bouton block */
+.me5rine-lab-form-button-block {
+    border-top: 1px solid transparent;
+}
+

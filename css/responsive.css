@@ -1,0 +1,94 @@
+﻿/* ============================================
+   RESPONSIVE GLOBAL FRONT-END
+   ============================================ */
+
+@media (max-width: 782px) {
+    .me5rine-lab-filters {
+        flex-direction: column;
+        gap: var(--me5rine-lab-spacing-md);
+    }
+
+    .me5rine-lab-filter-select,
+    .me5rine-lab-filter-input {
+        width: 100% !important;
+        min-width: auto;
+    }
+
+    .me5rine-lab-pagination {
+        flex-direction: column;
+        gap: var(--me5rine-lab-spacing-md);
+        align-items: stretch;
+    }
+
+    .me5rine-lab-pagination-info {
+        text-align: center;
+    }
+
+    .me5rine-lab-pagination-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .me5rine-lab-tiles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .me5rine-lab-dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--me5rine-lab-spacing-md);
+    }
+
+    .me5rine-lab-social-action-tile,
+    .social-action-tile {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: auto;
+    }
+
+    /* Profile padding mobile */
+    .um-profile-body .um-tab-content,
+    .um-profile-body .um-tab-content > div {
+        padding: var(--me5rine-lab-spacing-md);
+    }
+
+    /* Cartes avec image responsive */
+    .me5rine-lab-card-with-image {
+        flex-direction: column;
+        gap: var(--me5rine-lab-spacing-md);
+    }
+
+    .me5rine-lab-card-image {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .me5rine-lab-card-content {
+        gap: var(--me5rine-lab-spacing-sm);
+    }
+
+    .me5rine-lab-card-meta {
+        flex-direction: column;
+        gap: var(--me5rine-lab-spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Titres responsive */
+    .me5rine-lab-title {
+        font-size: 18px;
+    }
+
+    .me5rine-lab-card-name {
+        font-size: 16px;
+    }
+
+    /* Boutons pleine largeur sur mobile */
+    .me5rine-lab-card-button,
+    .me5rine-lab-form-button {
+        width: 100%;
+        padding: 12px 20px;
+    }
+}
+

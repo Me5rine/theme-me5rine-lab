@@ -1,0 +1,489 @@
+/* ============================================
+   MENUS - SOURCE UNIQUE POUR UM ET ME5RINE-LAB
+   Tous les styles de menu (UM et me5rine-lab) dans un seul fichier
+   ============================================ */
+
+/* ============================================
+   STYLES COMMUNS (UM + ME5RINE-LAB)
+   ============================================ */
+
+/* Layout Principal - Style Twitter */
+.um-profile-layout,
+.me5rine-lab-profile-layout {
+    display: flex;
+    gap: 0;
+    margin-top: 0;
+    align-items: flex-start;
+    max-width: 1265px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    background: var(--me5rine-lab-bg);
+}
+
+/* Wrapper du Menu - Style Twitter Sidebar */
+.um-profile-menu-wrapper,
+.me5rine-lab-menu-wrapper {
+    width: 275px;
+    flex-shrink: 0;
+    background: var(--me5rine-lab-bg);
+    border: none;
+    border-right: 1px solid var(--me5rine-lab-border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+/* Bouton Toggle Mobile - Style hamburger */
+.um-profile-menu-toggle,
+.me5rine-lab-menu-toggle {
+    display: none;
+    background: var(--me5rine-lab-bg);
+    border: none;
+    border-bottom: 1px solid var(--me5rine-lab-border);
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+    color: var(--me5rine-lab-text);
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+    font-family: var(--me5rine-lab-font);
+    position: relative;
+    align-items: center;
+    gap: 12px;
+}
+
+.um-profile-menu-toggle:hover,
+.me5rine-lab-menu-toggle:hover {
+    background: var(--me5rine-lab-bg-secondary);
+}
+
+.um-profile-menu-toggle::before,
+.me5rine-lab-menu-toggle::before {
+    content: '☰';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--me5rine-lab-bg);
+    font-weight: 400;
+    transition: color 0.2s ease;
+    line-height: 1;
+}
+
+.um-profile-menu-toggle:hover::before,
+.me5rine-lab-menu-toggle:hover::before {
+    color: var(--me5rine-lab-bg);
+}
+
+.um-profile-menu-toggle[aria-expanded="true"]::before,
+.me5rine-lab-menu-toggle[aria-expanded="true"]::before {
+    content: '✕';
+    color: var(--me5rine-lab-bg);
+}
+
+.um-menu-toggle-text,
+.me5rine-lab-menu-toggle-text {
+    flex: 1;
+    text-align: left;
+    margin: 0;
+    padding-left: 25px;
+}
+
+/* Menu Vertical - Style Twitter */
+.um-profile-menu-vertical,
+.me5rine-lab-menu-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+}
+
+/* Sur desktop, le menu est toujours visible */
+@media screen and (min-width: 1025px) {
+    #um-profile-menu,
+    #me5rine-lab-menu {
+        display: flex !important;
+    }
+}
+  
+.um-profile-menu-vertical a,
+.me5rine-lab-menu-vertical a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: transparent;
+    text-decoration: none;
+    color: var(--me5rine-lab-primary);
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: none;
+    position: relative;
+    font-family: var(--me5rine-lab-font);
+    line-height: 20px;
+    gap: 12px;
+}
+
+.um-profile-menu-vertical a .um-menu-icon,
+.me5rine-lab-menu-vertical a .me5rine-lab-menu-icon {
+    font-size: 20px;
+    line-height: 1;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--me5rine-lab-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.um-profile-menu-vertical a .um-menu-icon i,
+.me5rine-lab-menu-vertical a .me5rine-lab-menu-icon i {
+    color: var(--me5rine-lab-primary);
+    font-size: 20px;
+}
+
+.um-profile-menu-vertical a .um-menu-icon + span,
+.me5rine-lab-menu-vertical a .me5rine-lab-menu-icon + span {
+    flex: 1;
+}
+
+.um-profile-menu-vertical a .um-menu-label,
+.me5rine-lab-menu-vertical a .me5rine-lab-menu-label {
+    color: var(--me5rine-lab-primary);
+    transition: color 0.2s ease;
+}
+
+/* ::before est utilisé pour le liseret actif, donc on ne le cache pas par défaut */
+.um-profile-menu-vertical a::before,
+.me5rine-lab-menu-vertical a::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: transparent;
+    z-index: 1;
+    transition: width 0.2s ease;
+}
+
+/* Afficher le liseret uniquement pour les liens actifs */
+.um-profile-menu-vertical a.active::before,
+.me5rine-lab-menu-vertical a.active::before {
+    width: 4px;
+    background: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical a:hover,
+.me5rine-lab-menu-vertical a:hover {
+    background: var(--me5rine-lab-bg-secondary);
+    color: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical a:hover .um-menu-icon i,
+.me5rine-lab-menu-vertical a:hover .me5rine-lab-menu-icon i {
+    color: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical a:hover .um-menu-label,
+.me5rine-lab-menu-vertical a:hover .me5rine-lab-menu-label {
+    color: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical a.active,
+.me5rine-lab-menu-vertical a.active {
+    background: var(--me5rine-lab-bg-secondary);
+    color: var(--me5rine-lab-secondary);
+    font-weight: 700;
+}
+
+.um-profile-menu-vertical a.active .um-menu-icon i,
+.me5rine-lab-menu-vertical a.active .me5rine-lab-menu-icon i {
+    color: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical a.active .um-menu-label,
+.me5rine-lab-menu-vertical a.active .me5rine-lab-menu-label {
+    color: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical a.active::before,
+.me5rine-lab-menu-vertical a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--me5rine-lab-secondary);
+    z-index: 1;
+}
+
+/* S'assurer que les liens actifs dans les sous-menus n'ont pas de liseret */
+.um-profile-menu-vertical .submenu a.active::after,
+.me5rine-lab-menu-vertical .submenu a.active::after {
+    display: none;
+}
+
+/* Sous-menu - Style Twitter */
+.um-profile-menu-vertical .submenu,
+.me5rine-lab-menu-vertical .submenu {
+    display: none !important;
+    margin: 0;
+    padding: 0;
+    border: none;
+    gap: 0;
+    flex-direction: column;
+    background: var(--me5rine-lab-bg-secondary);
+    animation: slideDown 0.2s ease-out;
+}
+
+/* Forcer la fermeture des sous-menus par défaut (même si .has-sub n'a pas de classe .open) */
+.um-profile-menu-vertical .has-sub .submenu,
+.me5rine-lab-menu-vertical .has-sub .submenu {
+    display: none !important;
+}
+
+/* S'assurer que les sous-menus sont fermés même si le parent a la classe open au chargement (sera réouvert par JS si nécessaire) */
+.um-profile-menu-vertical .has-sub:not(.open) .submenu,
+.me5rine-lab-menu-vertical .has-sub:not(.open) .submenu {
+    display: none !important;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+    }
+}
+
+/* Forcer la fermeture initiale - le JS réouvrira si nécessaire */
+.um-profile-menu-vertical .has-sub .submenu,
+.me5rine-lab-menu-vertical .has-sub .submenu {
+    display: none !important;
+}
+
+/* Ouvrir uniquement si la classe open est présente ET que le JS l'a validé */
+.um-profile-menu-vertical .has-sub.open .submenu,
+.me5rine-lab-menu-vertical .has-sub.open .submenu {
+    display: flex !important;
+}
+
+.um-profile-menu-vertical .submenu a,
+.me5rine-lab-menu-vertical .submenu a {
+    padding: 12px 20px 12px 40px;
+    font-size: 15px;
+    font-weight: 400;
+    background: transparent;
+    border: none;
+    color: var(--me5rine-lab-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.um-profile-menu-vertical .submenu a:hover,
+.me5rine-lab-menu-vertical .submenu a:hover {
+    background: var(--me5rine-lab-bg-secondary);
+    color: var(--me5rine-lab-secondary);
+}
+
+.um-profile-menu-vertical .submenu a.active,
+.me5rine-lab-menu-vertical .submenu a.active {
+    background: transparent;
+    color: var(--me5rine-lab-secondary);
+    font-weight: 700;
+}
+
+.um-profile-menu-vertical .submenu a.active::after,
+.me5rine-lab-menu-vertical .submenu a.active::after {
+    display: none;
+}
+
+/* Icône flèche pour sous-menu */
+.um-profile-menu-vertical .has-sub > a,
+.me5rine-lab-menu-vertical .has-sub > a {
+    position: relative;
+    padding-right: 40px;
+}
+
+.um-profile-menu-vertical .has-sub > a::after,
+.me5rine-lab-menu-vertical .has-sub > a::after {
+    content: '▼';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    transition: transform 0.2s ease;
+    opacity: 0.5;
+    color: var(--me5rine-lab-text-light);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.um-profile-menu-vertical .has-sub > a:hover::after,
+.me5rine-lab-menu-vertical .has-sub > a:hover::after {
+    opacity: 0.7;
+}
+
+.um-profile-menu-vertical .has-sub.open > a::after,
+.me5rine-lab-menu-vertical .has-sub.open > a::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Améliorations accessibilité */
+.um-profile-menu-vertical a:focus,
+.me5rine-lab-menu-vertical a:focus,
+.um-profile-menu-toggle:focus,
+.me5rine-lab-menu-toggle:focus {
+    outline-offset: -2px;
+}
+
+/* Scrollbar personnalisée pour le menu - Style minimal */
+.um-profile-menu-wrapper::-webkit-scrollbar,
+.me5rine-lab-menu-wrapper::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.um-profile-menu-wrapper::-webkit-scrollbar-track,
+.me5rine-lab-menu-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.um-profile-menu-wrapper::-webkit-scrollbar-thumb,
+.me5rine-lab-menu-wrapper::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+/* Onglets désactivés */
+.um-tab-disabled,
+.me5rine-lab-menu-tab-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: not-allowed;
+    position: relative;
+    color: var(--me5rine-lab-text-light) !important;
+}
+
+.um-tab-disabled::after,
+.me5rine-lab-menu-tab-disabled::after {
+    content: '\1F512';
+    position: absolute;
+    right: 20px;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+/* ============================================
+   RESPONSIVE - MENUS (UM + ME5RINE-LAB)
+   ============================================ */
+
+/* Tablette et Mobile (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .um-profile-layout,
+    .me5rine-lab-profile-layout {
+        flex-direction: column;
+        gap: 0;
+        max-width: 100%;
+    }
+
+    .um-profile-menu-wrapper,
+    .me5rine-lab-menu-wrapper {
+        width: 100%;
+        position: relative;
+        top: 0;
+        max-height: none;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--me5rine-lab-border);
+    }
+
+    .um-profile-menu-toggle,
+    .me5rine-lab-menu-toggle {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #um-profile-menu,
+    #me5rine-lab-menu {
+        display: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    #um-profile-menu.open,
+    #me5rine-lab-menu.open {
+        display: flex;
+        animation: slideDown 0.2s ease-out;
+    }
+
+    /* Forcer la fermeture des sous-menus par défaut en responsive */
+    .um-profile-menu-vertical .has-sub .submenu,
+    .me5rine-lab-menu-vertical .has-sub .submenu {
+        display: none !important;
+    }
+
+    .um-profile-menu-vertical .has-sub.open .submenu,
+    .me5rine-lab-menu-vertical .has-sub.open .submenu {
+        display: flex !important;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .um-profile-menu-wrapper,
+    .me5rine-lab-menu-wrapper {
+        padding: 0;
+    }
+
+    .um-profile-menu-toggle,
+    .me5rine-lab-menu-toggle {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .um-profile-menu-vertical a,
+    .me5rine-lab-menu-vertical a {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+
+    .um-profile-menu-vertical .submenu,
+    .me5rine-lab-menu-vertical .submenu {
+        margin: 0;
+        padding: 0;
+    }
+
+    .um-profile-menu-vertical .submenu a,
+    .me5rine-lab-menu-vertical .submenu a {
+        padding: 12px 20px 12px 40px;
+        font-size: 15px;
+    }
+}
+
+/* Petit mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .um-profile-menu-wrapper,
+    .me5rine-lab-menu-wrapper {
+        padding: 0;
+    }
+}

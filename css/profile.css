@@ -1,0 +1,79 @@
+﻿/* ============================================
+   PROFILS (Ultimate Member)
+   ============================================ */
+
+/* Padding pour le contenu des onglets Ultimate Member */
+.um-profile-body .um-tab-content,
+.um-profile-body .um-tab-content > div {
+    padding: var(--me5rine-lab-spacing-lg);
+}
+
+/* Container de profil (wrapper gÃ©nÃ©rique) */
+.me5rine-lab-profile-container,
+.me5rine-lab-profile-wrapper {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+.me5rine-lab-form-block {
+    background-color: var(--me5rine-lab-bg-secondary, #F9FAFB);
+    border: 1px solid var(--me5rine-lab-border, #DEE5EC);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.me5rine-lab-form-block-flex,
+.me5rine-lab-form-container-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Annulation du flex pour campaign-form-block */
+.campaign-form-block.me5rine-lab-form-container-flex {
+    display: block !important;
+    flex-wrap: nowrap !important;
+}
+
+.me5rine-lab-form-col-gap {
+    gap: 2rem;
+}
+
+.me5rine-lab-form-rules-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.me5rine-lab-form-rules-col {
+    flex: 1 1 calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+.me5rine-lab-form-time-selection {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+
+.me5rine-lab-form-time-selection .me5rine-lab-form-select {
+    width: auto !important;
+    min-width: auto;
+    flex-shrink: 0;
+}
+
+.me5rine-lab-form-time-selection span {
+    font-size: 0.8rem;
+    color: var(--me5rine-lab-text-light, #5D697D);
+    line-height: 1;
+    margin-top: -10px;
+    white-space: nowrap;
+}
+

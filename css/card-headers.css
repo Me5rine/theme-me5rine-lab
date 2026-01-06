@@ -1,0 +1,34 @@
+﻿/* ============================================
+   HEADERS DE CARTES
+   ============================================ */
+
+/* Header de section dans une carte (titre + actions) */
+.me5rine-lab-card-header,
+.me5rine-lab-tile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: var(--me5rine-lab-spacing-md);
+}
+
+/* Actions dans un header de carte */
+.me5rine-lab-card-actions,
+.me5rine-lab-tile-actions {
+    display: flex;
+    gap: var(--me5rine-lab-spacing-sm);
+}
+
+.me5rine-lab-card-actions a,
+.me5rine-lab-tile-actions a {
+    margin-left: 0;
+}
+
+/* Titre de section dans une carte */
+.me5rine-lab-card-section-title,
+.me5rine-lab-tile-section-title {
+    font-size: 1.2rem;
+    margin: var(--me5rine-lab-spacing-lg) 0 var(--me5rine-lab-spacing-md);
+    font-weight: 600;
+    color: var(--me5rine-lab-text);
+}
+

@@ -1,0 +1,200 @@
+﻿/* ============================================
+   RESPONSIVE ULTIMATE MEMBER - PROFIL
+   ============================================ */
+
+/* Tablette (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .um-profile-layout {
+        flex-direction: column;
+        gap: 0;
+        max-width: 100%;
+    }
+
+    .um-profile-menu-wrapper {
+        width: 100%;
+        position: relative;
+        top: 0;
+        max-height: none;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--me5rine-lab-border);
+    }
+
+    .um-profile-menu-toggle {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #um-profile-menu {
+        display: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    #um-profile-menu.open {
+        display: flex;
+        animation: slideDown 0.2s ease-out;
+    }
+
+    .um-profile-main-content {
+        padding: 20px !important;
+        min-height: auto;
+    }
+
+    .um-profile-badge-partenaire-wrapper {
+        top: 12px;
+        right: 12px;
+    }
+
+    .um-profile-badge-partenaire img {
+        width: 60px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .um-form {
+        padding: 0;
+        margin: 0;
+    }
+
+    .um-profile-layout {
+        gap: 0;
+        margin-top: 0;
+    }
+
+    .um-profile-menu-wrapper {
+        padding: 0;
+    }
+
+    .um-profile-menu-toggle {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .um-profile-menu-vertical a {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+
+    .um-profile-menu-vertical .submenu {
+        margin: 0;
+        padding: 0;
+    }
+
+    .um-profile-menu-vertical .submenu a {
+        padding: 12px 20px 12px 40px;
+        font-size: 15px;
+    }
+
+    .um-profile-main-content {
+        padding: 10px !important;
+    }
+
+    .um-profile-badge-partenaire-wrapper {
+        top: 8px;
+        right: 8px;
+    }
+
+    .um-profile-badge-partenaire img {
+        width: 50px;
+    }
+
+    /* Annulation du float et width pour les colonnes UM */
+    .um-col-121,
+    .um-col-122 {
+        float: none !important;
+        width: auto !important;
+    }
+
+    /* Padding en dessous de um-col-121 */
+    .um-col-121 {
+        padding-bottom: 24px !important;
+    }
+
+    /* Form row en colonne */
+    .me5rine-lab-form-row {
+        flex-direction: column !important;
+    }
+
+    /* Gap pour me5rine-lab-form-col-gap */
+    .me5rine-lab-form-col-gap {
+        gap: 24px !important;
+    }
+
+    /* Width 100% pour me5rine-lab-form-col */
+    .me5rine-lab-form-col {
+        width: 100% !important;
+    }
+
+    .um-profile-connect.um-member-connect {
+        padding: 12px 0px !important;
+        margin: 0 10px !important;
+        gap: 6px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--me5rine-lab-border) transparent;
+    }
+
+    .um-profile-connect.um-member-connect::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .um-profile-connect.um-member-connect::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .um-profile-connect.um-member-connect::-webkit-scrollbar-thumb {
+        background: var(--me5rine-lab-border);
+        border-radius: 2px;
+    }
+
+    .um-profile-connect.um-member-connect a {
+        width: 28px !important;
+        height: 28px !important;
+        line-height: 22px !important;
+        flex-shrink: 0;
+    }
+
+    .um-profile-connect.um-member-connect a i {
+        font-size: 14px;
+    }
+}
+
+/* Petit mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .um-form {
+        padding: 0;
+    }
+
+    .um-profile-menu-wrapper {
+        padding: 0;
+    }
+
+    .um-profile-main-content {
+        padding: 10px !important;
+    }
+
+    .um-profile-badge-partenaire-wrapper {
+        top: 8px;
+        right: 8px;
+    }
+
+    .um-profile-badge-partenaire img {
+        width: 45px;
+    }
+
+    .um-profile-connect.um-member-connect a {
+        width: 26px;
+        height: 26px;
+    }
+
+    .um-profile-connect.um-member-connect a i {
+        font-size: 13px;
+    }
+}

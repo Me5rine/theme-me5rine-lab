@@ -1,0 +1,126 @@
+﻿/* ============================================
+   PODIUM (Top 3)
+   ============================================ */
+
+/* Container du podium */
+.me5rine-lab-podium-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: var(--me5rine-lab-spacing-lg) 0;
+}
+
+/* Alignement des podiums */
+.me5rine-lab-podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--me5rine-lab-spacing-md);
+    width: 100%;
+}
+
+/* Ã‰tape du podium */
+.me5rine-lab-podium-step {
+    background: var(--me5rine-lab-bg-secondary, #f5f5f5);
+    border-radius: var(--me5rine-lab-radius-md) var(--me5rine-lab-radius-md) 0 0;
+    padding: var(--me5rine-lab-spacing-md);
+    text-align: center;
+    width: 140px;
+    position: relative;
+}
+
+/* Rang du podium */
+.me5rine-lab-podium-rank {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: var(--me5rine-lab-spacing-xs);
+    color: var(--me5rine-lab-text);
+}
+
+/* Lien dans le podium */
+.me5rine-lab-podium-step a {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--me5rine-lab-spacing-xs);
+    text-decoration: none;
+    color: var(--me5rine-lab-text);
+    transition: color var(--me5rine-lab-transition);
+}
+
+.me5rine-lab-podium-step a:hover {
+    color: var(--me5rine-lab-secondary);
+}
+
+/* Informations secondaires dans le podium */
+.me5rine-lab-podium-info {
+    font-size: 0.85rem;
+    color: var(--me5rine-lab-text-light);
+}
+
+/* Hauteurs spÃ©cifiques pour les niveaux du podium */
+.me5rine-lab-podium-1 {
+    height: 160px;
+    background-color: var(--me5rine-lab-medal-gold, #ffd700); /* gold */
+}
+
+.me5rine-lab-podium-2 {
+    height: 120px;
+    background-color: var(--me5rine-lab-medal-silver, #c0c0c0); /* silver */
+}
+
+.me5rine-lab-podium-3 {
+    height: 100px;
+    background-color: var(--me5rine-lab-medal-bronze, #cd7f32); /* bronze */
+}
+
+/* Animation de montÃ©e des podiums */
+@keyframes me5rine-lab-podium-rise {
+    0% {
+        transform: translateY(50px) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Classe pour activer l'animation */
+.me5rine-lab-podium-step.animate {
+    animation: me5rine-lab-podium-rise 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* DÃ©lais d'apparition pour l'effet "staggered" */
+.me5rine-lab-podium-step.me5rine-lab-podium-2.animate {
+    animation-delay: 0.2s;
+}
+
+.me5rine-lab-podium-step.me5rine-lab-podium-1.animate {
+    animation-delay: 0.4s;
+}
+
+.me5rine-lab-podium-step.me5rine-lab-podium-3.animate {
+    animation-delay: 0.6s;
+}
+
+/* Responsive pour les podiums */
+@media (max-width: 768px) {
+    .me5rine-lab-podium {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--me5rine-lab-spacing-sm);
+    }
+
+    .me5rine-lab-podium-step {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .me5rine-lab-podium-1,
+    .me5rine-lab-podium-2,
+    .me5rine-lab-podium-3 {
+        height: auto;
+        min-height: 100px;
+    }
+}
+
