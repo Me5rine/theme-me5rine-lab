@@ -10,6 +10,11 @@
     padding-bottom: 0 !important;
 }
 
+.um-profile.um-viewing .um-field-label {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
 /* Reset et base */
 .um-form {
     position: relative;
@@ -136,6 +141,10 @@
 .um-profile-main-content > div,
 .um-profile-main-content > form {
     padding: 0;
+}
+
+.um-profile-main-content .me5rine-lab-form-view {
+    padding: 0 !important;
 }
 
 .um-profile-main-content .um-field-group,

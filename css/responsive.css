@@ -2,6 +2,39 @@
    RESPONSIVE GLOBAL FRONT-END
    ============================================ */
 
+@media (max-width: 1024px) {
+    /* Cartes avec image : mode mobile à partir de 1024px */
+    .me5rine-lab-card-with-image {
+        flex-direction: column;
+        gap: var(--me5rine-lab-spacing-md);
+    }
+
+    .me5rine-lab-card-image {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .me5rine-lab-card-content {
+        gap: var(--me5rine-lab-spacing-sm);
+        margin-left: 0;
+    }
+
+    .me5rine-lab-card-meta {
+        flex-direction: column;
+        gap: var(--me5rine-lab-spacing-xs);
+    }
+}
+
+@media (max-width: 868px) {
+    .me5rine-lab-social-action-tile,
+    .social-action-tile {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: auto;
+    }
+}
+
 @media (max-width: 782px) {
     .um-profile-menu-toggle::before,
     .me5rine-lab-menu-toggle::before {
@@ -45,39 +78,10 @@
         gap: var(--me5rine-lab-spacing-md);
     }
 
-    .me5rine-lab-social-action-tile,
-    .social-action-tile {
-        flex: 1 1 100%;
-        width: 100%;
-        min-width: auto;
-    }
-
     /* Profile padding mobile */
     .um-profile-body .um-tab-content,
     .um-profile-body .um-tab-content > div {
         padding: var(--me5rine-lab-spacing-md);
-    }
-
-    /* Cartes avec image responsive */
-    .me5rine-lab-card-with-image {
-        flex-direction: column;
-        gap: var(--me5rine-lab-spacing-md);
-    }
-
-    .me5rine-lab-card-image {
-        width: 100%;
-        height: auto;
-        max-height: 200px;
-    }
-
-    .me5rine-lab-card-content {
-        gap: var(--me5rine-lab-spacing-sm);
-        margin-left: 0;
-    }
-
-    .me5rine-lab-card-meta {
-        flex-direction: column;
-        gap: var(--me5rine-lab-spacing-xs);
     }
 }
 

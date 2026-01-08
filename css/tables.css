@@ -142,7 +142,6 @@
 /* Cellule de rÃ©sumÃ© (premiÃ¨re colonne avec titre) - Style WordPress admin */
 .me5rine-lab-table td.summary {
     position: relative;
-    padding-right: 50px;
     font-weight: 500;
 }
 
@@ -231,7 +230,7 @@
     border-radius: 0;
     background: transparent !important;
     cursor: pointer !important;
-    display: flex !important;
+    display: none !important; /* Masqué par défaut */
     align-items: center;
     justify-content: center;
     transition: all 0.15s ease;
@@ -290,9 +289,6 @@
         display: none;
     }
 
-    .me5rine-lab-table td.summary {
-        padding-right: 30px;
-    }
 
     /* Masquer les labels de colonnes sur desktop */
     .me5rine-lab-table td[data-colname]::before {
@@ -376,8 +372,9 @@
         display: block;
     }
 
-    .me5rine-lab-table .me5rine-lab-table-toggle-btn {
-        display: flex;
+    /* Afficher le bouton toggle uniquement sur les lignes toggleable en mode mobile */
+    .me5rine-lab-table-row-toggleable .me5rine-lab-table-toggle-btn {
+        display: flex !important;
     }
 
     /* Labels de colonnes sur mobile */

@@ -12,12 +12,12 @@ function initMenuSystem() {
         
         // Initialiser l'affichage selon la taille d'écran
         function initMenuDisplay() {
-            if (window.innerWidth > 1024) {
-                // Desktop : toujours afficher le menu
+            if (window.innerWidth > 782) {
+                // Desktop et Tablette : toujours afficher le menu à gauche
                 profileMenu.style.display = 'flex';
                 menuToggle.setAttribute('aria-expanded', 'false');
             } else {
-                // Mobile : cacher le menu par défaut
+                // Mobile uniquement : cacher le menu par défaut (menu déroulant)
                 profileMenu.style.display = 'none';
             }
         }
@@ -77,8 +77,8 @@ function initMenuSystem() {
                 return;
             }
             
-            // Fermer seulement si on est en mobile et que le menu est ouvert
-            if (window.innerWidth <= 1024 && profileMenu.classList.contains('open')) {
+            // Fermer seulement si on est en mobile (<= 782px) et que le menu est ouvert
+            if (window.innerWidth <= 782 && profileMenu.classList.contains('open')) {
                 menuToggle.setAttribute('aria-expanded', 'false');
                 profileMenu.classList.remove('open');
                 setTimeout(() => {
@@ -183,11 +183,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Affichage conditionnel des onglets personnalisés (edit)
     const urlParams = new URLSearchParams(window.location.search);
 
-    // Ne rien faire si ce n'est pas le mode édition
-    const isEditing = urlParams.get('um_action') === 'edit';
-    if (!isEditing) return;
-
     // Récupération des paramètres
+    const isEditing = urlParams.get('um_action') === 'edit';
     const editProfile = urlParams.get('edit-profile') === 'true';
     const editSocials = urlParams.get('edit-socials') === 'true';
 
@@ -256,19 +253,73 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Cibler tous les blocs de formulaire et masquer avec leurs headings
-    const allForms = document.querySelectorAll('.admin-lab-um-form');
-    allForms.forEach(form => hideFormAndHeading(form));
-
-    // Afficher uniquement celui qu'on veut avec son heading
-    if (editProfile) {
-        const profileForm = document.querySelector('.admin-lab-profile-form');
-        if (profileForm) showFormAndHeading(profileForm);
-    }
-
-    if (editSocials) {
+    // En mode view, masquer les formulaires vides (surtout socials)
+    if (!isEditing) {
         const socialsForm = document.querySelector('.admin-lab-socials-form');
-        if (socialsForm) showFormAndHeading(socialsForm);
+        if (socialsForm) {
+            // Vérifier si le formulaire contient des champs avec du contenu
+            const visibleFields = socialsForm.querySelectorAll('.um-field:not(.um-field-hidden)');
+            let hasContent = false;
+            
+            visibleFields.forEach(field => {
+                const fieldValue = field.querySelector('.um-field-value');
+                if (fieldValue) {
+                    const text = fieldValue.textContent.trim();
+                    // Vérifier si la valeur n'est pas vide (exclure les espaces, retours à la ligne, etc.)
+                    if (text.length > 0) {
+                        hasContent = true;
+                    }
+                }
+            });
+            
+            // Vérifier aussi les colonnes directement
+            const col121 = socialsForm.querySelector('.um-col-121');
+            const col122 = socialsForm.querySelector('.um-col-122');
+            
+            const checkColContent = (col) => {
+                if (!col) return false;
+                // Vérifier tous les enfants sauf um-clear
+                const children = Array.from(col.children).filter(child => 
+                    !child.classList.contains('um-clear') && 
+                    child.nodeType === Node.ELEMENT_NODE
+                );
+                
+                if (children.length === 0) return false;
+                
+                // Vérifier si au moins un enfant a du contenu
+                return children.some(child => {
+                    const text = child.textContent.trim();
+                    return text.length > 0;
+                });
+            };
+            
+            const col121HasContent = checkColContent(col121);
+            const col122HasContent = checkColContent(col122);
+            
+            // Si pas de contenu du tout, masquer le form et son heading
+            if (!hasContent && !col121HasContent && !col122HasContent) {
+                // Ajouter un attribut pour le CSS
+                socialsForm.setAttribute('data-empty', 'true');
+                hideFormAndHeading(socialsForm);
+            }
+        }
+    }
+    
+    // En mode edit, masquer tous les formulaires sauf celui qu'on édite
+    if (isEditing) {
+        const allForms = document.querySelectorAll('.admin-lab-um-form');
+        allForms.forEach(form => hideFormAndHeading(form));
+
+        // Afficher uniquement celui qu'on veut avec son heading
+        if (editProfile) {
+            const profileForm = document.querySelector('.admin-lab-profile-form');
+            if (profileForm) showFormAndHeading(profileForm);
+        }
+
+        if (editSocials) {
+            const socialsForm = document.querySelector('.admin-lab-socials-form');
+            if (socialsForm) showFormAndHeading(socialsForm);
+        }
     }
 });
 

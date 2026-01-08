@@ -413,8 +413,8 @@
    RESPONSIVE - MENUS (UM + ME5RINE-LAB)
    ============================================ */
 
-/* Tablette et Mobile (max-width: 1024px) */
-@media screen and (max-width: 1024px) {
+/* Mobile uniquement (max-width: 782px) - Menu déroulant */
+@media screen and (max-width: 782px) {
     .um-profile-layout,
     .me5rine-lab-profile-layout {
         flex-direction: column;

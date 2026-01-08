@@ -8,7 +8,7 @@
     min-height: 100vh;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 782px) {
     .me5rine-lab-dashboard {
         border-left: 1px solid var(--me5rine-lab-border);
     }

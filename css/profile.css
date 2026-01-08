@@ -83,3 +83,17 @@
     white-space: nowrap;
 }
 
+/* Masquer la section "Réseaux sociaux" vide en mode view (pas en mode edit) */
+/* Le JavaScript gère la détection et ajoute un attribut ou une classe */
+.um-form[data-mode="profile"] .admin-lab-socials-form.hidden,
+.um-form[data-mode="profile"] .admin-lab-socials-form[data-empty="true"] {
+    display: none !important;
+}
+
+/* Masquer le heading précédent s'il précède un form socials masqué */
+.um-form[data-mode="profile"] .um-row-heading + .admin-lab-socials-form.hidden,
+.um-form[data-mode="profile"] .um-row-heading + .admin-lab-socials-form[data-empty="true"],
+.um-form[data-mode="profile"] .um-row-heading.hidden {
+    display: none !important;
+}
+

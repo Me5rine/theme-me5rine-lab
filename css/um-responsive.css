@@ -2,8 +2,11 @@
    RESPONSIVE ULTIMATE MEMBER - PROFIL
    ============================================ */
 
-/* Tablette (max-width: 1024px) */
-@media screen and (max-width: 1024px) {
+/* Tablette : menu reste à gauche (min-width: 783px et max-width: 1024px) */
+/* Les styles pour tablette sont maintenant dans la section desktop ci-dessous */
+
+/* Mobile uniquement (max-width: 782px) - Menu déroulant */
+@media screen and (max-width: 782px) {
     .um-profile-layout {
         flex-direction: column;
         gap: 0;
