@@ -151,6 +151,47 @@ add_action( 'wp_head', function() {
 
 /**
  * =========================
+ * Calcul de la version CSS combinée (style.css + tous les fichiers importés)
+ * =========================
+ */
+function me5rine_get_css_version() {
+	$style_path = get_stylesheet_directory() . '/style.css';
+	$version = file_exists($style_path) ? filemtime($style_path) : time();
+	
+	// Lire le contenu de style.css pour extraire les @import
+	if ( file_exists($style_path) ) {
+		$content = file_get_contents($style_path);
+		
+		// Extraire les URLs des @import
+		preg_match_all('/@import\s+url\([\'"]?([^\'")]+)[\'"]?\)/i', $content, $matches);
+		
+		if ( !empty($matches[1]) ) {
+			$times = [$version]; // Commencer avec le filemtime de style.css
+			
+			foreach ( $matches[1] as $import_path ) {
+				// Nettoyer le chemin (supprimer les paramètres de requête éventuels)
+				$import_path = trim(strtok($import_path, '?'));
+				
+				// Construire le chemin complet
+				$full_path = get_stylesheet_directory() . '/' . $import_path;
+				
+				if ( file_exists($full_path) ) {
+					$times[] = filemtime($full_path);
+				}
+			}
+			
+			// Générer un hash basé sur tous les filemtime
+			// Si un seul fichier change, le hash change
+			// Utiliser MD5 complet pour garantir l'unicité (WordPress accepte les versions longues)
+			$version = md5(implode('|', $times));
+		}
+	}
+	
+	return $version;
+}
+
+/**
+ * =========================
  * Enqueue style.css du thème enfant (toujours)
  * =========================
  */
@@ -163,7 +204,7 @@ add_action( 'wp_enqueue_scripts', function() {
 		'me5rine-child-style',
 		get_stylesheet_directory_uri() . $rel,
 		[ 'hello-elementor', 'hello-elementor-theme-style', 'hello-elementor-header-footer' ],
-		file_exists($path) ? filemtime($path) : null
+		me5rine_get_css_version()
 	);
 
 }, 99999 );

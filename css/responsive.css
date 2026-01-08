@@ -94,7 +94,7 @@
     /* Boutons pleine largeur sur mobile */
     .me5rine-lab-card-button,
     .me5rine-lab-form-button {
-        width: 100%;
+        width: 100% !important;
         padding: 12px 20px;
     }
 }
