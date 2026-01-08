@@ -94,7 +94,7 @@
     gap: 16px;
     padding: 16px;
     background: var(--me5rine-lab-bg-secondary);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     border-left: 4px solid var(--me5rine-lab-secondary);
     transition: all 0.2s ease;
 }

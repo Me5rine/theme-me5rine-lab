@@ -149,7 +149,7 @@ Updated: 2025-06-06 01:18:45
 
 /* Messages de rÃ©ponse Contact Form 7 - Style unifiÃ© */
 .wpcf7-response-output {
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     padding: 18px 24px !important;
     margin: 10px 0 20px 0 !important;
     font-size: 15px !important;
@@ -274,7 +274,7 @@ Updated: 2025-06-06 01:18:45
 
 .me5rine-lab-form-section {
     background: var(--me5rine-lab-bg, #ffffff) !important;
-    border-radius: 12px !important;
+    border-radius: var(--me5rine-lab-radius-lg) !important;
     padding: 24px !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
     border-bottom: none !important;
@@ -323,7 +323,7 @@ Updated: 2025-06-06 01:18:45
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
     border: 1px solid var(--me5rine-lab-border, #DEE5EC);
     border-left: 4px solid var(--me5rine-lab-secondary, #0485C8);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     font-family: var(--me5rine-lab-font);
     font-size: 15px;
     line-height: 1.5;
@@ -448,7 +448,7 @@ Updated: 2025-06-06 01:18:45
     padding: 9px 16px !important;
     margin: 0 !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     font-size: 15px !important;
     font-family: inherit !important;
     line-height: 1.5 !important;
@@ -630,7 +630,7 @@ Updated: 2025-06-06 01:18:45
     gap: 10px;
     padding: 12px 14px;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -704,7 +704,7 @@ Updated: 2025-06-06 01:18:45
 /* --- Vue (Read-only) --- */
 .me5rine-lab-form-view {
     background: var(--me5rine-lab-bg, #ffffff);
-    border-radius: 12px;
+    border-radius: var(--me5rine-lab-radius-lg);
     padding: 24px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border-bottom: none;
@@ -731,7 +731,7 @@ Updated: 2025-06-06 01:18:45
     gap: 16px;
     padding: 16px;
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     border-left: 4px solid var(--me5rine-lab-secondary, #0485C8);
     transition: all 0.2s ease;
 }
@@ -783,7 +783,7 @@ Updated: 2025-06-06 01:18:45
 /* --- Messages et Notifications --- */
 .me5rine-lab-form-message,
 p.um-notice {
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     padding: 18px 24px !important;
     margin: 0 !important;
     margin-bottom: 20px !important;
@@ -904,7 +904,7 @@ p.um-notice.success .um-notice-warning {
     border-left-width: 4px !important;
     color: #FF9800 !important;
     padding: 18px 24px !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     margin: 0 !important;
 }
 
@@ -930,7 +930,7 @@ p.um-notice.success .um-notice-info {
     border-left-width: 4px !important;
     color: #2196F3 !important;
     padding: 18px 24px !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     margin: 0 !important;
 }
 
@@ -988,8 +988,8 @@ p.um-notice.error::before {
     .me5rine-lab-form-section,
     .um-profile-main-content,
     .me5rine-lab-form-view {
-        padding: 10px !important;
-        border-radius: 8px;
+        padding: var(--me5rine-lab-spacing-sm) !important;
+        border-radius: var(--me5rine-lab-radius-md);
     }
 
     .me5rine-lab-form-view-row {
@@ -1035,7 +1035,7 @@ p.um-notice.error::before {
     background: var(--me5rine-lab-bg, #ffffff);
     border: 1px solid var(--me5rine-lab-border, #DEE5EC);
     border-left: 4px solid var(--me5rine-lab-secondary, #0485C8);
-    border-radius: 12px;
+    border-radius: var(--me5rine-lab-radius-lg);
     padding: 16px;
     padding-left: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
@@ -1055,7 +1055,7 @@ p.um-notice.error::before {
     height: auto;
     max-height: 150px;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     flex-shrink: 0;
     border: 1px solid var(--me5rine-lab-border, #DEE5EC);
 }
@@ -2230,7 +2230,7 @@ label.me5rine-lab-form-button-file:hover {
     min-height: 44px !important;
     padding: 9px 40px 9px 16px !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     font-size: 15px !important;
     font-family: var(--me5rine-lab-font) !important;
     line-height: 1.5 !important;
@@ -2283,7 +2283,7 @@ label.me5rine-lab-form-button-file:hover {
 .me5rine-lab-form-field select[class*="um-s1"].select2-hidden-accessible + .select2-container .select2-dropdown {
     margin-top: 0 !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     background: var(--me5rine-lab-bg, #ffffff) !important;
 }
@@ -2330,7 +2330,7 @@ label.me5rine-lab-form-button-file:hover {
 /* Styles pour tous les dropdowns Select2 ouverts (gÃ©nÃ©ral - s'applique partout) */
 .select2-container--open .select2-dropdown {
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     background: var(--me5rine-lab-bg, #ffffff) !important;
     margin-top: 0 !important;
@@ -2341,7 +2341,7 @@ label.me5rine-lab-form-button-file:hover {
     width: 100% !important;
     padding: 8px 12px !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 6px !important;
+    border-radius: var(--me5rine-lab-radius-sm) !important;
     font-size: 15px !important;
     font-family: var(--me5rine-lab-font) !important;
     line-height: 1.5 !important;
@@ -2426,7 +2426,7 @@ label.me5rine-lab-form-button-file:hover {
     align-items: flex-start;
     padding: 1rem;
     border: 1px solid var(--admin-lab-color-block-border);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     background-color: var(--admin-lab-color-white);
     transition: transform 0.2s ease-in-out;
 }
@@ -2452,7 +2452,7 @@ label.me5rine-lab-form-button-file:hover {
     color: var(--admin-lab-color-admin-text, #11161E) !important;
     font-weight: 500;
     padding: 0.6rem 1rem;
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
     transition: all 0.2s ease-in-out;
     font-size: 0.9rem;
@@ -2509,7 +2509,7 @@ label.me5rine-lab-form-button-file:hover {
 .me5rine-lab-btn-score,
 .btn-score {
     padding: 0.4rem 0.5rem;
-    border-radius: 6px;
+    border-radius: var(--me5rine-lab-radius-sm);
     border: 1px solid var(--admin-lab-color-borders, #DEE5EC);
     background-color: var(--admin-lab-color-button-secondary-hover, #F9FAFB) !important;
     color: var(--admin-lab-color-text-accent, #5D697D) !important;
@@ -3489,7 +3489,7 @@ label.me5rine-lab-form-button-file:hover {
 
 .um-profile-main-content .um-field-group,
 .um-profile-main-content .um-field-wrap {
-    padding: 20px;
+    padding: var(--me5rine-lab-spacing-lg);
     border-bottom: 1px solid var(--me5rine-lab-border);
 }
 
@@ -3574,7 +3574,7 @@ label.me5rine-lab-form-button-file:hover {
     }
 
     .um-profile-main-content {
-        padding: 20px !important;
+        padding: var(--me5rine-lab-spacing-lg) !important;
         min-height: auto;
     }
 
@@ -3625,7 +3625,7 @@ label.me5rine-lab-form-button-file:hover {
     }
 
     .um-profile-main-content {
-        padding: 10px !important;
+        padding: var(--me5rine-lab-spacing-sm) !important;
     }
 
     .um-profile-badge-partenaire-wrapper {
@@ -3712,7 +3712,7 @@ label.me5rine-lab-form-button-file:hover {
     }
 
     .um-profile-main-content {
-        padding: 10px !important;
+        padding: var(--me5rine-lab-spacing-sm) !important;
     }
 
     .um-profile-badge-partenaire-wrapper {

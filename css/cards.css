@@ -207,16 +207,20 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    width: 100%;
 }
 
 .me5rine-lab-filter-group {
     display: flex;
     flex-direction: column;
     gap: var(--me5rine-lab-spacing-sm);
+    flex: 1 1 calc(33.333% - var(--me5rine-lab-spacing-md));
+    min-width: 0;
 }
 
 .me5rine-lab-filters .me5rine-lab-filter-select,
-.me5rine-lab-filters .me5rine-lab-filter-input {
+.me5rine-lab-filters .me5rine-lab-filter-input,
+.me5rine-lab-filters .me5rine-lab-form-select:not(.select2-hidden-accessible) {
     min-width: 180px;
     width: auto !important;
     min-height: 35px !important;
@@ -231,6 +235,7 @@
 
 .me5rine-lab-filters button {
     height: 35px !important;
+    margin-top: 23px !important;
 }
 
 /* --- Select2 et Choices (UnifiÃ©) --- */
@@ -473,7 +478,7 @@
     min-height: 44px !important;
     padding: 9px 40px 9px 16px !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     font-size: 15px !important;
     font-family: var(--me5rine-lab-font) !important;
     line-height: 1.5 !important;
@@ -551,7 +556,7 @@
 .me5rine-lab-form-field select[class*="um-s1"].select2-hidden-accessible + .select2-container .select2-dropdown {
     margin-top: 0 !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     background: var(--me5rine-lab-bg, #ffffff) !important;
 }
@@ -598,7 +603,7 @@
 /* Styles pour tous les dropdowns Select2 ouverts (gÃ©nÃ©ral - s'applique partout) */
 .select2-container--open .select2-dropdown {
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     background: var(--me5rine-lab-bg, #ffffff) !important;
     margin-top: 0 !important;
@@ -609,7 +614,7 @@
     width: 100% !important;
     padding: 8px 12px !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 6px !important;
+    border-radius: var(--me5rine-lab-radius-sm) !important;
     font-size: 15px !important;
     font-family: var(--me5rine-lab-font) !important;
     line-height: 1.5 !important;
@@ -694,7 +699,7 @@
     align-items: flex-start;
     padding: 1rem;
     border: 1px solid var(--admin-lab-color-block-border);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     background-color: var(--admin-lab-color-white);
     transition: transform 0.2s ease-in-out;
 }
@@ -720,7 +725,7 @@
     color: var(--admin-lab-color-admin-text, #11161E) !important;
     font-weight: 500;
     padding: 0.6rem 1rem;
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
     transition: all 0.2s ease-in-out;
     font-size: 0.9rem;
@@ -777,7 +782,7 @@
 .me5rine-lab-btn-score,
 .btn-score {
     padding: 0.4rem 0.5rem;
-    border-radius: 6px;
+    border-radius: var(--me5rine-lab-radius-sm);
     border: 1px solid var(--admin-lab-color-borders, #DEE5EC);
     background-color: var(--admin-lab-color-button-secondary-hover, #F9FAFB) !important;
     color: var(--admin-lab-color-text-accent, #5D697D) !important;

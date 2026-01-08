@@ -3,13 +3,19 @@
    ============================================ */
 
 @media (max-width: 782px) {
+    .um-profile-menu-toggle::before,
+    .me5rine-lab-menu-toggle::before {
+        left: 10px !important;
+    }
+
     .me5rine-lab-filters {
-        flex-direction: column;
+        flex-direction: row;
         gap: var(--me5rine-lab-spacing-md);
     }
 
-    .me5rine-lab-filter-select,
-    .me5rine-lab-filter-input {
+    .me5rine-lab-filters .me5rine-lab-filter-select,
+    .me5rine-lab-filters .me5rine-lab-filter-input,
+    .me5rine-lab-filters .me5rine-lab-form-select:not(.select2-hidden-accessible) {
         width: 100% !important;
         min-width: auto;
     }
@@ -66,6 +72,7 @@
 
     .me5rine-lab-card-content {
         gap: var(--me5rine-lab-spacing-sm);
+        margin-left: 0;
     }
 
     .me5rine-lab-card-meta {

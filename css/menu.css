@@ -21,6 +21,10 @@
     background: var(--me5rine-lab-bg);
 }
 
+.me5rine-lab-profile-layout {
+    align-items: stretch;
+}
+
 /* Wrapper du Menu - Style Twitter Sidebar */
 .um-profile-menu-wrapper,
 .me5rine-lab-menu-wrapper {
@@ -39,6 +43,21 @@
     min-height: 100vh;
 }
 
+.me5rine-lab-menu-wrapper {
+    width: 300px;
+    padding-left: var(--me5rine-lab-spacing-xl);
+    margin: var(--me5rine-lab-spacing-xl) 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    max-height: none;
+    height: auto;
+    border-right: none;
+}
+
 /* Bouton Toggle Mobile - Style hamburger */
 .um-profile-menu-toggle,
 .me5rine-lab-menu-toggle {
@@ -46,7 +65,7 @@
     background: var(--me5rine-lab-bg);
     border: none;
     border-bottom: 1px solid var(--me5rine-lab-border);
-    padding: 16px 20px;
+    padding: 10px 20px;
     font-size: 15px;
     font-weight: 700;
     margin: 0;
@@ -105,7 +124,6 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding: 0;
 }
 
 /* Sur desktop, le menu est toujours visible */
@@ -412,7 +430,9 @@
         max-height: none;
         min-height: auto;
         border-right: none;
-        border-bottom: 1px solid var(--me5rine-lab-border);
+        border-bottom: none;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .um-profile-menu-toggle,
@@ -452,13 +472,18 @@
 @media screen and (max-width: 768px) {
     .um-profile-menu-wrapper,
     .me5rine-lab-menu-wrapper {
-        padding: 0;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .um-profile-menu-toggle,
     .me5rine-lab-menu-toggle {
-        padding: 16px 20px;
+        padding: 16px var(--me5rine-lab-spacing-sm);
         font-size: 15px;
+    }
+
+    .me5rine-lab-menu-toggle::before {
+        left: var(--me5rine-lab-spacing-sm);
     }
 
     .um-profile-menu-vertical a,

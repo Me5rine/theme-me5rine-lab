@@ -9,18 +9,26 @@
 }
 
 .me5rine-lab-form-section {
-    background: var(--me5rine-lab-bg, #ffffff) !important;
-    border-radius: 12px !important;
-    padding: 24px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    padding-bottom: 40px;
+    margin-bottom: var(--me5rine-lab-spacing-xl);
+    border-bottom: 1px solid var(--me5rine-lab-border, #DEE5EC);
+}
+
+.me5rine-lab-form-section:last-child {
+    border-bottom: none;
+}
+
+.campaign-form-dashboard .me5rine-lab-form-section {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
     border-bottom: none !important;
 }
 
 .um-profile-main-content {
-    padding: 24px !important;
+    padding: var(--me5rine-lab-spacing-lg) !important;
+    padding-right: 0 !important;
 }
 
-.me5rine-lab-form-section:last-child,
 .um-profile-main-content:last-child {
     border-bottom: none;
 }
@@ -59,7 +67,7 @@
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
     border: 1px solid var(--me5rine-lab-border, #DEE5EC);
     border-left: 4px solid var(--me5rine-lab-secondary, #0485C8);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     font-family: var(--me5rine-lab-font);
     font-size: 15px;
     line-height: 1.5;
@@ -159,7 +167,7 @@
 
 /* --- Inputs, Selects, Textarea --- */
 .me5rine-lab-form-input:not([type="file"]),
-.me5rine-lab-form-select,
+.me5rine-lab-form-select:not(.select2-hidden-accessible),
 .me5rine-lab-form-textarea,
 /* Contact Form 7 */
 .wpcf7-form-control.wpcf7-text,
@@ -170,13 +178,13 @@
 .wpcf7-form-control.wpcf7-textarea,
 /* Renforcement pour Ultimate Member - SpÃ©cificitÃ© plus Ã©levÃ©e */
 .um .me5rine-lab-form-input:not([type="file"]),
-.um .me5rine-lab-form-select,
+.um .me5rine-lab-form-select:not(.select2-hidden-accessible),
 .um .um-form textarea,
 .um-profile-main-content .me5rine-lab-form-input:not([type="file"]),
-.um-profile-main-content .me5rine-lab-form-select,
+.um-profile-main-content .me5rine-lab-form-select:not(.select2-hidden-accessible),
 .um-profile-main-content .me5rine-lab-form-textarea,
 .um-form .me5rine-lab-form-input:not([type="file"]),
-.um-form .me5rine-lab-form-select,
+.um-form .me5rine-lab-form-select:not(.select2-hidden-accessible),
 .um-form .me5rine-lab-form-textarea,
 .um .um-form input[type=text] {
     width: 100% !important;
@@ -184,7 +192,7 @@
     padding: 9px 16px !important;
     margin: 0 !important;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC) !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     font-size: 15px !important;
     font-family: inherit !important;
     line-height: 1.5 !important;
@@ -210,9 +218,9 @@
     height: 100px !important;
 }
 
-/* Select spÃ©cifique */
-.me5rine-lab-form-select,
-.wpcf7-form-control.wpcf7-select {
+/* Select spÃ©cifique - Uniquement pour les selects natifs (pas Select2) */
+.me5rine-lab-form-select:not(.select2-hidden-accessible),
+.wpcf7-form-control.wpcf7-select:not(.select2-hidden-accessible) {
     padding-right: 50px !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235D697D' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
     background-repeat: no-repeat !important;
@@ -225,39 +233,48 @@
     color: var(--me5rine-lab-text-light, #5D697D) !important;
 }
 
-/* Option par dÃ©faut (vide) en gris */
-.me5rine-lab-form-select option[value=""],
-.wpcf7-form-control.wpcf7-select option[value=""] {
+/* Quand Select2 est actif, on neutralise les styles dangereux sur le <select> caché */
+.me5rine-lab-form-select.select2-hidden-accessible,
+.wpcf7-form-control.wpcf7-select.select2-hidden-accessible {
+    overflow: visible !important;
+    max-height: none !important;
+    background-image: none !important;
+    padding-right: 0 !important;
+}
+
+/* Option par dÃ©faut (vide) en gris - Uniquement pour les selects natifs */
+.me5rine-lab-form-select:not(.select2-hidden-accessible) option[value=""],
+.wpcf7-form-control.wpcf7-select:not(.select2-hidden-accessible) option[value=""] {
     color: var(--me5rine-lab-text-light, #5D697D) !important;
 }
 
-/* Options avec valeur en noir */
-.me5rine-lab-form-select option:not([value=""]),
-.wpcf7-form-control.wpcf7-select option:not([value=""]) {
+/* Options avec valeur en noir - Uniquement pour les selects natifs */
+.me5rine-lab-form-select:not(.select2-hidden-accessible) option:not([value=""]),
+.wpcf7-form-control.wpcf7-select:not(.select2-hidden-accessible) option:not([value=""]) {
     color: var(--me5rine-lab-text, #11161E) !important;
 }
 
-/* Scrollbar pour les selects */
-.me5rine-lab-form-select::-webkit-scrollbar {
+/* Scrollbar pour les selects natifs uniquement */
+.me5rine-lab-form-select:not(.select2-hidden-accessible)::-webkit-scrollbar {
     width: 8px;
 }
 
-.me5rine-lab-form-select::-webkit-scrollbar-track {
+.me5rine-lab-form-select:not(.select2-hidden-accessible)::-webkit-scrollbar-track {
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
     border-radius: 4px;
     margin: 4px 0;
 }
 
-.me5rine-lab-form-select::-webkit-scrollbar-thumb {
+.me5rine-lab-form-select:not(.select2-hidden-accessible)::-webkit-scrollbar-thumb {
     background: var(--me5rine-lab-border-light, #B5C2CF);
     border-radius: 4px;
 }
 
-.me5rine-lab-form-select::-webkit-scrollbar-thumb:hover {
+.me5rine-lab-form-select:not(.select2-hidden-accessible)::-webkit-scrollbar-thumb:hover {
     background: var(--me5rine-lab-text-light, #5D697D);
 }
 
-.me5rine-lab-form-select {
+.me5rine-lab-form-select:not(.select2-hidden-accessible) {
     scrollbar-width: thin;
     scrollbar-color: var(--me5rine-lab-border-light, #B5C2CF) var(--me5rine-lab-bg-secondary, #F9FAFB);
 }
@@ -291,14 +308,14 @@
     border-width: 2px !important;
 }
 
-.me5rine-lab-form-select:focus,
-.wpcf7-form-control.wpcf7-select:focus {
+.me5rine-lab-form-select:not(.select2-hidden-accessible):focus,
+.wpcf7-form-control.wpcf7-select:not(.select2-hidden-accessible):focus {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230485C8' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
 }
 
 /* --- Ã‰tats : Hover --- */
 .me5rine-lab-form-input:hover:not(:focus),
-.me5rine-lab-form-select:hover:not(:focus),
+.me5rine-lab-form-select:not(.select2-hidden-accessible):hover:not(:focus),
 .me5rine-lab-form-textarea:hover:not(:focus),
 .um .um-form textarea:hover:not(:focus),
 .wpcf7-form-control.wpcf7-text:hover:not(:focus),
@@ -366,7 +383,7 @@
     gap: 10px;
     padding: 12px 14px;
     border: 2px solid var(--me5rine-lab-border, #DEE5EC);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -440,8 +457,8 @@
 /* --- Vue (Read-only) --- */
 .me5rine-lab-form-view {
     background: var(--me5rine-lab-bg, #ffffff);
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: var(--me5rine-lab-radius-lg);
+    padding: var(--me5rine-lab-spacing-xl);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border-bottom: none;
 }
@@ -467,7 +484,7 @@
     gap: 16px;
     padding: 16px;
     background: var(--me5rine-lab-bg-secondary, #F9FAFB);
-    border-radius: 8px;
+    border-radius: var(--me5rine-lab-radius-md);
     border-left: 4px solid var(--me5rine-lab-secondary, #0485C8);
     transition: all 0.2s ease;
 }
@@ -519,7 +536,7 @@
 /* --- Messages et Notifications --- */
 .me5rine-lab-form-message,
 p.um-notice {
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     padding: 18px 24px !important;
     margin: 0 !important;
     margin-bottom: 20px !important;
@@ -640,7 +657,7 @@ p.um-notice.success .um-notice-warning {
     border-left-width: 4px !important;
     color: var(--me5rine-lab-warning, #FF9800) !important;
     padding: 18px 24px !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     margin: 0 !important;
 }
 
@@ -666,7 +683,7 @@ p.um-notice.success .um-notice-info {
     border-left-width: 4px !important;
     color: var(--me5rine-lab-info, #2196F3) !important;
     padding: 18px 24px !important;
-    border-radius: 8px !important;
+    border-radius: var(--me5rine-lab-radius-md) !important;
     margin: 0 !important;
 }
 
@@ -699,6 +716,75 @@ p.um-notice.error::before {
     color: var(--me5rine-lab-error, #F44336) !important;
 }
 
+/* --- Styles Select2 pour les formulaires --- */
+/* Container Select2 dans les formulaires */
+#poke-hub-profile-form .select2-container {
+    z-index: auto;
+  }
+  
+#poke-hub-profile-form .select2-container--open {
+    z-index: 9999;
+  }
+  
+
+#poke-hub-profile-form .select2-dropdown {
+    z-index: 9999;
+}
+
+/* Styles pour le champ visible Select2 dans poke-hub-profile-form */
+#poke-hub-profile-form .select2-container .select2-selection--single {
+    min-height: 44px;
+    border: 2px solid var(--me5rine-lab-border, #DEE5EC);
+    border-radius: var(--me5rine-lab-radius-md);
+    display: flex;
+    align-items: center;
+}
+
+/* Le texte dans Select2 */
+#poke-hub-profile-form .select2-container .select2-selection__rendered {
+    line-height: 1.5;
+    padding-left: 16px;
+    padding-right: 44px; /* place pour la flèche */
+}
+
+/* La flèche Select2 */
+#poke-hub-profile-form .select2-container .select2-selection__arrow {
+    height: 100%;
+    right: 12px;
+}
+
+/* --- Styles Select2 pour les formulaires --- */
+/* Container Select2 dans les formulaires */
+#poke-hub-profile-form .select2-container {
+    z-index: 1;
+}
+
+#poke-hub-profile-form .select2-dropdown {
+    z-index: 9999;
+}
+
+/* Styles pour le champ visible Select2 dans poke-hub-profile-form */
+#poke-hub-profile-form .select2-container .select2-selection--single {
+    min-height: 44px;
+    border: 2px solid var(--me5rine-lab-border, #DEE5EC);
+    border-radius: var(--me5rine-lab-radius-md);
+    display: flex;
+    align-items: center;
+}
+
+/* Le texte dans Select2 */
+#poke-hub-profile-form .select2-container .select2-selection__rendered {
+    line-height: 1.5;
+    padding-left: 16px;
+    padding-right: 44px; /* place pour la flèche */
+}
+
+/* La flèche Select2 */
+#poke-hub-profile-form .select2-container .select2-selection__arrow {
+    height: 100%;
+    right: 12px;
+}
+
 /* --- Responsive Formulaires --- */
 @media (max-width: 768px) {
     .me5rine-lab-form-row {
@@ -721,11 +807,10 @@ p.um-notice.error::before {
         grid-template-columns: 1fr;
     }
 
-    .me5rine-lab-form-section,
     .um-profile-main-content,
     .me5rine-lab-form-view {
-        padding: 10px !important;
-        border-radius: 8px;
+        padding: var(--me5rine-lab-spacing-sm) !important;
+        border-radius: var(--me5rine-lab-radius-md);
     }
 
     .me5rine-lab-form-view-row {

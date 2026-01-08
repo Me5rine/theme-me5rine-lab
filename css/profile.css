@@ -15,7 +15,13 @@
     border-radius: 0;
     padding: 0;
     box-shadow: none;
-    margin-bottom: 0;
+    margin-bottom: 40px;
+}
+
+.me5rine-lab-profile-container:not(:last-child) {
+    padding-bottom: 40px;
+    margin-bottom: var(--me5rine-lab-spacing-xl);
+    border-bottom: 1px solid var(--me5rine-lab-border, #DEE5EC);
 }
 
 .me5rine-lab-form-block {

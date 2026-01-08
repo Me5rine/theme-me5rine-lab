@@ -2,6 +2,14 @@
    ULTIMATE MEMBER - PROFIL
    ============================================ */
 
+/* Reset margin et padding bottom */
+.um:not(.um-admin),
+.um-profile.um-editing,
+.um-profile.um-viewing {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 /* Reset et base */
 .um-form {
     position: relative;
@@ -44,6 +52,10 @@
     display: block;
 }
 
+.um-profile-meta {
+    padding-right: 0 !important;
+}
+
 /* Les styles de menu ont été déplacés dans css/menu.css (source unique pour UM et me5rine-lab) */
   
 /* Contenu Principal - Style Twitter */
@@ -70,7 +82,7 @@
     flex-wrap: wrap;
     gap: 8px;
     margin: 0;
-    padding: 16px 20px;
+    padding: 16px 0;
     background: var(--me5rine-lab-bg);
     border: none;
     border-bottom: 1px solid var(--me5rine-lab-border);
@@ -128,7 +140,7 @@
 
 .um-profile-main-content .um-field-group,
 .um-profile-main-content .um-field-wrap {
-    padding: 20px;
+    padding: var(--me5rine-lab-spacing-lg);
     border-bottom: 1px solid var(--me5rine-lab-border);
 }
 

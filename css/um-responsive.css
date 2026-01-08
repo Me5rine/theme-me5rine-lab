@@ -39,7 +39,7 @@
     }
 
     .um-profile-main-content {
-        padding: 20px !important;
+        padding: var(--me5rine-lab-spacing-lg) !important;
         min-height: auto;
     }
 
@@ -70,8 +70,8 @@
     }
 
     .um-profile-menu-toggle {
-        padding: 16px 20px;
-        font-size: 15px;
+        padding: 10px 10px;
+        font-size: 15px !important;
     }
 
     .um-profile-menu-vertical a {
@@ -90,7 +90,7 @@
     }
 
     .um-profile-main-content {
-        padding: 10px !important;
+        padding: var(--me5rine-lab-spacing-sm) !important;
     }
 
     .um-profile-badge-partenaire-wrapper {
@@ -177,7 +177,7 @@
     }
 
     .um-profile-main-content {
-        padding: 10px !important;
+        padding: var(--me5rine-lab-spacing-sm) !important;
     }
 
     .um-profile-badge-partenaire-wrapper {

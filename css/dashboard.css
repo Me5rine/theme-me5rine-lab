@@ -3,7 +3,15 @@
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--me5rine-lab-text-light);
     font-size: 14px;
-    padding: var(--me5rine-lab-spacing-md);
+    padding: 0 var(--me5rine-lab-spacing-xl);
+    margin: var(--me5rine-lab-spacing-xl) 0;
+    min-height: 100vh;
+}
+
+@media screen and (min-width: 1025px) {
+    .me5rine-lab-dashboard {
+        border-left: 1px solid var(--me5rine-lab-border);
+    }
 }
 
 .me5rine-lab-dashboard-header {
@@ -66,7 +74,7 @@
     background: var(--admin-lab-color-white, #ffffff);
     border: 1px solid var(--admin-lab-color-borders, #DEE5EC);
     border-radius: 4px;
-    padding: 15px;
+    padding: var(--me5rine-lab-spacing-md);
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -90,7 +98,7 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    padding: 5px;
+    padding: var(--me5rine-lab-spacing-xs);
     border-radius: 3px;
     transition: background-color 0.2s;
 }
@@ -123,8 +131,21 @@
 
 /* Bouton toggle pour les options d'écran - utilise les styles de .me5rine-lab-form-button */
 
-/* Responsive pour le header */
+/* Responsive pour le header - Tablette */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .me5rine-lab-dashboard {
+        padding: var(--me5rine-lab-spacing-lg);
+        margin: 0;
+    }
+}
+
+/* Responsive pour le header - Mobile */
 @media screen and (max-width: 768px) {
+    .me5rine-lab-dashboard {
+        padding: var(--me5rine-lab-spacing-sm);
+        margin: 0;
+    }
+
     .me5rine-lab-dashboard-header {
         flex-direction: column;
         align-items: flex-start;
@@ -133,7 +154,7 @@
     
     .me5rine-lab-dashboard-header-actions {
         width: 100%;
-        flex-direction: column;
+        flex-direction: row-reverse;
     }
     
     .me5rine-lab-dashboard-header-actions .me5rine-lab-form-button {
