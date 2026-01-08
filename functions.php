@@ -156,35 +156,36 @@ add_action( 'wp_head', function() {
  */
 function me5rine_get_css_version() {
 	$style_path = get_stylesheet_directory() . '/style.css';
-	$version = file_exists($style_path) ? filemtime($style_path) : time();
 	
-	// Lire le contenu de style.css pour extraire les @import
-	if ( file_exists($style_path) ) {
-		$content = file_get_contents($style_path);
+	if ( !file_exists($style_path) ) {
+		return time();
+	}
+	
+	$version = filemtime($style_path);
+	$content = file_get_contents($style_path);
+	
+	// Extraire les URLs des @import (supporte @import url('...') et @import '...')
+	preg_match_all('/@import\s+(?:url\()?[\'"]?([^\'")]+)[\'"]?\)?;/i', $content, $matches);
+	
+	if ( !empty($matches[1]) ) {
+		$times = [$version]; // Commencer avec le filemtime de style.css
 		
-		// Extraire les URLs des @import
-		preg_match_all('/@import\s+url\([\'"]?([^\'")]+)[\'"]?\)/i', $content, $matches);
-		
-		if ( !empty($matches[1]) ) {
-			$times = [$version]; // Commencer avec le filemtime de style.css
+		foreach ( $matches[1] as $import_path ) {
+			// Nettoyer le chemin (supprimer les paramètres de requête éventuels)
+			$import_path = trim(strtok($import_path, '?'));
 			
-			foreach ( $matches[1] as $import_path ) {
-				// Nettoyer le chemin (supprimer les paramètres de requête éventuels)
-				$import_path = trim(strtok($import_path, '?'));
-				
-				// Construire le chemin complet
-				$full_path = get_stylesheet_directory() . '/' . $import_path;
-				
-				if ( file_exists($full_path) ) {
-					$times[] = filemtime($full_path);
-				}
+			// Construire le chemin complet
+			$full_path = get_stylesheet_directory() . '/' . $import_path;
+			
+			if ( file_exists($full_path) ) {
+				$times[] = filemtime($full_path);
 			}
-			
-			// Générer un hash basé sur tous les filemtime
-			// Si un seul fichier change, le hash change
-			// Utiliser MD5 complet pour garantir l'unicité (WordPress accepte les versions longues)
-			$version = md5(implode('|', $times));
 		}
+		
+		// Générer un hash basé sur tous les filemtime
+		// Si un seul fichier change, le hash change
+		// Utiliser MD5 complet pour garantir l'unicité (WordPress accepte les versions longues)
+		$version = md5(implode('|', $times));
 	}
 	
 	return $version;
@@ -192,19 +193,91 @@ function me5rine_get_css_version() {
 
 /**
  * =========================
+ * Vider le cache Elementor lors de modifications CSS
+ * =========================
+ */
+function me5rine_clear_elementor_cache() {
+	// Vider le cache Elementor
+	if ( class_exists('\Elementor\Plugin') ) {
+		try {
+			\Elementor\Plugin::$instance->files_manager->clear_cache();
+			
+			// Régénérer les fichiers CSS d'Elementor
+			if ( method_exists(\Elementor\Plugin::$instance->files_manager, 'regenerate_css_files') ) {
+				\Elementor\Plugin::$instance->files_manager->regenerate_css_files();
+			}
+		} catch ( Exception $e ) {
+			// Erreur silencieuse si Elementor n'est pas complètement chargé
+		}
+	}
+	
+	// Vider le cache WordPress si un plugin de cache est actif
+	if ( function_exists('wp_cache_flush') ) {
+		wp_cache_flush();
+	}
+	
+	// Vider le cache d'autres plugins de cache courants
+	if ( function_exists('w3tc_flush_all') ) {
+		w3tc_flush_all();
+	}
+	if ( function_exists('wp_cache_clear_cache') ) {
+		wp_cache_clear_cache();
+	}
+}
+
+/**
+ * =========================
+ * Vider le cache lors de la sauvegarde de fichiers CSS
+ * Hook sur save_post pour détecter les modifications
+ * =========================
+ */
+add_action('save_post', function($post_id) {
+	me5rine_clear_elementor_cache();
+}, 99);
+
+/**
+ * =========================
+ * Ajout d'un paramètre ?clear_cache pour vider le cache manuellement
+ * Utilisation : ?clear_cache=1 dans l'URL
+ * =========================
+ */
+add_action('init', function() {
+	if ( isset($_GET['clear_cache']) && $_GET['clear_cache'] === '1' && current_user_can('manage_options') ) {
+		me5rine_clear_elementor_cache();
+		
+		// Rediriger sans le paramètre pour éviter les rechargements
+		$redirect_url = remove_query_arg('clear_cache');
+		wp_safe_redirect($redirect_url);
+		exit;
+	}
+});
+
+/**
+ * =========================
  * Enqueue style.css du thème enfant (toujours)
+ * Utilise un handler PHP pour injecter les versions dans les @import
  * =========================
  */
 add_action( 'wp_enqueue_scripts', function() {
 
-	$rel  = '/style.css';
-	$path = get_stylesheet_directory() . $rel;
+	// En mode développement (WP_DEBUG), utiliser timestamp pour forcer le rechargement
+	if ( defined('WP_DEBUG') && WP_DEBUG ) {
+		$version = time();
+	} else {
+		$version = me5rine_get_css_version();
+	}
+
+	// Utiliser le handler PHP qui injecte les versions dans les @import
+	$style_url = get_stylesheet_directory_uri() . '/style-handler.php';
+	
+	// S'assurer que la version est dans l'URL pour que style-handler.php soit rechargé aussi
+	$style_url = add_query_arg( 'ver', $version, $style_url );
 
 	wp_enqueue_style(
 		'me5rine-child-style',
-		get_stylesheet_directory_uri() . $rel,
+		$style_url,
 		[ 'hello-elementor', 'hello-elementor-theme-style', 'hello-elementor-header-footer' ],
-		me5rine_get_css_version()
+		$version
 	);
 
 }, 99999 );
