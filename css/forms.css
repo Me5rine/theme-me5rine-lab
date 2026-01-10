@@ -498,6 +498,7 @@
     font-size: 15px;
     line-height: 20px;
     color: var(--me5rine-lab-text);
+    text-transform: capitalize;
 }
 
 .me5rine-lab-form-view-row-full {

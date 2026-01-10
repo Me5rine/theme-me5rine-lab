@@ -93,8 +93,9 @@
 }
 
 .me5rine-lab-subtitle {
-    color: var(--me5rine-lab-text-light);
-    font-size: 14px;
+    color: var(--me5rine-lab-text-light) !important;
+    text-transform: uppercase;
+    font-size: 1rem !important;
     margin: 0 0 var(--me5rine-lab-spacing-md) 0;
     line-height: 1.6;
 }

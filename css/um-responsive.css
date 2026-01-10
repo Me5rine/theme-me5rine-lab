@@ -169,6 +169,47 @@
     }
 }
 
+/* Tablette (769px à 1024px) - Même comportement que mobile mais icônes à taille normale */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .um-profile-connect.um-member-connect {
+        padding: 12px 0px !important;
+        margin: 0 10px !important;
+        gap: 6px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--me5rine-lab-border) transparent;
+    }
+
+    .um-profile-connect.um-member-connect::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .um-profile-connect.um-member-connect::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .um-profile-connect.um-member-connect::-webkit-scrollbar-thumb {
+        background: var(--me5rine-lab-border);
+        border-radius: 2px;
+    }
+
+    .um-profile-connect.um-member-connect a {
+        width: 28px !important;
+        height: 28px !important;
+        line-height: 22px !important;
+        flex-shrink: 0;
+    }
+
+    /* Les icônes gardent leur taille normale (18px) sur tablette */
+    .um-profile-connect.um-member-connect a i,
+    .um-profile-connect.um-member-connect a.um-tip-n i {
+        font-size: 18px;
+    }
+}
+
 /* Petit mobile (max-width: 480px) */
 @media screen and (max-width: 480px) {
     .um-form {

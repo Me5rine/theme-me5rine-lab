@@ -107,58 +107,68 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 			'giveaways',
 			'game-pokemon-go',
 			'account-settings',
+			'linked-accounts',
 			'account-datas',
+			'admin-lab-subscriptions',
 			'edit-profile',
 			'edit-socials'
 		];
 
 		// Helper function to check if a tab is functional
-		function um_is_tab_functional($tab, $functional_tabs) {
-			return in_array($tab, $functional_tabs);
+		if (!function_exists('um_is_tab_functional')) {
+			function um_is_tab_functional($tab, $functional_tabs) {
+				return in_array($tab, $functional_tabs);
+			}
 		}
 
 		// Helper function to check if a menu has any functional tab
-		function um_has_functional_tab($menu_prefix, $submenu_tabs, $functional_tabs) {
-			// Check if menu prefix itself is functional
-			if (um_is_tab_functional($menu_prefix, $functional_tabs)) {
-				return true;
-			}
-			// Check if any submenu tab is functional
-			foreach ($submenu_tabs as $submenu_tab) {
-				if (um_is_tab_functional($submenu_tab, $functional_tabs)) {
+		if (!function_exists('um_has_functional_tab')) {
+			function um_has_functional_tab($menu_prefix, $submenu_tabs, $functional_tabs) {
+				// Check if menu prefix itself is functional
+				if (um_is_tab_functional($menu_prefix, $functional_tabs)) {
 					return true;
 				}
+				// Check if any submenu tab is functional
+				foreach ($submenu_tabs as $submenu_tab) {
+					if (um_is_tab_functional($submenu_tab, $functional_tabs)) {
+						return true;
+					}
+				}
+				return false;
 			}
-			return false;
 		}
 
 		// Helper function to check if a menu or submenu is active
 		// Only active if a submenu is selected, not if the tab matches the menu prefix
-		function um_is_menu_active($current_tab, $menu_prefix, $submenu_tabs = []) {
-			// Check if current tab matches any of the submenu tabs
-			foreach ($submenu_tabs as $submenu_tab) {
-				if ($current_tab === $submenu_tab) {
+		if (!function_exists('um_is_menu_active')) {
+			function um_is_menu_active($current_tab, $menu_prefix, $submenu_tabs = []) {
+				// Check if current tab matches any of the submenu tabs
+				foreach ($submenu_tabs as $submenu_tab) {
+					if ($current_tab === $submenu_tab) {
+						return true;
+					}
+				}
+				// Also check if the tab exactly matches the menu prefix (for menus that have their own tab)
+				if ($current_tab === $menu_prefix) {
 					return true;
 				}
+				return false;
 			}
-			// Also check if the tab exactly matches the menu prefix (for menus that have their own tab)
-			if ($current_tab === $menu_prefix) {
-				return true;
-			}
-			return false;
 		}
 
 		// Helper function to get menu class
 		// Menus are disabled if they have no functional tab (parent or submenu)
-		function um_get_menu_class($current_tab, $menu_prefix, $submenu_tabs = [], $functional_tabs = []) {
-			$is_active = um_is_menu_active($current_tab, $menu_prefix, $submenu_tabs);
-			$has_functional_tab = um_has_functional_tab($menu_prefix, $submenu_tabs, $functional_tabs);
-			
-			$class = $is_active ? 'active' : '';
-			if (!$has_functional_tab) {
-				$class .= ' um-tab-disabled';
+		if (!function_exists('um_get_menu_class')) {
+			function um_get_menu_class($current_tab, $menu_prefix, $submenu_tabs = [], $functional_tabs = []) {
+				$is_active = um_is_menu_active($current_tab, $menu_prefix, $submenu_tabs);
+				$has_functional_tab = um_has_functional_tab($menu_prefix, $submenu_tabs, $functional_tabs);
+				
+				$class = $is_active ? 'active' : '';
+				if (!$has_functional_tab) {
+					$class .= ' um-tab-disabled';
+				}
+				return trim($class);
 			}
-			return trim($class);
 		}
 
 		?>
@@ -297,6 +307,13 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 					<?php endif; ?>
 
 					<?php if ( is_user_logged_in() && get_current_user_id() === um_profile_id() ) : ?>
+						<a href="?tab=admin-lab-subscriptions" class="<?= $current_tab === 'admin-lab-subscriptions' ? 'active' : '' ?>">
+							<span class="um-menu-icon"><i class="fa fa-credit-card"></i></span>
+							<span><?php _e( 'Subscriptions', 'me5rine' ); ?></span>
+						</a>
+					<?php endif; ?>
+
+					<?php if ( is_user_logged_in() && get_current_user_id() === um_profile_id() ) : ?>
 						<div class="has-sub">
 							<a href="?tab=account" class="<?= um_get_menu_class($current_tab, 'account', ['account-settings', 'linked-accounts', 'account-notifications', 'account-visibility', 'account-datas', 'edit-profile', 'edit-socials'], $functional_tabs) ?>">
 								<span class="um-menu-icon"><i class="fa fa-cog"></i></span>
@@ -359,6 +376,12 @@ $description_key = UM()->profile()->get_show_bio_key( $args );
 				break;
 			case 'account-settings':
 				include get_stylesheet_directory() . '/ultimate-member/tabs/account-settings.php';
+				break;
+			case 'linked-accounts':
+				include get_stylesheet_directory() . '/ultimate-member/tabs/linked-accounts.php';
+				break;
+			case 'admin-lab-subscriptions':
+				include get_stylesheet_directory() . '/ultimate-member/tabs/admin-lab-subscriptions.php';
 				break;
 			case 'account-datas':
 				include get_stylesheet_directory() . '/ultimate-member/tabs/account-datas.php';
