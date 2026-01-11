@@ -1,15 +1,20 @@
 ﻿/* --- Containers et Layout --- */
+.me5rine-lab-dashboard,
+.poke-hub-dashboard {
+    padding: 0 var(--me5rine-lab-spacing-xl);
+    margin: var(--me5rine-lab-spacing-xl) 0;
+}
+
 .me5rine-lab-dashboard {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--me5rine-lab-text-light);
     font-size: 14px;
-    padding: 0 var(--me5rine-lab-spacing-xl);
-    margin: var(--me5rine-lab-spacing-xl) 0;
     min-height: 100vh;
 }
 
 @media screen and (min-width: 782px) {
-    .me5rine-lab-dashboard {
+    .me5rine-lab-dashboard,
+    .poke-hub-dashboard {
         border-left: 1px solid var(--me5rine-lab-border);
     }
 }
