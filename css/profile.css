@@ -24,13 +24,34 @@
     border-bottom: 1px solid var(--me5rine-lab-border, #DEE5EC);
 }
 
-.me5rine-lab-form-block {
+.me5rine-lab-form-block,
+.me5rine-lab-form-view-item {
     background-color: var(--me5rine-lab-bg-secondary, #F9FAFB);
     border: 1px solid var(--me5rine-lab-border, #DEE5EC);
     padding: 1rem;
     border-radius: 10px;
     margin-bottom: 24px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.me5rine-lab-form-view-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.me5rine-lab-form-view-action {
+    margin-left: auto;
+}
+
+.me5rine-lab-form-view-action .me5rine-lab-form-button {
+    margin-top: auto !important;
+}
+
+.me5rine-lab-form-views-details {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--ph-text-light);
 }
 
 .me5rine-lab-form-block-flex,
@@ -95,5 +116,21 @@
 .um-form[data-mode="profile"] .um-row-heading + .admin-lab-socials-form[data-empty="true"],
 .um-form[data-mode="profile"] .um-row-heading.hidden {
     display: none !important;
+}
+
+/* Grille pour les connexions KAP et abonnements */
+#admin-lab-kap-connections,
+.admin-lab-subscriptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Responsive : 1 colonne sur mobile */
+@media (max-width: 768px) {
+    #admin-lab-kap-connections,
+    .admin-lab-subscriptions {
+        grid-template-columns: 1fr;
+    }
 }
 
