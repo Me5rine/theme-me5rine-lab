@@ -615,6 +615,47 @@ p.um-notice.success::before {
     color: var(--me5rine-lab-warning, #FF9800) !important;
 }
 
+/* --- Boutons dans les messages --- */
+.me5rine-lab-form-message-button {
+    margin: auto !important;
+}
+
+.me5rine-lab-form-message-warning-button {
+    background: linear-gradient(135deg, var(--me5rine-lab-warning) 0%, #db8300 100%) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-warning-button:hover {
+    background: linear-gradient(135deg, #db8300 0%, var(--me5rine-lab-warning) 100%) !important;
+}
+
+.me5rine-lab-form-message-success-button {
+    background: linear-gradient(135deg, var(--me5rine-lab-success) 0%, #388e3c 100%) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-success-button:hover {
+    background: linear-gradient(135deg, #388e3c 0%, var(--me5rine-lab-success) 100%) !important;
+}
+
+.me5rine-lab-form-message-error-button {
+    background: linear-gradient(135deg, var(--me5rine-lab-error) 0%, #d32f2f 100%) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-error-button:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, var(--me5rine-lab-error) 100%) !important;
+}
+
+.me5rine-lab-form-message-info-button {
+    background: linear-gradient(135deg, var(--me5rine-lab-info) 0%, #1976D2 100%) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-info-button:hover {
+    background: linear-gradient(135deg, #1976D2 0%, var(--me5rine-lab-info) 100%) !important;
+}
+
 /* --- Wrapper des messages UM dans um-profile-main-content --- */
 .me5rine-um-messages-wrapper {
     margin-bottom: 24px;
@@ -816,6 +857,11 @@ p.um-notice.error::before {
 
 /* --- Responsive Formulaires --- */
 @media (max-width: 768px) {
+    .me5rine-lab-form-message,
+    p.um-notice {
+        flex-direction: column !important;
+    }
+    
     .me5rine-lab-form-row {
         flex-direction: column !important;
         gap: 16px;
@@ -863,6 +909,44 @@ p.um-notice.error::before {
     .me5rine-lab-form-rules-col {
         flex: 1 1 100%;
         max-width: 100%;
+    }
+    
+    /* Bouton avec largeur initiale (annule width: 100% sur mobile) */
+    .me5rine-lab-form-button-initial {
+        width: fit-content !important;
+    }
+    
+    /* Ultimate Member - Responsive mobile */
+    .um-half {
+        width: 100% !important;
+    }
+    
+    .um-button {
+        width: 100% !important;
+    }
+    
+    .um-right {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Bouton avec largeur initiale (annule width: 100% sur mobile très petit) */
+    .me5rine-lab-form-button-initial {
+        width: fit-content !important;
+    }
+    
+    /* Ultimate Member - Responsive mobile très petit */
+    .um-half {
+        width: 100% !important;
+    }
+    
+    .um-button {
+        width: 100% !important;
+    }
+    
+    .um-right {
+        margin-left: 0 !important;
     }
 }
 

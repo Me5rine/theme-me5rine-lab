@@ -19,12 +19,32 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            echo "Deploying theme me5rine-lab..."
+            echo "Deploying theme me5rine-lab to all sites..."
 
-            sudo -u www-data bash -lc "
-              cd /var/www/me5rine-lab.com/htdocs/wp-content/themes/me5rine-lab && \
-              git fetch origin main && \
-              git reset --hard origin/main
-            "
+            THEME_DIRS=(
+              "/var/www/me5rine-lab.com/htdocs/wp-content/themes/me5rine-lab"
+              "/var/www/jv-actu.com/htdocs/wp-content/themes/me5rine-lab"
+              "/var/www/me5rine.com/htdocs/wp-content/themes/me5rine-lab"
+              "/var/www/poke-hub.fr/htdocs/wp-content/themes/me5rine-lab"
+              "/var/www/squat-geek.com/htdocs/wp-content/themes/me5rine-lab"
+            )
 
-            echo "Deploy OK for theme me5rine-lab"
+            for DIR in "${THEME_DIRS[@]}"; do
+              echo "----> Deploy in: $DIR"
+
+              sudo -u www-data bash -lc "
+                set -e
+                if [ ! -d \"$DIR/.git\" ]; then
+                  echo \"ERROR: $DIR is not a git repo (.git missing). Run initial setup (clone) first.\"
+                  exit 1
+                fi
+
+                cd \"$DIR\"
+                git fetch origin main
+                git reset --hard origin/main
+              "
+
+              echo "OK: $DIR"
+            done
+
+            echo "Deploy OK for theme me5rine-lab on all sites"
