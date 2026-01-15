@@ -312,6 +312,35 @@ function me5rine_enqueue_um_profile_assets() {
 }
 add_action('wp_enqueue_scripts', 'me5rine_enqueue_um_profile_assets', 99999);
 
+/**
+ * =========================
+ * Chargement conditionnel du CSS legacy PokeHub (jv-actu.com uniquement)
+ * =========================
+ */
+function me5rine_enqueue_pokehub_legacy() {
+	// Vérifier si on est sur jv-actu.com
+	$domain = parse_url(home_url(), PHP_URL_HOST);
+	
+	// Supprimer le www. si présent pour la comparaison
+	$domain = str_replace('www.', '', $domain);
+	
+	// Charger uniquement sur jv-actu.com
+	if ( $domain === 'jv-actu.com' ) {
+		$css_rel = '/css/pokehub-legacy.css';
+		$css_path = get_stylesheet_directory() . $css_rel;
+		
+		if ( file_exists( $css_path ) ) {
+			wp_enqueue_style(
+				'me5rine-pokehub-legacy',
+				get_stylesheet_directory_uri() . $css_rel,
+				[ 'me5rine-child-style' ], // Dépend de style.css principal
+				filemtime( $css_path )
+			);
+		}
+	}
+}
+add_action('wp_enqueue_scripts', 'me5rine_enqueue_pokehub_legacy', 100000);
+
 
 
 /**
