@@ -456,3 +456,8 @@ overflow : auto;
 }
 }
 
+/* Règles spécifiques PokeHub - Surcharge */
+.pokehub-events-wrapper .me5rine-lab-dashboard a {
+	color: #ffffff !important;
+}
+

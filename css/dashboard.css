@@ -1,6 +1,5 @@
 ﻿/* --- Containers et Layout --- */
-.me5rine-lab-dashboard,
-.poke-hub-dashboard {
+.me5rine-lab-dashboard {
     padding: 0 var(--me5rine-lab-spacing-xl);
     margin: var(--me5rine-lab-spacing-xl) 0;
 }
@@ -13,8 +12,7 @@
 }
 
 @media screen and (min-width: 782px) {
-    .me5rine-lab-dashboard,
-    .poke-hub-dashboard {
+    .me5rine-lab-dashboard {
         border-left: 1px solid var(--me5rine-lab-border);
     }
 }
