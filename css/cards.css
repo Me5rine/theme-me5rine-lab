@@ -293,16 +293,33 @@
     color: var(--me5rine-lab-white-hover, rgba(255, 255, 255, 0.8)) !important;
 }
 
-/* Ã‰lÃ©ments internes Select2 */
+/* Éléments internes Select2 - Style unifié pour tous les contextes */
 .select2-container .select2-selection--single .select2-selection__rendered,
-.select2-container .select2-selection--multiple .select2-selection__rendered {
+.select2-container .select2-selection--multiple .select2-selection__rendered,
+.um-field .select2-container .select2-selection--single .select2-selection__rendered,
+.um-field .select2-container .select2-selection--multiple .select2-selection__rendered,
+.um-form .select2-container .select2-selection--single .select2-selection__rendered,
+.um-form .select2-container .select2-selection--multiple .select2-selection__rendered,
+.um-profile-main-content .select2-container .select2-selection--single .select2-selection__rendered,
+.um-profile-main-content .select2-container .select2-selection--multiple .select2-selection__rendered,
+.um-field-area .select2-container .select2-selection--single .select2-selection__rendered,
+.um-field-area .select2-container .select2-selection--multiple .select2-selection__rendered {
     padding: 0 !important;
     line-height: 1.5 !important;
-    color: var(--me5rine-lab-text-light, #5D697D) !important;
+    color: var(--me5rine-lab-text, #11161E) !important;
+    font-size: 15px !important;
 }
 
 .select2-container .select2-selection--single .select2-selection__placeholder,
-.select2-container .select2-selection--multiple .select2-selection__placeholder {
+.select2-container .select2-selection--multiple .select2-selection__placeholder,
+.um-field .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-field .select2-container .select2-selection--multiple .select2-selection__placeholder,
+.um-form .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-form .select2-container .select2-selection--multiple .select2-selection__placeholder,
+.um-profile-main-content .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-profile-main-content .select2-container .select2-selection--multiple .select2-selection__placeholder,
+.um-field-area .select2-container .select2-selection--single .select2-selection__placeholder,
+.um-field-area .select2-container .select2-selection--multiple .select2-selection__placeholder {
     color: var(--me5rine-lab-text-light, #5D697D) !important;
     opacity: 0.7 !important;
 }
@@ -426,28 +443,6 @@
     color: var(--me5rine-lab-text, #11161E) !important;
 }
 
-.um-field .select2-container .select2-selection--single .select2-selection__rendered,
-.um-field .select2-container .select2-selection--multiple .select2-selection__rendered,
-.um-form .select2-container .select2-selection--single .select2-selection__rendered,
-.um-form .select2-container .select2-selection--multiple .select2-selection__rendered,
-.um-profile-main-content .select2-container .select2-selection--single .select2-selection__rendered,
-.um-profile-main-content .select2-container .select2-selection--multiple .select2-selection__rendered,
-.um-field-area .select2-container .select2-selection--single .select2-selection__rendered,
-.um-field-area .select2-container .select2-selection--multiple .select2-selection__rendered {
-    color: var(--me5rine-lab-text, #11161E) !important;
-    font-size: 15px !important;
-}
-
-.um-field .select2-container .select2-selection--single .select2-selection__placeholder,
-.um-field .select2-container .select2-selection--multiple .select2-selection__placeholder,
-.um-form .select2-container .select2-selection--single .select2-selection__placeholder,
-.um-form .select2-container .select2-selection--multiple .select2-selection__placeholder,
-.um-profile-main-content .select2-container .select2-selection--single .select2-selection__placeholder,
-.um-profile-main-content .select2-container .select2-selection--multiple .select2-selection__placeholder,
-.um-field-area .select2-container .select2-selection--single .select2-selection__placeholder,
-.um-field-area .select2-container .select2-selection--multiple .select2-selection__placeholder {
-    color: var(--me5rine-lab-text-light, #5D697D) !important;
-}
 
 .um-field .select2-dropdown,
 .um-form .select2-dropdown,
