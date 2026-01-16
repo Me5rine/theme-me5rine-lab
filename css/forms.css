@@ -823,7 +823,7 @@ p.um-notice.error::before {
 
 /* Titre sans marge */
 .me5rine-lab-subtitle-no-margin {
-    margin: 0;
+    margin: 0 !important;
 }
 
 /* Bouton avec espacement à gauche */
@@ -914,39 +914,6 @@ p.um-notice.error::before {
     /* Bouton avec largeur initiale (annule width: 100% sur mobile) */
     .me5rine-lab-form-button-initial {
         width: fit-content !important;
-    }
-    
-    /* Ultimate Member - Responsive mobile */
-    .um-half {
-        width: 100% !important;
-    }
-    
-    .um-button {
-        width: 100% !important;
-    }
-    
-    .um-right {
-        margin-left: 0 !important;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Bouton avec largeur initiale (annule width: 100% sur mobile très petit) */
-    .me5rine-lab-form-button-initial {
-        width: fit-content !important;
-    }
-    
-    /* Ultimate Member - Responsive mobile très petit */
-    .um-half {
-        width: 100% !important;
-    }
-    
-    .um-button {
-        width: 100% !important;
-    }
-    
-    .um-right {
-        margin-left: 0 !important;
     }
 }
 
