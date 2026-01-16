@@ -173,7 +173,13 @@
         width: 100% !important;
     }
     
-    .um-button {
+    /* Surcharge width pour .um-button sur mobile - Spécificité élevée pour prendre le dessus sur buttons.css */
+    .um .um-button,
+    .um input[type="submit"].um-button,
+    .um input[type="button"].um-button,
+    .um button.um-button,
+    input[type="submit"].um-button,
+    button.um-button {
         width: 100% !important;
     }
     
@@ -260,7 +266,13 @@
         width: 100% !important;
     }
     
-    .um-button {
+    /* Surcharge width pour .um-button sur mobile très petit - Spécificité élevée pour prendre le dessus sur buttons.css */
+    .um .um-button,
+    .um input[type="submit"].um-button,
+    .um input[type="button"].um-button,
+    .um button.um-button,
+    input[type="submit"].um-button,
+    button.um-button {
         width: 100% !important;
     }
     
