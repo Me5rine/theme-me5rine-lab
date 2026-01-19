@@ -207,6 +207,80 @@ button.um-button:disabled {
     box-shadow: none;
 }
 
+/* Boutons dans les messages - Surcharge des styles secondaires */
+/* Ces règles doivent être après les boutons secondaires pour prendre le dessus */
+.me5rine-lab-form-message-button {
+    margin: auto !important;
+}
+
+.me5rine-lab-form-message-warning-button,
+.me5rine-lab-form-message-warning-button.me5rine-lab-form-button-secondary,
+.me5rine-lab-form-message-warning-button.um-button.um-alt {
+    background: linear-gradient(135deg, var(--me5rine-lab-warning) 0%, #db8300 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-warning) 0%, #db8300 100%) !important;
+    background-color: var(--me5rine-lab-warning) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-warning-button:hover,
+.me5rine-lab-form-message-warning-button.me5rine-lab-form-button-secondary:hover,
+.me5rine-lab-form-message-warning-button.um-button.um-alt:hover {
+    background: linear-gradient(135deg, #db8300 0%, var(--me5rine-lab-warning) 100%) !important;
+    background-image: linear-gradient(135deg, #db8300 0%, var(--me5rine-lab-warning) 100%) !important;
+    background-color: #db8300 !important;
+}
+
+.me5rine-lab-form-message-success-button,
+.me5rine-lab-form-message-success-button.me5rine-lab-form-button-secondary,
+.me5rine-lab-form-message-success-button.um-button.um-alt {
+    background: linear-gradient(135deg, var(--me5rine-lab-success) 0%, #388e3c 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-success) 0%, #388e3c 100%) !important;
+    background-color: var(--me5rine-lab-success) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-success-button:hover,
+.me5rine-lab-form-message-success-button.me5rine-lab-form-button-secondary:hover,
+.me5rine-lab-form-message-success-button.um-button.um-alt:hover {
+    background: linear-gradient(135deg, #388e3c 0%, var(--me5rine-lab-success) 100%) !important;
+    background-image: linear-gradient(135deg, #388e3c 0%, var(--me5rine-lab-success) 100%) !important;
+    background-color: #388e3c !important;
+}
+
+.me5rine-lab-form-message-error-button,
+.me5rine-lab-form-message-error-button.me5rine-lab-form-button-secondary,
+.me5rine-lab-form-message-error-button.um-button.um-alt {
+    background: linear-gradient(135deg, var(--me5rine-lab-error) 0%, #d32f2f 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-error) 0%, #d32f2f 100%) !important;
+    background-color: var(--me5rine-lab-error) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-error-button:hover,
+.me5rine-lab-form-message-error-button.me5rine-lab-form-button-secondary:hover,
+.me5rine-lab-form-message-error-button.um-button.um-alt:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, var(--me5rine-lab-error) 100%) !important;
+    background-image: linear-gradient(135deg, #d32f2f 0%, var(--me5rine-lab-error) 100%) !important;
+    background-color: #d32f2f !important;
+}
+
+.me5rine-lab-form-message-info-button,
+.me5rine-lab-form-message-info-button.me5rine-lab-form-button-secondary,
+.me5rine-lab-form-message-info-button.um-button.um-alt {
+    background: linear-gradient(135deg, var(--me5rine-lab-info) 0%, #1976D2 100%) !important;
+    background-image: linear-gradient(135deg, var(--me5rine-lab-info) 0%, #1976D2 100%) !important;
+    background-color: var(--me5rine-lab-info) !important;
+    transition: all 0.3s ease !important;
+}
+
+.me5rine-lab-form-message-info-button:hover,
+.me5rine-lab-form-message-info-button.me5rine-lab-form-button-secondary:hover,
+.me5rine-lab-form-message-info-button.um-button.um-alt:hover {
+    background: linear-gradient(135deg, #1976D2 0%, var(--me5rine-lab-info) 100%) !important;
+    background-image: linear-gradient(135deg, #1976D2 0%, var(--me5rine-lab-info) 100%) !important;
+    background-color: #1976D2 !important;
+}
+
 /* Bouton de suppression - Seulement les diffÃ©rences de couleurs */
 .me5rine-lab-form-button-remove {
     background: var(--me5rine-lab-button-remove, #dc3545) !important;

@@ -167,25 +167,6 @@
     .um-profile-connect.um-member-connect a i {
         font-size: 14px;
     }
-
-    /* Ultimate Member - Responsive mobile */
-    .um-half {
-        width: 100% !important;
-    }
-    
-    /* Surcharge width pour .um-button sur mobile - Spécificité élevée pour prendre le dessus sur buttons.css */
-    .um .um-button,
-    .um input[type="submit"].um-button,
-    .um input[type="button"].um-button,
-    .um button.um-button,
-    input[type="submit"].um-button,
-    button.um-button {
-        width: 100% !important;
-    }
-    
-    .um-right {
-        margin-left: 0 !important;
-    }
 }
 
 /* Tablette (769px à 1024px) - Même comportement que mobile mais icônes à taille normale */
@@ -259,24 +240,5 @@
 
     .um-profile-connect.um-member-connect a i {
         font-size: 13px;
-    }
-
-    /* Ultimate Member - Responsive mobile très petit */
-    .um-half {
-        width: 100% !important;
-    }
-    
-    /* Surcharge width pour .um-button sur mobile très petit - Spécificité élevée pour prendre le dessus sur buttons.css */
-    .um .um-button,
-    .um input[type="submit"].um-button,
-    .um input[type="button"].um-button,
-    .um button.um-button,
-    input[type="submit"].um-button,
-    button.um-button {
-        width: 100% !important;
-    }
-    
-    .um-right {
-        margin-left: 0 !important;
     }
 }

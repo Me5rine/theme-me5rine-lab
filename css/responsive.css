@@ -101,10 +101,5 @@
         width: 100% !important;
         padding: 12px 20px;
     }
-    
-    /* Bouton avec largeur initiale (annule width: 100% sur mobile) */
-    .me5rine-lab-form-button-initial {
-        width: fit-content !important;
-    }
 }
 
