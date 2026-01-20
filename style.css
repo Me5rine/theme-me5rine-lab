@@ -6,7 +6,7 @@ Author: Me5rine
 Author URI: https://me5rine.com
 Description: Thème personnalisé, optimisé pour les sites du réseau Me5rine LAB. Léger, rapide, et conçu pour intégrer des fonctionnalités avancées sur-mesure
 Tags: accessibility-ready,flexible-header,custom-colors,custom-menu,custom-logo,featured-images,rtl-language-support,threaded-comments,translation-ready
-Version: 4.4.6
+Version: 4.4.7
 Updated: 2025-06-06 01:18:45
 
 */
@@ -56,14 +56,18 @@ Updated: 2025-06-06 01:18:45
 /* Labels de filtres responsive */
 @import url('css/filter-labels.css');
 
-/* Responsive global */
-@import url('css/responsive.css');
-
 /* Ultimate Member - Profil */
 @import url('css/um-profile.css');
 
 /* Menus - Classes Me5rine Lab */
 @import url('css/menu.css');
+
+/* ============================================
+   RESPONSIVE - Chargés en fin pour surcharger
+   ============================================ */
+
+/* Responsive global */
+@import url('css/responsive.css');
 
 /* Ultimate Member - Responsive */
 @import url('css/um-responsive.css');

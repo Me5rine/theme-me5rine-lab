@@ -11,12 +11,5 @@
     display: inline-flex;
 }
 
-@media screen and (max-width: 782px) {
-    .me5rine-lab-filter-label-desktop {
-        display: none;
-    }
-    .me5rine-lab-filter-label-mobile {
-        display: inline-flex;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 

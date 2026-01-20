@@ -104,23 +104,5 @@
 }
 
 /* Responsive pour les podiums */
-@media (max-width: 768px) {
-    .me5rine-lab-podium {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--me5rine-lab-spacing-sm);
-    }
-
-    .me5rine-lab-podium-step {
-        width: 100%;
-        max-width: 200px;
-    }
-
-    .me5rine-lab-podium-1,
-    .me5rine-lab-podium-2,
-    .me5rine-lab-podium-3 {
-        height: auto;
-        min-height: 100px;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 

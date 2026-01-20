@@ -818,55 +818,5 @@ p.um-notice.error::before {
     grid-column: 1 / -1;
 }
 
-/* --- Responsive Formulaires --- */
-@media (max-width: 768px) {
-    .me5rine-lab-form-row {
-        flex-direction: column !important;
-        gap: 16px;
-    }
-    
-    .me5rine-lab-form-col {
-        margin-bottom: 0;
-        display: flex;
-        flex-direction: column;
-        width: 100% !important;
-    }
-
-    .me5rine-lab-form-col-gap {
-        gap: 24px !important;
-    }
-
-    .me5rine-lab-form-checkbox-group {
-        grid-template-columns: 1fr;
-    }
-
-    .um-profile-main-content,
-    .me5rine-lab-form-view {
-        padding: var(--me5rine-lab-spacing-sm) !important;
-        border-radius: var(--me5rine-lab-radius-md);
-    }
-
-    .me5rine-lab-form-view-row {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .me5rine-lab-form-view-item {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .me5rine-lab-form-view-item.me5rine-lab-form-col {
-        margin-bottom: 0;
-    }
-
-    .me5rine-lab-form-view-label {
-        min-width: auto;
-    }
-
-    .me5rine-lab-form-rules-col {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css et um-responsive.css */
 

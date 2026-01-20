@@ -130,10 +130,5 @@
 }
 
 /* Responsive : 1 colonne sur mobile */
-@media (max-width: 768px) {
-    #admin-lab-kap-connections,
-    .admin-lab-subscriptions {
-        grid-template-columns: 1fr;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 

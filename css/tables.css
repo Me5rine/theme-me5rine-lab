@@ -284,17 +284,7 @@
 }
 
 /* Masquer le bouton toggle sur desktop */
-@media screen and (min-width: 783px) {
-    .me5rine-lab-table .me5rine-lab-table-toggle-btn {
-        display: none;
-    }
-
-
-    /* Masquer les labels de colonnes sur desktop */
-    .me5rine-lab-table td[data-colname]::before {
-        display: none;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 
 /* Styles pour tableaux avec classe striped (lignes alternÃ©es) - Style table-05 */
 .me5rine-lab-table.striped tbody tr:nth-child(odd) {
@@ -310,88 +300,7 @@
     background-color: var(--me5rine-lab-bg-secondary, #F9FAFB);
 }
 
-/* Responsive : Mobile avec comportement WordPress admin */
-@media screen and (max-width: 782px) {
-    .me5rine-lab-table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        margin-top: 16px;
-        margin-bottom: 16px;
-        border-radius: 0;
-        box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
-    }
-
-    .me5rine-lab-table thead {
-        display: none;
-    }
-
-    .me5rine-lab-table tbody {
-        display: block;
-    }
-
-    .me5rine-lab-table tbody tr {
-        display: block;
-        margin-bottom: 12px;
-        border: none;
-        border-radius: 0;
-        background: var(--me5rine-lab-bg, #ffffff);
-        overflow: hidden;
-        box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
-    }
-
-    .me5rine-lab-table tbody tr:last-child {
-        margin-bottom: 0;
-    }
-
-    .me5rine-lab-table td {
-        display: block;
-        padding: 12px 16px;
-        text-align: left;
-        border-bottom: 1px solid var(--me5rine-lab-border, #DEE5EC);
-        border-left: none;
-        border-right: none;
-    }
-
-    .me5rine-lab-table td:last-child {
-        border-bottom: none;
-    }
-
-    .me5rine-lab-table td.summary {
-        padding-right: 50px;
-        background: var(--me5rine-lab-bg-secondary, #F9FAFB);
-        font-weight: 600;
-        border-bottom: 1px solid var(--me5rine-lab-border, #DEE5EC);
-    }
-
-    .me5rine-lab-table td.details {
-        display: none;
-    }
-
-    .me5rine-lab-table-row-toggleable.is-expanded td.details {
-        display: block;
-    }
-
-    /* Afficher le bouton toggle uniquement sur les lignes toggleable en mode mobile */
-    .me5rine-lab-table-row-toggleable .me5rine-lab-table-toggle-btn {
-        display: flex !important;
-    }
-
-    /* Labels de colonnes sur mobile */
-    .me5rine-lab-table td[data-colname]::before {
-        content: attr(data-colname) ": ";
-        font-weight: 600;
-        color: var(--me5rine-lab-text, #11161E);
-        text-transform: none;
-        letter-spacing: 0;
-        font-size: 12px;
-        margin-right: 8px;
-    }
-
-    .me5rine-lab-table td.summary[data-colname]::before {
-        display: none;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 
 /* Masquer les colonnes (générique pour tous les tableaux) */
 .me5rine-lab-table th.column-hidden,
@@ -419,20 +328,5 @@
     text-align: center;
 }
 
-/* Annuler les limitations de taille sur mobile */
-@media screen and (max-width: 768px) {
-    .me5rine-lab-table-socials.striped th:nth-child(1),
-    .me5rine-lab-table-socials.striped td:nth-child(1) {
-        width: auto;
-        min-width: auto;
-        max-width: none;
-    }
-
-    .me5rine-lab-table-socials.striped th:nth-child(3),
-    .me5rine-lab-table-socials.striped td:nth-child(3) {
-        width: auto;
-        min-width: auto;
-        max-width: none;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 

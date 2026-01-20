@@ -11,11 +11,7 @@
     min-height: 100vh;
 }
 
-@media screen and (min-width: 782px) {
-    .me5rine-lab-dashboard {
-        border-left: 1px solid var(--me5rine-lab-border);
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 
 .me5rine-lab-dashboard-header {
     display: flex;
@@ -134,38 +130,5 @@
 
 /* Bouton toggle pour les options d'écran - utilise les styles de .me5rine-lab-form-button */
 
-/* Responsive pour le header - Tablette */
-@media screen and (max-width: 1024px) and (min-width: 769px) {
-    .me5rine-lab-dashboard {
-        padding: var(--me5rine-lab-spacing-lg);
-        margin: 0;
-    }
-}
-
-/* Responsive pour le header - Mobile */
-@media screen and (max-width: 768px) {
-    .me5rine-lab-dashboard {
-        padding: var(--me5rine-lab-spacing-sm);
-        margin: 0;
-    }
-
-    .me5rine-lab-dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    
-    .me5rine-lab-dashboard-header-actions {
-        width: 100%;
-        flex-direction: row-reverse;
-    }
-    
-    .me5rine-lab-dashboard-header-actions .me5rine-lab-form-button {
-        width: 100%;
-    }
-    
-    .me5rine-lab-screen-options-columns {
-        grid-template-columns: 1fr;
-    }
-}
+/* Note: Toutes les règles responsive sont dans responsive.css */
 
