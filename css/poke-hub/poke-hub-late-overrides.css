@@ -1,0 +1,63 @@
+/**
+ * Chargé en tout dernier (après responsive / um-responsive).
+ * Rétablit le module Collections (et isolations similaires) face à dashboard.css + responsive.
+ */
+
+/* --- Collections : ne pas traiter la page comme un “dashboard” admin --- */
+.pokehub-collections-wrap.me5rine-lab-dashboard {
+    color: var(--me5rine-lab-text, #11161E);
+    min-height: auto;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Évite la bordure gauche “menu + contenu” prévue pour d’autres layouts */
+@media screen and (min-width: 783px) {
+    .pokehub-collections-wrap.me5rine-lab-dashboard {
+        border-left: none;
+    }
+}
+
+/* Grille des cartes : priorité sur reset de thème / navigateur */
+ul.pokehub-collections-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: var(--me5rine-lab-spacing-lg, 1.25rem);
+}
+
+@media (max-width: 900px) {
+    ul.pokehub-collections-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    ul.pokehub-collections-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Pas d’effet “carte générique” sur les tuiles collections */
+.pokehub-collections-grid > li.me5rine-lab-card:hover {
+    transform: none;
+}
+
+/* <details> section avancée : masquer tout sauf le résumé si fermé */
+.pokehub-collections-advanced.me5rine-lab-form-block:not([open]) > :not(summary) {
+    display: none !important;
+}
+
+.pokehub-collections-advanced.me5rine-lab-form-block[open] > :not(summary) {
+    display: block !important;
+}
+
+.pokehub-collections-advanced-summary {
+    list-style: none;
+}
+
+.pokehub-collections-advanced-summary::-webkit-details-marker {
+    display: none;
+}

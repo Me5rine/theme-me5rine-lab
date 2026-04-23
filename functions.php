@@ -283,6 +283,46 @@ add_action( 'wp_enqueue_scripts', function() {
 }, 99999 );
 
 /**
+ * Couche 3 : Poké HUB, après toute la base Me5rine (style.css + @import).
+ * Ordre : parent Hello → me5rine-child-style → me5rine-poke-hub-front → me5rine-poke-hub-late
+ */
+add_action( 'wp_enqueue_scripts', function() {
+
+	$base = 'me5rine-child-style';
+	if ( ! wp_style_is( $base, 'enqueued' ) ) {
+		return;
+	}
+
+	$dir = get_stylesheet_directory();
+	$uri = get_stylesheet_directory_uri();
+	$ver = function( $rel ) use ( $dir ) {
+		$p = $dir . $rel;
+		return file_exists( $p ) ? (string) filemtime( $p ) : ( defined( 'WP_DEBUG' ) && WP_DEBUG ? (string) time() : '1' );
+	};
+
+	$front = '/css/poke-hub/poke-hub-front.css';
+	$late  = '/css/poke-hub/poke-hub-late-overrides.css';
+
+	if ( is_readable( $dir . $front ) ) {
+		wp_enqueue_style(
+			'me5rine-poke-hub-front',
+			$uri . $front,
+			[ $base ],
+			$ver( $front )
+		);
+	}
+	if ( is_readable( $dir . $late ) ) {
+		$dep = wp_style_is( 'me5rine-poke-hub-front', 'enqueued' ) ? 'me5rine-poke-hub-front' : $base;
+		wp_enqueue_style(
+			'me5rine-poke-hub-late',
+			$uri . $late,
+			[ $dep ],
+			$ver( $late )
+		);
+	}
+}, 100000 );
+
+/**
  * =========================
  * ENQUEUE (avec filemtime safe)
  * =========================
@@ -308,7 +348,7 @@ function me5rine_enqueue_um_profile_assets() {
 		);
 	}
 
-	// ✅ Pas de CSS dédié ici : tout est dans style.css du thème
+	// CSS : base dans style.css ; Poké HUB en fichiers séparés (wp_enqueue_scripts priorité 100000).
 }
 add_action('wp_enqueue_scripts', 'me5rine_enqueue_um_profile_assets', 99999);
 
@@ -409,3 +449,13 @@ if ( ! function_exists('me5rine_display_profile_notice') ) {
 		);
 	}
 }
+
+/**
+ * Poké HUB : une seule source de vérité pour le CSS front (fichier du thème `css/poke-hub/`).
+ * Le plugin retire alors ses enqueues (filtre `poke_hub_load_default_plugin_front_css` dans le bridge).
+ */
+add_filter( 'poke_hub_load_default_plugin_front_css', '__return_false' );
+
+/* Aperçu éditeur : même ordre qu’en front (Poké HUB après le reste des editor styles du thème) */
+add_editor_style( 'css/poke-hub/poke-hub-front.css' );
+add_editor_style( 'css/poke-hub/poke-hub-late-overrides.css' );

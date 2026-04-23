@@ -1,0 +1,22 @@
+/**
+ * Poké HUB – feuilles front consolidées (source de vérité côté thème).
+ * Le plugin ne les charge plus lorsque le filtre `poke_hub_load_default_plugin_front_css` est à false.
+ *
+ * Ordre = dépendances approximatives (global-colors → types → blocs → modules…).
+ */
+@import url('parts/01-global-colors.css');
+@import url('parts/02-type-icons.css');
+@import url('parts/03-candy-display.css');
+@import url('parts/04-blocks-front.css');
+@import url('parts/05-new-pokemon-evolutions-front.css');
+@import url('parts/06-bonus-front.css');
+@import url('parts/07-collection-challenges-front.css');
+@import url('parts/08-special-research-front.css');
+@import url('parts/09-eggs-front.css');
+@import url('parts/10-go-pass-block-front.css');
+@import url('parts/11-events-front.css');
+@import url('parts/12-special-events-single.css');
+@import url('parts/13-collections-front.css');
+@import url('parts/14-collections-theme.css');
+@import url('parts/15-games.css');
+@import url('parts/16-user-profiles-friend-codes.css');

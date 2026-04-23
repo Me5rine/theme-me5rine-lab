@@ -738,36 +738,68 @@ p.um-notice.error::before {
     right: 12px;
 }
 
-/* --- Styles Select2 pour les formulaires --- */
-/* Container Select2 dans les formulaires */
-#poke-hub-profile-form .select2-container {
-    z-index: 1;
+/* Icônes (drapeau, équipe, motifs Vivillon / lépidonille) : une ligne, image à gauche — comme sur la page friend codes */
+#poke-hub-profile-form .select2-container .select2-selection--single .select2-selection__rendered,
+.poke-hub-friend-codes-filter-form .select2-container .select2-selection--single .select2-selection__rendered,
+.friend-codes-dashboard .select2-container .select2-selection--single .select2-selection__rendered,
+.vivillon-dashboard .select2-container .select2-selection--single .select2-selection__rendered {
+    display: flex !important;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    line-height: 1.2 !important;
 }
 
-#poke-hub-profile-form .select2-dropdown {
-    z-index: 9999;
+#poke-hub-profile-form .select2-selection__rendered > span,
+.poke-hub-friend-codes-filter-form .select2-selection__rendered > span,
+.friend-codes-dashboard .select2-selection__rendered > span,
+.vivillon-dashboard .select2-selection__rendered > span {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    max-width: 100%;
 }
 
-/* Styles pour le champ visible Select2 dans poke-hub-profile-form */
-#poke-hub-profile-form .select2-container .select2-selection--single {
-    min-height: 44px;
-    border: 2px solid var(--me5rine-lab-border, #DEE5EC);
-    border-radius: var(--me5rine-lab-radius-md);
+#poke-hub-profile-form .select2-selection__rendered img,
+.poke-hub-friend-codes-filter-form .select2-selection__rendered img,
+.friend-codes-dashboard .select2-selection__rendered img,
+.vivillon-dashboard .select2-selection__rendered img {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+#poke-hub-profile-form .select2-dropdown .select2-results__option,
+.poke-hub-friend-codes-filter-form .select2-dropdown .select2-results__option,
+.friend-codes-dashboard .select2-dropdown .select2-results__option,
+.vivillon-dashboard .select2-dropdown .select2-results__option {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
 }
 
-/* Le texte dans Select2 */
-#poke-hub-profile-form .select2-container .select2-selection__rendered {
-    line-height: 1.5;
-    padding-left: 16px;
-    padding-right: 44px; /* place pour la flèche */
+#poke-hub-profile-form .select2-dropdown .select2-results__option > span,
+.poke-hub-friend-codes-filter-form .select2-dropdown .select2-results__option > span,
+.friend-codes-dashboard .select2-dropdown .select2-results__option > span,
+.vivillon-dashboard .select2-dropdown .select2-results__option > span {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
 }
 
-/* La flèche Select2 */
-#poke-hub-profile-form .select2-container .select2-selection__arrow {
-    height: 100%;
-    right: 12px;
+#poke-hub-profile-form .select2-dropdown .select2-results__option img,
+.poke-hub-friend-codes-filter-form .select2-dropdown .select2-results__option img,
+.friend-codes-dashboard .select2-dropdown .select2-results__option img,
+.vivillon-dashboard .select2-dropdown .select2-results__option img {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 /* --- Utilitaires de Formulaire --- */

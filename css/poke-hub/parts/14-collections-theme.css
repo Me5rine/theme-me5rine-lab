@@ -1,0 +1,184 @@
+/**
+ * Poke Hub – Collections – Surcharges thème
+ *
+ * Importé par ../poke-hub-front.css (couche « Poké HUB » après la base me5rine).
+ * Harmonise dégradés / variables du module Collections avec la charte.
+ *
+ * Ne pas dupliquer dans le plugin : la prod utilise le thème (voir Poké HUB
+ * docs/THEME_FRONT_CSS.md).
+ */
+
+:root {
+    /* Dégradé des cartes sur la liste des collections (fallback sur le système) */
+    --pokehub-collections-card-gradient-start: var(--me5rine-lab-primary);
+    --pokehub-collections-card-gradient-mid: var(--me5rine-lab-secondary);
+    --pokehub-collections-card-gradient-end: var(--me5rine-lab-secondary);
+
+    /* Optionnel : overlay et fond du modal/drawer */
+    /* --pokehub-collections-card-overlay: rgba(0, 0, 0, 0.7); */
+    /* --pokehub-collections-modal-backdrop: rgba(0, 0, 0, 0.5); */
+
+    /* Header vue collection : image de couverture (flou + assombrissement) */
+    --pokehub-collection-header-blur: 20px;
+    --pokehub-collection-header-scrim: linear-gradient(
+        125deg,
+        rgba(8, 16, 28, 0.88) 0%,
+        rgba(8, 16, 28, 0.55) 45%,
+        rgba(8, 16, 28, 0.82) 100%
+    );
+
+}
+
+/* --- Image de collection en arrière-plan (comme la carte liste) --- */
+.pokehub-collection-view-header--has-cover .pokehub-collection-header-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(var(--pokehub-collection-header-blur)) brightness(0.42) saturate(1.05);
+    transform: scale(1.1);
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-header-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: var(--pokehub-collection-header-scrim);
+}
+
+/* Bandeau intérieur lisible sur fond sombre */
+.pokehub-collection-view-header--has-cover .pokehub-collection-header-inner {
+    min-height: 5.5rem;
+    padding: var(--me5rine-lab-spacing-lg, 1.25rem) var(--me5rine-lab-spacing-lg, 1.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(6, 12, 22, 0.2);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-view-title {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+    font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+    line-height: 1.2;
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-progress-badge {
+    color: #fff;
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+    padding: 0.35em 0.65em;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-progress-sep {
+    opacity: 0.65;
+    font-weight: 600;
+    margin: 0 0.05em;
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-progress-total {
+    opacity: 0.88;
+    font-weight: 700;
+}
+
+/* Barre d’outils : alignement seul (hauteur = boutons thème, comme la page friend codes) */
+.pokehub-collection-header-inner .pokehub-collection-view-actions {
+    align-items: center;
+    gap: 0.45rem 0.5rem;
+}
+
+.pokehub-collection-header-inner .pokehub-collection-view-actions .pokehub-collections-reset-inline {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    min-height: 0;
+    max-width: min(100%, 22rem);
+}
+
+/* .me5rine-lab-form-button impose margin-top: 20px (buttons.css) — pas dans le bandeau */
+.pokehub-collection-header-inner .me5rine-lab-form-button {
+    margin-top: 0 !important;
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-back.button,
+.pokehub-collection-view-header--has-cover .pokehub-collection-back.me5rine-lab-form-button-secondary {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-back:hover,
+.pokehub-collection-view-header--has-cover .pokehub-collection-back:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #fff;
+}
+
+.pokehub-collection-view-header--no-cover .pokehub-collection-header-inner .pokehub-collection-back.button,
+.pokehub-collection-view-header--no-cover .pokehub-collection-header-inner .pokehub-collection-back.me5rine-lab-form-button-secondary {
+    color: var(--me5rine-lab-text, #11161e);
+    border: 1px solid var(--me5rine-lab-border, #c4cdd8);
+    background: var(--me5rine-lab-bg, #fff);
+    box-shadow: 0 1px 2px rgba(17, 22, 30, 0.06);
+}
+
+.pokehub-collection-view-header--no-cover .pokehub-collection-header-inner .pokehub-collection-back:hover,
+.pokehub-collection-view-header--no-cover .pokehub-collection-header-inner .pokehub-collection-back:focus {
+    background: var(--me5rine-lab-bg-secondary, #eef3f8);
+    border-color: var(--me5rine-lab-border, #9aacbd);
+    color: var(--me5rine-lab-text, #11161e);
+}
+
+.pokehub-collection-view-header--has-cover .pokehub-collection-view-actions .button,
+.pokehub-collection-view-header--has-cover .pokehub-collection-view-actions .me5rine-lab-form-button,
+.pokehub-collection-view-header--has-cover .pokehub-collection-view-actions .me5rine-lab-form-button-secondary,
+.pokehub-collection-view-header--has-cover .pokehub-collection-header-inner .pokehub-collection-back {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Variante sans image (serveur) : même « carte » qu’avant */
+.pokehub-collection-view-header--no-cover .pokehub-collection-header-inner:not(.pokehub-collection-header-inner--local) {
+    border: 1px solid var(--me5rine-lab-border, #d7dee7);
+    background: linear-gradient(180deg, #f8fbff 0%, #f1f6fd 100%);
+    box-shadow: 0 2px 8px rgba(17, 22, 30, 0.06);
+}
+
+/* Variante sans image : badge progression un peu plus marqué */
+.pokehub-collection-view-header--no-cover .pokehub-collection-progress-badge,
+.pokehub-collection-header-inner--local .pokehub-collection-progress-badge {
+    font-size: clamp(1.2rem, 2.8vw, 1.4rem);
+    padding: 0.3em 0.55em;
+    border-radius: 999px;
+    background: var(--me5rine-lab-bg-secondary, #e8eef5);
+    border: 1px solid var(--me5rine-lab-border, #c5d0e0);
+    color: var(--me5rine-lab-text, #11161e);
+}
+
+.pokehub-collection-view-header--no-cover .pokehub-collection-view-title {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .pokehub-collection-view-header--has-cover .pokehub-collection-header-inner {
+        min-height: 0;
+    }
+
+    .pokehub-collection-view-header--has-cover .pokehub-collection-view-title {
+        text-align: left;
+        width: 100%;
+    }
+
+    .pokehub-collection-view-header--has-cover .pokehub-collection-view-header-main {
+        justify-content: space-between;
+    }
+}
