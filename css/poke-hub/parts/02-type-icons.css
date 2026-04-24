@@ -53,3 +53,10 @@
     border-radius: 4px;
     background: #fff;
 }
+
+/* Aligné avec poke-hub/assets/css/poke-hub-type-icons.css (liste admin types) */
+.pokehub-type-icon-list-cell {
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+}
