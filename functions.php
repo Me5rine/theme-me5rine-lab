@@ -331,7 +331,8 @@ add_action( 'wp_enqueue_scripts', function() {
 
 /**
  * Couche 3 : Poké HUB, après toute la base Me5rine (style.css + @import).
- * Ordre : parent Hello → me5rine-child-style → me5rine-poke-hub-front → me5rine-poke-hub-late
+ * Charge chaque fichier `css/poke-hub/parts/*.css` séparément avec son propre versioning.
+ * Ordre : parent Hello → me5rine-child-style → me5rine-poke-hub-part-* → me5rine-poke-hub-late
  */
 add_action( 'wp_enqueue_scripts', function() {
 
@@ -347,23 +348,38 @@ add_action( 'wp_enqueue_scripts', function() {
 		return file_exists( $p ) ? (string) filemtime( $p ) : ( defined( 'WP_DEBUG' ) && WP_DEBUG ? (string) time() : '1' );
 	};
 
-	$front = '/css/poke-hub/poke-hub-front.css';
+	$parts_dir = '/css/poke-hub/parts';
 	$late  = '/css/poke-hub/poke-hub-late-overrides.css';
+	$last_dep = $base;
 
-	if ( is_readable( $dir . $front ) ) {
-		wp_enqueue_style(
-			'me5rine-poke-hub-front',
-			$uri . $front,
-			[ $base ],
-			me5rine_get_css_bundle_version( $front )
-		);
+	$parts = glob( $dir . $parts_dir . '/*.css' );
+	if ( is_array( $parts ) && ! empty( $parts ) ) {
+		natsort( $parts );
+		foreach ( $parts as $part_path ) {
+			$part_path = (string) $part_path;
+			if ( ! is_readable( $part_path ) ) {
+				continue;
+			}
+			$part_basename = basename( $part_path, '.css' );
+			$part_rel = str_replace( $dir, '', $part_path );
+			$part_rel = str_replace( '\\', '/', $part_rel );
+			$handle = 'me5rine-poke-hub-part-' . sanitize_key( $part_basename );
+
+			wp_enqueue_style(
+				$handle,
+				$uri . $part_rel,
+				[ $last_dep ],
+				(string) filemtime( $part_path )
+			);
+			$last_dep = $handle;
+		}
 	}
+
 	if ( is_readable( $dir . $late ) ) {
-		$dep = wp_style_is( 'me5rine-poke-hub-front', 'enqueued' ) ? 'me5rine-poke-hub-front' : $base;
 		wp_enqueue_style(
 			'me5rine-poke-hub-late',
 			$uri . $late,
-			[ $dep ],
+			[ $last_dep ],
 			$ver( $late )
 		);
 	}
