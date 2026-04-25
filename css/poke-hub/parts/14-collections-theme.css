@@ -35,8 +35,8 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background-size: cover;
-    background-position: center;
+    background-size: 115% auto;
+    background-position: center 12%;
     background-repeat: no-repeat;
     filter: blur(var(--pokehub-collection-header-blur)) brightness(0.42) saturate(1.05);
     transform: scale(1.1);
