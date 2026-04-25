@@ -150,45 +150,92 @@ add_action( 'wp_head', function() {
 }, 1 );
 
 /**
+ * Normalise un chemin en style UNIX (fallback si WP pas chargé complètement).
+ */
+function me5rine_normalize_path( $path ) {
+	$path = (string) $path;
+	if ( function_exists( 'wp_normalize_path' ) ) {
+		return wp_normalize_path( $path );
+	}
+	return str_replace( '\\', '/', $path );
+}
+
+/**
+ * Construit récursivement la liste des CSS importés via @import.
+ */
+function me5rine_collect_css_imports_recursive( $file_path, &$visited = [] ) {
+	$file_path = me5rine_normalize_path( $file_path );
+	if ( isset( $visited[ $file_path ] ) || ! is_readable( $file_path ) ) {
+		return;
+	}
+	$visited[ $file_path ] = true;
+
+	$content = (string) file_get_contents( $file_path );
+	if ( $content === '' ) {
+		return;
+	}
+
+	preg_match_all( '/@import\s+(?:url\()?[\'"]?([^\'")]+)[\'"]?\)?;/i', $content, $matches );
+	if ( empty( $matches[1] ) ) {
+		return;
+	}
+
+	$base_dir = dirname( $file_path );
+	foreach ( $matches[1] as $import_path ) {
+		$import_path = trim( (string) strtok( (string) $import_path, '?' ) );
+		if ( $import_path === '' ) {
+			continue;
+		}
+		$lower = strtolower( $import_path );
+		if ( strpos( $lower, 'http://' ) === 0 || strpos( $lower, 'https://' ) === 0 || strpos( $import_path, '//' ) === 0 ) {
+			continue;
+		}
+		$candidate = me5rine_normalize_path( $base_dir . '/' . ltrim( $import_path, '/' ) );
+		if ( is_readable( $candidate ) ) {
+			me5rine_collect_css_imports_recursive( $candidate, $visited );
+		}
+	}
+}
+
+/**
+ * Génère un hash de version basé sur un fichier CSS + toute sa chaîne d'imports.
+ */
+function me5rine_get_css_import_graph_version( $file_path ) {
+	$file_path = me5rine_normalize_path( $file_path );
+	if ( ! is_readable( $file_path ) ) {
+		return ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? (string) time() : '1';
+	}
+
+	$visited = [];
+	me5rine_collect_css_imports_recursive( $file_path, $visited );
+
+	$fingerprints = [];
+	foreach ( array_keys( $visited ) as $path ) {
+		$fingerprints[] = $path . ':' . (string) filemtime( $path );
+	}
+	sort( $fingerprints );
+
+	return md5( implode( '|', $fingerprints ) );
+}
+
+/**
  * =========================
- * Calcul de la version CSS combinée (style.css + tous les fichiers importés)
+ * Calcul de la version CSS combinée (style.css + imports récursifs)
  * =========================
  */
 function me5rine_get_css_version() {
 	$style_path = get_stylesheet_directory() . '/style.css';
-	
-	if ( !file_exists($style_path) ) {
-		return time();
-	}
-	
-	$version = filemtime($style_path);
-	$content = file_get_contents($style_path);
-	
-	// Extraire les URLs des @import (supporte @import url('...') et @import '...')
-	preg_match_all('/@import\s+(?:url\()?[\'"]?([^\'")]+)[\'"]?\)?;/i', $content, $matches);
-	
-	if ( !empty($matches[1]) ) {
-		$times = [$version]; // Commencer avec le filemtime de style.css
-		
-		foreach ( $matches[1] as $import_path ) {
-			// Nettoyer le chemin (supprimer les paramètres de requête éventuels)
-			$import_path = trim(strtok($import_path, '?'));
-			
-			// Construire le chemin complet
-			$full_path = get_stylesheet_directory() . '/' . $import_path;
-			
-			if ( file_exists($full_path) ) {
-				$times[] = filemtime($full_path);
-			}
-		}
-		
-		// Générer un hash basé sur tous les filemtime
-		// Si un seul fichier change, le hash change
-		// Utiliser MD5 complet pour garantir l'unicité (WordPress accepte les versions longues)
-		$version = md5(implode('|', $times));
-	}
-	
-	return $version;
+	return me5rine_get_css_import_graph_version( $style_path );
+}
+
+/**
+ * Versionne un bundle CSS + tous ses @import récursifs.
+ * Exemple : /css/poke-hub/poke-hub-front.css + /css/poke-hub/parts/* (+ sous-imports)
+ */
+function me5rine_get_css_bundle_version( $relative_file ) {
+	$relative_file = '/' . ltrim( (string) $relative_file, '/' );
+	$root_path = get_stylesheet_directory() . $relative_file;
+	return me5rine_get_css_import_graph_version( $root_path );
 }
 
 /**
@@ -308,7 +355,7 @@ add_action( 'wp_enqueue_scripts', function() {
 			'me5rine-poke-hub-front',
 			$uri . $front,
 			[ $base ],
-			$ver( $front )
+			me5rine_get_css_bundle_version( $front )
 		);
 	}
 	if ( is_readable( $dir . $late ) ) {
