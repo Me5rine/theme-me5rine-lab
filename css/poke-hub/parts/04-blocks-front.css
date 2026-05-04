@@ -995,6 +995,55 @@
     margin: 2rem 0;
 }
 
+/*
+ * Wrappers `-block-wrapper` : alignés avec les autres blocs (cadre + titre Poké Hub).
+ */
+.pokehub-shop-avatar-highlights-block-wrapper.pokehub-shop-highlights,
+.pokehub-shop-sticker-highlights-block-wrapper.pokehub-shop-highlights {
+    margin: 2rem 0;
+}
+
+/* Introduction sous le titre bloc (paragraphe) — couleur lisible comme sous-titre */
+.pokehub-shop-highlights[class*="block-wrapper"] .pokehub-shop-highlights-lead__text.pokehub-block-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--admin-lab-color-text, #5d697d);
+}
+
+/* Titre de section dans le panel (« … in this event ») — niveau sous-titre Poké Hub */
+.pokehub-shop-highlights[class*="block-wrapper"] .pokehub-shop-highlights-panel__tiles-title.pokehub-block-subtitle {
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    margin: 0 0 0.7rem !important;
+    color: var(--admin-lab-color-text-accent, var(--admin-lab-color-header-text, #011322)) !important;
+}
+
+/* Tuiles liste : carte non carrée, nom multi-ligne visible (sans clip bas de tuile) */
+.pokehub-shop-highlights-items.pokehub-wild-pokemon-grid > .pokehub-wild-pokemon-card.pokehub-shop-avatar-item-card,
+.pokehub-shop-highlights-items.pokehub-wild-pokemon-grid > .pokehub-wild-pokemon-card.pokehub-shop-sticker-item-card {
+    aspect-ratio: auto;
+    align-self: start;
+}
+
+.pokehub-shop-highlights-items .pokehub-shop-avatar-item-card .pokehub-wild-pokemon-card-inner,
+.pokehub-shop-highlights-items .pokehub-shop-sticker-item-card .pokehub-wild-pokemon-card-inner {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    justify-content: flex-start;
+}
+
+.pokehub-shop-highlights-items .pokehub-shop-avatar-item-card .pokehub-wild-pokemon-name,
+.pokehub-shop-highlights-items .pokehub-shop-sticker-item-card .pokehub-wild-pokemon-name {
+    overflow: visible;
+    text-overflow: unset;
+}
+
 .pokehub-shop-highlights-panel {
     margin-top: 1rem;
     background: var(--admin-lab-color-white, #ffffff);

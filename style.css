@@ -15,7 +15,7 @@ Updated: 2025-06-06 01:18:45
  * Ordre de chargement global (wp_enqueue_scripts) :
  * 1. Thème parent : hello-elementor (et styles associés) — géré par WordPress / le parent
  * 2. Ce fichier (me5rine-child-style) : base Me5rine Lab (imports ci-dessous uniquement)
- * 3. Poké HUB : css/poke-hub/poke-hub-front.css puis poke-hub-late-overrides.css — enqueued dans functions.php APRÈS le handle me5rine-child-style
+ * 3. Poké HUB : chaque css/poke-hub/parts/*.css puis poke-hub-late-overrides.css — enqueued dans functions.php APRÈS me5rine-child-style (poke-hub-front.css = index @import pour l’éditeur, pas le bundle front navigateur)
  *
  * Surcharges plugins : autant que possible via variables + composants (2) ; correctifs ciblés dans (3).
  */

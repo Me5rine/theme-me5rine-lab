@@ -1,6 +1,11 @@
 /**
- * Poké HUB – feuilles front consolidées (source de vérité côté thème).
- * Le plugin ne les charge plus lorsque le filtre `poke_hub_load_default_plugin_front_css` est à false.
+ * Poké HUB – liste des feuilles du lot front (référence + `add_editor_style()`).
+ *
+ * En front navigateur, `functions.php` enqueue chaque fichier `parts/*.css` séparément
+ * (ordre 01→…→16, version = filemtime par fichier) puis `poke-hub-late-overrides.css`.
+ * Ce fichier n’est donc pas chargé en enqueue front : il sert d’index lisible et au prévisualiseur d’édition.
+ *
+ * Le plugin ne charge pas le pack `poke-hub-*-front` lorsque le filtre `poke_hub_load_default_plugin_front_css` vaut false.
  *
  * Ordre = dépendances approximatives (global-colors → types → blocs → modules…).
  */
@@ -11,6 +16,7 @@
 @import url('parts/05-new-pokemon-evolutions-front.css');
 @import url('parts/06-bonus-front.css');
 @import url('parts/07-collection-challenges-front.css');
+@import url('parts/08-tile-chip-neutral.css');
 @import url('parts/08-special-research-front.css');
 @import url('parts/09-eggs-front.css');
 @import url('parts/10-go-pass-block-front.css');

@@ -229,8 +229,8 @@ function me5rine_get_css_version() {
 }
 
 /**
- * Versionne un bundle CSS + tous ses @import récursifs.
- * Exemple : /css/poke-hub/poke-hub-front.css + /css/poke-hub/parts/* (+ sous-imports)
+ * Versionne un bundle CSS + tous ses @import récursifs (ex. `style.css` du thème).
+ * Non utilisé pour Poké HUB front : les `parts/*.css` sont enqueues séparément.
  */
 function me5rine_get_css_bundle_version( $relative_file ) {
 	$relative_file = '/' . ltrim( (string) $relative_file, '/' );
