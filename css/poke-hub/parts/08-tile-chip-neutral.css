@@ -65,15 +65,63 @@ button.pokehub-collection-fixed-tile-btn,
     transition: border-color 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
+/* Tuiles onglets barre fixe (scroll) : un peu plus hautes que les puces génériques. */
+button.pokehub-collection-fixed-tile-btn {
+    --me5rine-lab-tile-chip-min-h: 3.35rem;
+    min-height: 3.35rem;
+}
+
 a.me5rine-lab-tile-chip:hover {
     text-decoration: none;
     color: color-mix(in srgb, var(--me5rine-lab-text, #11161e) 92%, #000);
 }
 
 button.me5rine-lab-tile-chip--has-media,
-button.pokehub-collection-fixed-tile-btn--has-media,
 a.me5rine-lab-tile-chip--has-media {
     padding-right: 3rem;
+}
+
+/* Barre collection fixe : image pleine tuile (même URL que panneau flux / data-toolbar-decoration-url). */
+button.pokehub-collection-fixed-tile-btn--has-media {
+    --pokehub-fixed-tile-bg: none;
+    padding-right: var(--me5rine-lab-tile-chip-pad-x, 0.85rem);
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(8, 16, 28, 0.68) 0%,
+            rgba(8, 16, 28, 0.22) 46%,
+            rgba(8, 16, 28, 0.42) 100%
+        ),
+        var(--pokehub-fixed-tile-bg);
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+}
+
+button.pokehub-collection-fixed-tile-btn--has-media:hover,
+button.pokehub-collection-fixed-tile-btn--has-media:focus-visible {
+    filter: brightness(0.94);
+    color: #fff;
+}
+
+button.pokehub-collection-fixed-tile-btn--has-media.is-active {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(8, 16, 28, 0.52) 0%,
+            rgba(8, 16, 28, 0.14) 50%,
+            rgba(8, 16, 28, 0.38) 100%
+        ),
+        var(--pokehub-fixed-tile-bg);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: #fff;
+}
+
+.pokehub-collection-fixed-tile-btn--has-media .pokehub-collection-fixed-tile-btn-media {
+    display: none;
 }
 
 .pokehub-collection-fixed-tile-btn-label,
@@ -103,6 +151,10 @@ a.me5rine-lab-tile-chip--has-media {
     filter: drop-shadow(-1px 0 10px rgba(255, 255, 255, 0.2)) drop-shadow(0 2px 5px rgba(12, 18, 28, 0.15));
 }
 
+.pokehub-collection-fixed-tile-btn-media {
+    background-image: var(--pokehub-fixed-tile-bg, none);
+}
+
 button.me5rine-lab-tile-chip.is-active .me5rine-lab-tile-chip__media,
 button.pokehub-collection-fixed-tile-btn.is-active .pokehub-collection-fixed-tile-btn-media {
     opacity: 1;
@@ -112,8 +164,8 @@ button.me5rine-lab-tile-chip:hover,
 button.me5rine-lab-tile-chip:focus-visible,
 a.me5rine-lab-tile-chip:hover,
 a.me5rine-lab-tile-chip:focus-visible,
-button.pokehub-collection-fixed-tile-btn:hover,
-button.pokehub-collection-fixed-tile-btn:focus-visible {
+button.pokehub-collection-fixed-tile-btn:hover:not(.pokehub-collection-fixed-tile-btn--has-media),
+button.pokehub-collection-fixed-tile-btn:focus-visible:not(.pokehub-collection-fixed-tile-btn--has-media) {
     border-color: color-mix(in srgb, var(--me5rine-lab-text, #11161e) 22%, var(--me5rine-lab-border, #c9cfd6));
     outline: none;
     filter: brightness(0.98);
@@ -126,7 +178,7 @@ button.pokehub-collection-fixed-tile-btn:focus-visible {
 
 button.me5rine-lab-tile-chip.is-active,
 a.me5rine-lab-tile-chip.is-active,
-button.pokehub-collection-fixed-tile-btn.is-active {
+button.pokehub-collection-fixed-tile-btn.is-active:not(.pokehub-collection-fixed-tile-btn--has-media) {
     border-color: color-mix(in srgb, var(--me5rine-lab-text, #11161e) 38%, var(--me5rine-lab-border));
     background: linear-gradient(
         165deg,
@@ -138,4 +190,11 @@ button.pokehub-collection-fixed-tile-btn.is-active {
     box-shadow:
         0 0 0 2px color-mix(in srgb, var(--me5rine-lab-text, #11161e) 08%, transparent),
         0 2px 10px color-mix(in srgb, var(--me5rine-lab-text, #000) 10%, transparent);
+}
+
+button.pokehub-collection-fixed-tile-btn--has-media.is-active {
+    font-weight: 800;
+    box-shadow:
+        0 0 0 2px color-mix(in srgb, var(--me5rine-lab-secondary, #0485c8) 35%, transparent),
+        0 2px 10px color-mix(in srgb, var(--me5rine-lab-text, #000) 12%, transparent);
 }
