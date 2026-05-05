@@ -29,13 +29,38 @@
     margin: 0 auto;
 }
 
-/* Header : sous-titre flex 1, actions à droite (me5rine-lab-dashboard-header) */
+/* Header liste collections : pattern tuile (comme Friend Codes) */
+.pokehub-collections-wrap .pokehub-collections-home-header {
+    margin-bottom: 20px;
+}
+
 .pokehub-collections-wrap .me5rine-lab-dashboard-header {
-    margin-bottom: var(--me5rine-lab-spacing-lg, 1.5rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--me5rine-lab-spacing-sm, 10px);
+    margin-bottom: 0;
+}
+
+.pokehub-collections-wrap .pokehub-collections-home-header > .me5rine-lab-title-large {
+    text-align: left;
 }
 
 .pokehub-collections-wrap .me5rine-lab-dashboard-header .me5rine-lab-subtitle {
     flex: 1;
+    min-width: 0;
+    margin: 0;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.pokehub-collections-wrap .me5rine-lab-dashboard-header .me5rine-lab-dashboard-header-actions {
+    flex: 0 0 auto;
+}
+
+.pokehub-collections-wrap .pokehub-collections-home-header-content {
     min-width: 0;
 }
 
@@ -105,6 +130,21 @@
     padding: var(--me5rine-lab-spacing-sm, 0.5rem) var(--me5rine-lab-spacing-md, 1rem);
 }
 
+.pokehub-collections-card-link:hover,
+.pokehub-collections-card-link:focus-visible {
+    text-decoration: none;
+}
+
+.pokehub-collections-wrap .pokehub-collections-card-link,
+.pokehub-collections-wrap .pokehub-collections-card-link:hover,
+.pokehub-collections-wrap .pokehub-collections-card-link:focus,
+.pokehub-collections-wrap .pokehub-collections-card-link:focus-visible,
+.pokehub-collections-wrap .pokehub-collections-card-link:active,
+.pokehub-collections-wrap .pokehub-collections-card-link .me5rine-lab-card-name,
+.pokehub-collections-wrap .pokehub-collections-card-link .me5rine-lab-card-meta {
+    text-decoration: none !important;
+}
+
 .pokehub-collections-card-bg {
     position: absolute;
     inset: 0;
@@ -112,6 +152,7 @@
     background-size: 115% auto;
     background-position: center 12%;
     z-index: 0;
+    transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .pokehub-collections-card-link::after {
@@ -122,23 +163,96 @@
     z-index: 1;
 }
 
+/* Renfort de contraste sur la zone titre (haut/gauche). */
+.pokehub-collections-card-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 78% at 16% 11%, rgba(6, 12, 20, 0.6) 0%, rgba(6, 12, 20, 0.28) 38%, rgba(6, 12, 20, 0) 72%);
+    transition: opacity 0.2s ease;
+}
+
 .pokehub-collections-grid .me5rine-lab-card-name,
 .pokehub-collections-grid .me5rine-lab-card-meta {
     position: relative;
     z-index: 2;
     display: block;
+    color: var(--me5rine-lab-white, #fff);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .pokehub-collections-grid .me5rine-lab-card-name {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: 1.08rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     margin-bottom: 0.15rem;
 }
 
 .pokehub-collections-grid .me5rine-lab-card-meta {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     opacity: 0.95;
+    text-transform: none;
+}
+
+.pokehub-collections-grid .me5rine-lab-card:hover .pokehub-collections-card-bg,
+.pokehub-collections-grid .me5rine-lab-card:focus-within .pokehub-collections-card-bg {
+    filter: brightness(0.84);
+}
+
+.pokehub-collections-grid .me5rine-lab-card:hover .pokehub-collections-card-link::before,
+.pokehub-collections-grid .me5rine-lab-card:focus-within .pokehub-collections-card-link::before {
+    opacity: 1;
+}
+
+.pokehub-collections-grid .me5rine-lab-card:hover .me5rine-lab-card-name,
+.pokehub-collections-grid .me5rine-lab-card:focus-within .me5rine-lab-card-name {
+    color: color-mix(in srgb, var(--me5rine-lab-white, #fff) 84%, var(--me5rine-lab-text-muted, #9ca4ae));
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.62);
+}
+
+.pokehub-collections-grid .me5rine-lab-card:hover .me5rine-lab-card-meta,
+.pokehub-collections-grid .me5rine-lab-card:focus-within .me5rine-lab-card-meta {
+    color: color-mix(in srgb, var(--me5rine-lab-white, #fff) 82%, var(--me5rine-lab-text-muted, #9ca4ae));
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.58);
+}
+
+.pokehub-collections-card-progress {
+    position: absolute;
+    left: var(--me5rine-lab-spacing-md, 1rem);
+    bottom: var(--me5rine-lab-spacing-sm, 0.5rem);
+    z-index: 2;
+    display: grid;
+    gap: 0.18rem;
+    min-width: 7rem;
+}
+
+.pokehub-collections-card-progress-stats {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--me5rine-lab-white, #fff);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.pokehub-collections-card-progress-bar {
+    display: block;
+    width: 100%;
+    height: 0.28rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.pokehub-collections-card-progress-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #161616;
 }
 
 /* Actions sur la carte : position + boutons compacts (me5rine-lab-card-actions) */
@@ -149,6 +263,7 @@
     z-index: 3;
     display: flex;
     gap: var(--me5rine-lab-spacing-xs, 0.35rem);
+    align-items: center;
 }
 
 .pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn {
@@ -158,7 +273,7 @@
     padding: 0;
     border: none;
     border-radius: var(--me5rine-lab-radius-sm, 6px);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     color: var(--me5rine-lab-text, #11161E);
     cursor: pointer;
     display: flex;
@@ -180,14 +295,41 @@
     box-shadow: none;
 }
 
+.pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn.me5rine-lab-form-button-remove {
+    width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    display: flex !important;
+    box-shadow: none !important;
+    background: var(--me5rine-lab-primary, #2e576f) !important;
+    border: 1px solid var(--me5rine-lab-primary, #2e576f) !important;
+    color: var(--me5rine-lab-white, #fff) !important;
+}
+
 .pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn:hover {
-    background: var(--me5rine-lab-white, #fff);
-    color: var(--me5rine-lab-secondary, #0485C8);
+    background: var(--me5rine-lab-secondary, #0485c8);
+    color: var(--me5rine-lab-white, #fff);
+}
+
+.pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn-settings:hover {
+    background: var(--me5rine-lab-secondary, #0485c8);
+    color: var(--me5rine-lab-white, #fff);
 }
 
 .pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn-delete:hover {
-    background: #dc3545;
+    background: var(--me5rine-lab-secondary, #0485c8) !important;
+    border-color: var(--me5rine-lab-secondary, #0485c8) !important;
     color: var(--me5rine-lab-white, #fff);
+}
+
+/* Neutralise l'animation verticale générique des boutons remove dans la grille Collections. */
+.pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn-delete.me5rine-lab-form-button-remove:hover,
+.pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn-delete.me5rine-lab-form-button-remove:focus-visible,
+.pokehub-collections-grid .me5rine-lab-card-actions .pokehub-collections-card-btn-delete.me5rine-lab-form-button-remove:active {
+    transform: none !important;
 }
 
 .pokehub-collections-card-btn .me5rine-lab-sr-only,
@@ -213,6 +355,7 @@
     font-size: 1.25rem;
     line-height: 1;
     font-weight: 700;
+    margin-bottom: 4px;
 }
 
 /* --- Liste fallback (sans grille) --- */
@@ -297,17 +440,22 @@
     margin-bottom: var(--me5rine-lab-spacing-md, 1rem);
 }
 
-/* Champs formulaire dans le drawer : me5rine-lab-form-block fieldset */
-.pokehub-collections-drawer .me5rine-lab-form-block fieldset {
+/* Champs formulaire du drawer settings : contenu direct dans le body */
+.pokehub-collections-drawer-body fieldset {
     margin: var(--me5rine-lab-spacing-md, 1rem) 0;
+    padding: var(--me5rine-lab-spacing-sm, 0.75rem) var(--me5rine-lab-spacing-md, 1rem);
+    border: 1px solid var(--me5rine-lab-border, #d7dee7);
+    border-radius: var(--me5rine-lab-radius-md, 8px);
+    background: color-mix(in srgb, var(--me5rine-lab-bg-secondary, #eef4fa) 60%, var(--me5rine-lab-bg, #fff));
 }
 
-.pokehub-collections-drawer .me5rine-lab-form-block fieldset legend {
+.pokehub-collections-drawer-body fieldset legend {
     font-weight: 600;
     color: var(--me5rine-lab-text, #11161E);
+    padding: 0 0.35rem;
 }
 
-.pokehub-collections-drawer .me5rine-lab-form-block fieldset label {
+.pokehub-collections-drawer-body fieldset label {
     display: block;
     margin: var(--me5rine-lab-spacing-sm, 0.5rem) 0;
     cursor: pointer;
@@ -445,8 +593,16 @@
     padding: var(--me5rine-lab-spacing-md, 1rem) var(--me5rine-lab-spacing-lg, 1.25rem);
     border-top: 1px solid var(--me5rine-lab-border, #e0e0e0);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--me5rine-lab-spacing-sm, 0.5rem);
+}
+
+/* Settings drawer: actions Save/Delete sur une seule ligne (50/50). */
+.pokehub-collections-drawer-footer .pokehub-collections-modal-edit-save,
+.pokehub-collections-drawer-footer .pokehub-collections-btn-delete-collection {
+    flex: 1 1 50%;
+    width: 50%;
+    margin-top: 0 !important;
 }
 
 /* --- Vue collection (page d'une collection) --- */
@@ -489,13 +645,14 @@ body.admin-bar {
     }
 }
 
-.collection-view-dashboard .pokehub-collection-page-header-wrap {
+.collection-view-dashboard .pokehub-collection-toolbar-header {
     position: relative;
     border-radius: var(--me5rine-lab-radius-md, 10px);
+    margin: 0 0 var(--pokehub-toolbar-stack-gap, 0.6rem);
 }
 
 .collection-view-dashboard .pokehub-collection-view-header.pokehub-collection-view-header--page-flow {
-    margin-bottom: var(--me5rine-lab-spacing-lg, 1.5rem);
+    margin-bottom: 0;
 }
 
 /* Empile titre + lignes filtres GO génération / selectors : flux normal jusqu’à ce que la barre fixe soit affichée côté JS. */
@@ -507,13 +664,28 @@ body.admin-bar {
         var(--pokehub-elementor-header-offset) + var(--pokehub-adminbar-offset) + var(--pokehub-toolbar-sticky-gap)
     );
     z-index: 90;
-    margin-bottom: 0;
+    margin-bottom: var(--pokehub-toolbar-stack-gap, 0.6rem);
     width: 100%;
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
     background: var(--me5rine-lab-bg, #ffffff);
     isolation: isolate;
+}
+
+.pokehub-collection-view-wrap.pokehub-toolbar-stack-pinned {
+    padding-top: var(--pokehub-toolbar-stack-pin-spacer, 0px);
+}
+
+.pokehub-collection-toolbar-stack.pokehub-toolbar-stack--pinned {
+    position: fixed;
+    left: 0;
+    right: auto;
+    width: 100%;
+    top: calc(
+        var(--pokehub-elementor-header-offset) + var(--pokehub-adminbar-offset) + var(--pokehub-toolbar-sticky-gap)
+    );
+    z-index: 90;
 }
 
 .pokehub-collection-toolbar-stack::before {
@@ -559,6 +731,7 @@ body.admin-bar {
 
 /* Fond, bordure, ombre. PC : padding horizontal modéré (lg) — xl faisait « vide » excessif ; safe-area conservé. */
 .pokehub-collection-fixed-toolbar-inner {
+    --pokehub-toolbar-stack-gap: 0.6rem;
     max-width: 100%;
     margin: 0 auto;
     padding: 25px var(--me5rine-lab-spacing-lg, 1.25rem)
@@ -571,6 +744,9 @@ body.admin-bar {
     overflow-x: visible;
     overflow-y: visible;
     box-shadow: 0 6px 14px -10px rgba(12, 18, 28, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--pokehub-toolbar-stack-gap);
 }
 
 @media (max-width: 1024px) {
@@ -617,57 +793,48 @@ body.admin-bar {
 }
 
 /* Tuiles + panneau : léger décalage sous le bloc titre. */
-.pokehub-collection-fixed-toolbar-chrome {
-    margin-top: 0.45rem;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
 /* Tuiles épingle : égale répartition largeur + image option sous data-toolbar-decoration-url (voir collections-front.js) */
-.pokehub-collection-fixed-tiles {
+.pokehub-collection-toolbar-tiles {
     display: grid;
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
     gap: 0.45rem 0.5rem;
-    margin: 0.2rem 0 0;
+    margin: 0;
     align-items: stretch;
 }
 
-.pokehub-collection-fixed-tiles[data-fixed-visible-count='1'] {
+.pokehub-collection-toolbar-tiles[data-fixed-visible-count='1'] {
     grid-template-columns: minmax(0, 1fr);
 }
 
-.pokehub-collection-fixed-tiles[data-fixed-visible-count='2'] {
+.pokehub-collection-toolbar-tiles[data-fixed-visible-count='2'] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.pokehub-collection-fixed-tiles[data-fixed-visible-count='3'] {
+.pokehub-collection-toolbar-tiles[data-fixed-visible-count='3'] {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.pokehub-collection-fixed-tiles[data-fixed-visible-count='4'] {
+.pokehub-collection-toolbar-tiles[data-fixed-visible-count='4'] {
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 /* Mobile : une seule rangée (Filtres / GO / Gén. / …) — libellés courts côté JS (data-collection-fixed-label-short) */
 @media (max-width: 640px) {
-    .pokehub-collection-fixed-tiles[data-fixed-visible-count='2'] {
+    .pokehub-collection-toolbar-tiles[data-fixed-visible-count='2'] {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .pokehub-collection-fixed-tiles[data-fixed-visible-count='3'] {
+    .pokehub-collection-toolbar-tiles[data-fixed-visible-count='3'] {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .pokehub-collection-fixed-tiles[data-fixed-visible-count='4'] {
+    .pokehub-collection-toolbar-tiles[data-fixed-visible-count='4'] {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn {
+    .pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn {
         font-size: 0.58rem;
         letter-spacing: 0.04em;
         padding-left: 0.35rem;
@@ -677,8 +844,8 @@ body.admin-bar {
     }
 }
 
-.pokehub-collection-fixed-active-region {
-    margin-top: 0.45rem;
+.pokehub-collection-toolbar-active-region {
+    margin-top: 0;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(8rem, 34%);
     align-items: center;
@@ -689,14 +856,14 @@ body.admin-bar {
     background: color-mix(in srgb, var(--me5rine-lab-bg-secondary, #eef4fa) 55%, var(--me5rine-lab-bg, #fff));
 }
 
-.pokehub-collection-fixed-active-region-left {
+.pokehub-collection-toolbar-active-region-left {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
     min-width: 0;
 }
 
-.pokehub-collection-fixed-active-region-icon {
+.pokehub-collection-toolbar-active-region-icon {
     width: 1.1rem;
     height: 1.1rem;
     flex: 0 0 1.1rem;
@@ -706,7 +873,7 @@ body.admin-bar {
     background-position: center;
 }
 
-.pokehub-collection-fixed-active-region-name {
+.pokehub-collection-toolbar-active-region-name {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -717,14 +884,14 @@ body.admin-bar {
     text-overflow: ellipsis;
 }
 
-.pokehub-collection-fixed-active-region-stats {
+.pokehub-collection-toolbar-active-region-stats {
     font-size: 0.8rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     color: var(--me5rine-lab-text, #11161e);
 }
 
-.pokehub-collection-fixed-active-region-bar {
+.pokehub-collection-toolbar-active-region-bar {
     display: block;
     width: 100%;
     height: 0.34rem;
@@ -733,21 +900,17 @@ body.admin-bar {
     overflow: hidden;
 }
 
-.pokehub-collection-fixed-active-region-bar-fill {
+.pokehub-collection-toolbar-active-region-bar-fill {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-        90deg,
-        var(--me5rine-lab-secondary, #0485c8),
-        color-mix(in srgb, var(--me5rine-lab-primary, #2e576f) 75%, var(--me5rine-lab-secondary))
-    );
+    background: #161616;
 }
 
 /* Tuiles barre fixe : styles partagés avec .me5rine-lab-tile-chip — voir parts/08-tile-chip-neutral.css */
 
 .pokehub-collection-fixed-expand:not([hidden]) {
-    margin-top: 0.45rem;
+    margin-top: 0;
     padding: var(--me5rine-lab-spacing-sm, 0.75rem) var(--me5rine-lab-spacing-md, 1rem);
     max-height: min(72vh, 28rem);
     overflow: auto;
@@ -775,7 +938,7 @@ body.admin-bar {
 }
 
 /* Header flux masqué mais garde la hauteur (pas de display:none / scrollTo = évite oscillation). Le clone fixe couvre la zone. */
-.pokehub-collection--fixed-toolbar .pokehub-collection-page-header-wrap {
+.pokehub-collection--fixed-toolbar .pokehub-collection-toolbar-header {
     visibility: hidden;
     pointer-events: none;
     user-select: none;
@@ -1335,13 +1498,16 @@ body.admin-bar {
     margin: 0.4rem 0 0;
 }
 
-.pokehub-collection-sticky-tools {
+.pokehub-collection-toolbar-tools {
+    --pokehub-toolbar-stack-gap: 0.6rem;
     position: relative;
     top: auto;
     z-index: auto;
     display: grid;
-    gap: var(--me5rine-lab-spacing-sm, 0.5rem);
-    margin: var(--me5rine-lab-spacing-md, 1rem) 0;
+    gap: var(--pokehub-toolbar-stack-gap);
+    margin: 0;
+    padding: 0 0 15px;
+    border-bottom: 2px solid var(--me5rine-lab-border, #d7dee7);
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1349,45 +1515,22 @@ body.admin-bar {
     overflow: visible;
 }
 
-.pokehub-collection-flow-toolbar-chrome {
-    margin: 0.2rem 0 0.35rem;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-}
-
-.pokehub-collection-flow-toolbar-inner {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.collection-view-dashboard .pokehub-collection-sticky-tools,
-.collection-view-dashboard .pokehub-collection-flow-toolbar-inner,
-.collection-view-dashboard .pokehub-collection-flow-toolbar-chrome {
+.collection-view-dashboard .pokehub-collection-toolbar-tools,
+.collection-view-dashboard .pokehub-collection-toolbar-tiles,
+.collection-view-dashboard .pokehub-collection-toolbar-active-region {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
 }
 
-@media (max-width: 1024px) {
-    .pokehub-collection-flow-toolbar-inner { padding-left: 0; padding-right: 0; }
-}
-
-@media (max-width: 782px) {
-    .pokehub-collection-flow-toolbar-inner { padding-left: 0; padding-right: 0; }
-}
-
 /* Tuiles Filters / GO / Jump : palette rouge (normal + hover + actif) pour éviter l'aspect "inactif". */
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn {
     border: 1px solid var(--me5rine-lab-border, #c9cfd6);
     color: var(--me5rine-lab-white, #fff);
     background: linear-gradient(
         135deg,
-        #f3f5f8 0%,
-        #e7ebf0 100%
+        #5f6670 0%,
+        #9ca4ae 100%
     );
     box-shadow: none;
     min-height: 4.3rem;
@@ -1398,7 +1541,7 @@ body.admin-bar {
 }
 
 @media (max-width: 1024px) {
-    .pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn {
+    .pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn {
         min-height: 3.35rem;
         gap: 0.08rem;
     }
@@ -1408,7 +1551,7 @@ body.admin-bar {
 }
 
 @media (max-width: 640px) {
-    .pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn {
+    .pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn {
         min-height: 2.9rem;
         justify-content: center;
     }
@@ -1417,30 +1560,30 @@ body.admin-bar {
     }
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn:hover,
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn:focus-visible {
-    border-color: var(--me5rine-lab-text-muted, #7d8793);
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn:hover,
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn:focus-visible {
+    border-color: #47505a;
     color: var(--me5rine-lab-white, #fff);
     background: linear-gradient(
         135deg,
-        #e7ebf0 0%,
-        #f3f5f8 100%
+        #565d67 0%,
+        #8f98a3 100%
     );
     box-shadow: none;
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn.is-active {
-    border-color: var(--me5rine-lab-text, #11161e);
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn.is-active {
+    border-color: #47505a;
     color: var(--me5rine-lab-white, #fff);
     background: linear-gradient(
         135deg,
-        #dfe4ea 0%,
-        #eceff3 100%
+        #565d67 0%,
+        #8f98a3 100%
     );
     box-shadow: none;
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn--has-media {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn--has-media {
     background-image:
         linear-gradient(
             135deg,
@@ -1455,7 +1598,7 @@ body.admin-bar {
     border-color: var(--me5rine-lab-border, #c9cfd6);
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn--has-media.is-active {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn--has-media.is-active {
     background-image:
         linear-gradient(
             135deg,
@@ -1468,8 +1611,8 @@ body.admin-bar {
     background-repeat: no-repeat, no-repeat;
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn--has-media:hover,
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn--has-media:focus-visible {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn--has-media:hover,
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn--has-media:focus-visible {
     background-image:
         linear-gradient(
             135deg,
@@ -1501,33 +1644,33 @@ body.admin-bar {
     max-width: 100%;
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn--has-media .pokehub-collection-fixed-tile-btn-label {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn--has-media .pokehub-collection-fixed-tile-btn-label {
     color: #fff;
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn .pokehub-collection-fixed-tile-btn-label {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn .pokehub-collection-fixed-tile-btn-label {
     color: var(--me5rine-lab-white, #fff);
 }
 
-.pokehub-collection-fixed-tiles .pokehub-collection-fixed-tile-btn--has-media .pokehub-collection-fixed-tile-btn-subtitle {
+.pokehub-collection-toolbar-tiles .pokehub-collection-fixed-tile-btn--has-media .pokehub-collection-fixed-tile-btn-subtitle {
     color: rgba(255, 255, 255, 0.84);
 }
 
 /* Header scroll: les panneaux sont masqués par défaut, affichés uniquement via clic tuile (expand). */
-.pokehub-collection-view-wrap .pokehub-collection-sticky-tools .pokehub-collection-toolbar-slot {
+.pokehub-collection-view-wrap .pokehub-collection-toolbar-tools .pokehub-collection-toolbar-slot {
     display: none;
 }
 
 /* Les contenus dépliés (flow/fixed) s'insèrent sous les tuiles et avant le récap région. */
-.pokehub-collection-fixed-toolbar-chrome > .pokehub-collection-fixed-tiles {
+.pokehub-collection-fixed-toolbar-inner > .pokehub-collection-toolbar-tiles {
     order: 1;
 }
 
-.pokehub-collection-fixed-toolbar-chrome > .pokehub-collection-fixed-expand {
+.pokehub-collection-fixed-toolbar-inner > .pokehub-collection-fixed-expand {
     order: 2;
 }
 
-.pokehub-collection-fixed-toolbar-chrome > .pokehub-collection-fixed-active-region {
+.pokehub-collection-fixed-toolbar-inner > .pokehub-collection-toolbar-active-region {
     order: 3;
 }
 
@@ -1538,7 +1681,7 @@ body.admin-bar {
     box-sizing: border-box;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel {
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     max-width: 100%;
@@ -1546,49 +1689,49 @@ body.admin-bar {
     box-sizing: border-box;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel-main {
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel-main {
     max-width: 100%;
     min-width: 0;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-generation-jump-scroll {
+.pokehub-collection-toolbar-tools .pokehub-collection-generation-jump-scroll {
     width: 100%;
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-generation-jump-link.pokehub-collection-generation-jump-link--has-media {
+.pokehub-collection-toolbar-tools .pokehub-collection-generation-jump-link.pokehub-collection-generation-jump-link--has-media {
     contain: layout;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-pogo-search--toolbar-embed {
+.pokehub-collection-toolbar-tools .pokehub-collection-pogo-search--toolbar-embed {
     max-width: 100%;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-toolbar-panel-main,
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-pogo-search-body,
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-pogo-search-toolbar,
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel--pogo .pokehub-pogo-search-groups {
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-toolbar-panel-main,
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-pogo-search-body,
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-pogo-search-toolbar,
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel--pogo .pokehub-pogo-search-groups {
     max-width: 100%;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-pogo-search-body {
+.pokehub-collection-toolbar-tools .pokehub-collection-pogo-search-body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel--filters .pokehub-collection-toolbar-panel-main,
-.pokehub-collection-sticky-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-toolbar-panel-main {
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel--filters .pokehub-collection-toolbar-panel-main,
+.pokehub-collection-toolbar-tools .pokehub-collection-toolbar-panel--pogo .pokehub-collection-toolbar-panel-main {
     overflow-x: clip;
     max-width: 100%;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-status-filters,
-.pokehub-collection-sticky-tools .pokehub-collection-pogo-search,
-.pokehub-collection-sticky-tools .pokehub-collection-generation-jump {
+.pokehub-collection-toolbar-tools .pokehub-collection-status-filters,
+.pokehub-collection-toolbar-tools .pokehub-collection-pogo-search,
+.pokehub-collection-toolbar-tools .pokehub-collection-generation-jump {
     margin: 0;
 }
 
@@ -1605,7 +1748,7 @@ body.admin-bar {
     z-index: auto;
 }
 
-.pokehub-collection-sticky-tools .pokehub-collection-generation-jump {
+.pokehub-collection-toolbar-tools .pokehub-collection-generation-jump {
     margin: 0 !important;
 }
 
@@ -1916,87 +2059,62 @@ button.pokehub-collection-fixed-tile-btn > * {
 }
 
 /* Groupe avec au moins un Pokémon dans le pool : même dégradé gris qu’à 0/X (le progrès reste lisible sur la barre / les chiffres). */
-.pokehub-collection-region-tile--summary:not(.pokehub-collection-region-tile--empty-region),
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump:not(.pokehub-collection-generation-jump-link--empty) {
-    background: linear-gradient(
-        165deg,
-        color-mix(in srgb, var(--me5rine-lab-text-muted, #5c6570) 32%, var(--me5rine-lab-bg-secondary, #e2e6eb)) 0%,
-        var(--me5rine-lab-bg, #fff) 78%
-    );
-    border-color: color-mix(in srgb, var(--me5rine-lab-border, #aeb8c4) 55%, var(--me5rine-lab-text, #1a1f26) 18%);
+.pokehub-collection-region-tile--shared:not(.pokehub-collection-region-tile--owned-shared):not(.pokehub-collection-region-tile--empty-region):not(.pokehub-collection-generation-jump-link--empty) {
+    background: linear-gradient(165deg, #d4d9df 0%, #ffffff 82%);
+    border-color: #c6cdd5;
     --pokehub-region-tile-fg: var(--me5rine-lab-text, #1a1f26);
-    --pokehub-region-tile-fg-soft: color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 62%, var(--me5rine-lab-text-muted, #5a6169));
+    --pokehub-region-tile-fg-soft: #66707c;
 }
 
-.pokehub-collection-region-tile--summary:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-region-tile--empty-region):hover,
-.pokehub-collection-region-tile--summary:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-region-tile--empty-region):focus-visible,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-generation-jump-link--empty):hover,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-generation-jump-link--empty):focus-visible,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-generation-jump-link--empty).is-active,
-details[open] > .pokehub-collection-region-tile--summary:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-region-tile--empty-region) {
-    background: linear-gradient(
-        165deg,
-        color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 28%, var(--me5rine-lab-bg-secondary, #d8dde3)) 0%,
-        color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 8%, var(--me5rine-lab-bg, #fff)) 100%
-    );
-    border-color: color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 32%, var(--me5rine-lab-border, #aeb8c4));
+.pokehub-collection-region-tile--shared:not(.pokehub-collection-region-tile--owned-shared):not(.pokehub-collection-region-tile--empty-region):not(.pokehub-collection-generation-jump-link--empty):hover,
+.pokehub-collection-region-tile--shared:not(.pokehub-collection-region-tile--owned-shared):not(.pokehub-collection-region-tile--empty-region):not(.pokehub-collection-generation-jump-link--empty):focus-visible,
+.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--shared:not(.pokehub-collection-region-tile--owned-shared).is-active,
+details[open] > .pokehub-collection-region-tile--summary.pokehub-collection-region-tile--shared:not(.pokehub-collection-region-tile--owned-shared) {
+    background: linear-gradient(165deg, #c5ccd4 0%, #f2f5f8 100%);
+    border-color: #adb6c0;
 }
 
 /* Owned (jump + header génération) : gris anthracite, texte blanc, inversion au hover/actif. */
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned,
-.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned {
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared {
     --pokehub-region-tile-fg: var(--me5rine-lab-white, #fff);
     --pokehub-region-tile-fg-soft: var(--me5rine-lab-white, #fff);
     color: var(--me5rine-lab-white, #fff);
-    background: linear-gradient(135deg, #878787 0%, #c3c3c3 100%);
-    border-color: #6f6f6f;
+    background: linear-gradient(135deg, #5f6670 0%, #9ca4ae 100%);
+    border-color: #515a64;
 }
 
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__title,
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__stats,
-.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__title,
-.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__stats {
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared .pokehub-collection-region-tile__title,
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared .pokehub-collection-region-tile__stats {
     color: var(--me5rine-lab-white, #fff);
 }
 
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__chev::before {
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared .pokehub-collection-region-tile__chev::before {
     color: var(--me5rine-lab-white, #fff);
 }
 
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__bar,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__bar {
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared .pokehub-collection-region-tile__bar {
     background: #e2e2e2;
 }
 
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__bar-fill,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__bar-fill {
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared .pokehub-collection-region-tile__bar-fill {
     background: #161616;
 }
 
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned:hover,
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned:focus-visible,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned:hover,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned:focus-visible,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned.is-active,
-details[open] > .pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned {
-    --pokehub-region-tile-fg: var(--me5rine-lab-secondary, #2b6cb0);
-    --pokehub-region-tile-fg-soft: var(--me5rine-lab-secondary, #2b6cb0);
-    background: linear-gradient(135deg, #c3c3c3 0%, #878787 100%);
-    border-color: #5a5a5a;
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared:hover,
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared:focus-visible,
+.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--owned-shared.is-active,
+details[open] > .pokehub-collection-region-tile--summary.pokehub-collection-region-tile--owned-shared {
+    --pokehub-region-tile-fg: var(--me5rine-lab-white, #fff);
+    --pokehub-region-tile-fg-soft: var(--me5rine-lab-white, #fff);
+    background: linear-gradient(135deg, #565d67 0%, #8f98a3 100%);
+    border-color: #47505a;
 }
 
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned:hover .pokehub-collection-region-tile__bar-fill,
-.pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned:focus-visible .pokehub-collection-region-tile__bar-fill,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned:hover .pokehub-collection-region-tile__bar-fill,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned:focus-visible .pokehub-collection-region-tile__bar-fill,
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-region-tile--has-owned.is-active .pokehub-collection-region-tile__bar-fill,
-details[open] > .pokehub-collection-region-tile--summary.pokehub-collection-region-tile--has-owned .pokehub-collection-region-tile__bar-fill {
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared:hover .pokehub-collection-region-tile__bar-fill,
+.pokehub-collection-region-tile.pokehub-collection-region-tile--owned-shared:focus-visible .pokehub-collection-region-tile__bar-fill,
+.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--owned-shared.is-active .pokehub-collection-region-tile__bar-fill,
+details[open] > .pokehub-collection-region-tile--summary.pokehub-collection-region-tile--owned-shared .pokehub-collection-region-tile__bar-fill {
     background: #101010;
-}
-
-.pokehub-collection-region-tile--summary:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-region-tile--empty-region),
-.pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump:not(.pokehub-collection-region-tile--has-owned):not(.pokehub-collection-generation-jump-link--empty) {
-    border-color: var(--me5rine-lab-border, #aeb8c4);
 }
 
 .pokehub-collection-region-tile--jump.pokehub-collection-generation-jump-link--has-media {
@@ -2203,11 +2321,11 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
     --pokehub-region-tile-fg-soft: color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 58%, var(--me5rine-lab-text-muted, #5a6169));
 }
 
-/* Fondu sur ~15 % à gauche de la zone image (intégration au fond gris / blanc) */
+/* Ne jamais rogner l'image à gauche (jump/header région/génération). */
 .pokehub-collection-generation-block--empty > summary .pokehub-collection-region-tile__media,
 .pokehub-collection-region-tile--summary.pokehub-collection-region-tile--zero-progress .pokehub-collection-region-tile__media {
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 15%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 15%);
+    -webkit-mask-image: none;
+    mask-image: none;
     filter: none;
     background-size: auto 100%;
     background-position: right center;
@@ -2215,8 +2333,8 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
 
 .pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-generation-jump-link--has-media.pokehub-collection-generation-jump-link--empty::after,
 .pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-generation-jump-link--has-media.pokehub-collection-generation-jump-link--zero-progress::after {
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 15%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 15%);
+    -webkit-mask-image: none;
+    mask-image: none;
     background-size: auto 100%;
     background-position: right center;
 }
@@ -2236,7 +2354,7 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
 }
 
 .pokehub-collection-generation-jump-link.pokehub-collection-region-tile:hover {
-    border-color: color-mix(in srgb, var(--me5rine-lab-text-muted, #6b7280) 24%, var(--me5rine-lab-border, #c5d2e0));
+    border-color: color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 45%, var(--me5rine-lab-border, #aeb8c4));
     color: var(--pokehub-region-tile-fg);
     text-decoration: none;
     box-shadow: none;
@@ -2248,7 +2366,7 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
 }
 
 .pokehub-collection-generation-jump-link.pokehub-collection-region-tile.is-active {
-    border-color: color-mix(in srgb, var(--me5rine-lab-primary, #2e576f) 40%, var(--me5rine-lab-border));
+    border-color: color-mix(in srgb, var(--me5rine-lab-text, #1a1f26) 45%, var(--me5rine-lab-border, #aeb8c4));
     box-shadow: none;
 }
 
@@ -2864,6 +2982,77 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
     background: color-mix(in srgb, var(--me5rine-lab-text-muted, #889) 10%, transparent);
 }
 
+/* Drawer toolbar (Grid/GO/Gen): header léger + contenu direct sans bloc imbriqué. */
+.pokehub-collections-drawer--toolbar .pokehub-collections-drawer-panel,
+.pokehub-collections-drawer--menu-like .pokehub-collections-drawer-panel {
+    max-width: min(92vw, 430px);
+}
+
+.pokehub-collections-drawer--toolbar .pokehub-collections-drawer-header,
+.pokehub-collections-drawer--menu-like .pokehub-collections-drawer-header {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.45rem;
+}
+
+.pokehub-collections-drawer--toolbar .pokehub-collections-drawer-close,
+.pokehub-collections-drawer--menu-like .pokehub-collections-drawer-close {
+    order: 1;
+    margin-right: 0;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-title],
+.pokehub-collections-drawer--menu-like .pokehub-collections-drawer-header .me5rine-lab-title-medium {
+    order: 2;
+    margin: 0 !important;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] {
+    padding-top: 0.35rem;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-toolbar-panel,
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-toolbar-panel-main {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-pogo-search-toolbar {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-toolbar-section-title {
+    display: none !important;
+}
+
+/* GO strings: dans la fenêtre drawer, une ligne (un groupe) par rangée. */
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-pogo-search-groups,
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-toolbar-panel--pogo .pokehub-pogo-search-groups {
+    grid-template-columns: 1fr !important;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-status-filters-tiles-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+}
+
+.pokehub-collections-drawer--toolbar [data-toolbar-menu-body] .pokehub-collection-toolbar-section-hint {
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
 .pokehub-collection-pogo-search--toolbar-embed {
     width: 100%;
     max-width: none;
@@ -3064,29 +3253,34 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
         padding: var(--me5rine-lab-spacing-md, 1rem);
     }
 
-    /* Une seule rangée d’outils : [Retour] [reset] [réglages] ···· [partager] — plus de Grille 2e ligne à colonnes étroites. */
+    /* Header compact une seule ligne : back gauche, titre/progression centre, actions droite. */
     .pokehub-collection-header-inner {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1.72rem minmax(0, 1fr) auto;
         align-items: center;
-        align-content: center;
-        gap: 0.45rem 0.4rem;
-        padding: 0.65rem 0.75rem;
+        gap: 0.2rem;
+        padding: 0.4rem 0.45rem;
     }
 
     .pokehub-collection-view-header-main {
-        order: 1;
-        flex: 0 0 100%;
+        order: 0;
+        grid-column: 2;
+        min-width: 0;
+        width: 100%;
+        overflow: hidden;
+        padding: 0 0.1rem;
         justify-content: center;
-        align-items: baseline;
-        gap: 0.4rem 0.55rem;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0.08rem;
         text-align: center;
     }
 
     .pokehub-collection-view-header-left {
-        order: 2;
-        flex: 0 0 auto;
+        order: 0;
+        grid-column: 1;
+        min-width: 0;
     }
 
     /*
@@ -3094,8 +3288,9 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
      * qui empile reset / settings / share en colonne sur mobile.
      */
     .pokehub-collection-view-header .pokehub-collection-view-actions.me5rine-lab-dashboard-header-actions {
-        order: 2;
-        flex: 1 1 auto;
+        order: 0;
+        grid-column: 3;
+        flex: 0 0 auto;
         min-width: 0;
         width: auto !important;
         max-width: 100%;
@@ -3104,8 +3299,9 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
         flex-wrap: nowrap !important;
         align-items: center !important;
         justify-content: flex-start;
-        justify-self: auto;
-        gap: 0.35rem !important;
+        justify-self: end;
+        gap: 0.2rem !important;
+        max-width: 5.7rem;
         overflow-x: auto;
         scrollbar-width: none;
     }
@@ -3142,22 +3338,27 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
     }
 
     .pokehub-collection-view-header .me5rine-lab-title-large {
-        font-size: 1.2rem;
-        line-height: 1.15;
+        font-size: 0.78rem;
+        line-height: 1.1;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .pokehub-collection-progress-badge {
-        font-size: 0.92rem;
+        font-size: 0.68rem;
+        padding: 0.18em 0.38em;
     }
 
     .pokehub-collection-view-header .pokehub-collection-back,
     .pokehub-collection-view-header .pokehub-collections-btn-edit-settings,
     .pokehub-collection-view-header .pokehub-collections-btn-share,
     .pokehub-collection-view-header .pokehub-collections-btn-reset-launch {
-        width: 1.95rem !important;
-        min-width: 1.95rem !important;
-        height: 1.95rem !important;
-        min-height: 1.95rem !important;
+        width: 1.72rem !important;
+        min-width: 1.72rem !important;
+        height: 1.72rem !important;
+        min-height: 1.72rem !important;
         padding: 0;
         border-radius: 8px;
         display: inline-flex;
@@ -3180,25 +3381,25 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
 
     .pokehub-collection-view-header .pokehub-collection-back::before {
         content: "←";
-        font-size: 1rem;
+        font-size: 0.85rem;
         line-height: 1;
     }
 
     .pokehub-collection-view-header .pokehub-collections-btn-edit-settings::before {
         content: "⚙";
-        font-size: 1rem;
+        font-size: 0.85rem;
         line-height: 1;
     }
 
     .pokehub-collection-view-header .pokehub-collections-btn-reset-launch::before {
         content: "↺";
-        font-size: 1rem;
+        font-size: 0.85rem;
         line-height: 1;
     }
 
     .pokehub-collection-view-header .pokehub-collections-btn-share::before {
         content: "⤴";
-        font-size: 1rem;
+        font-size: 0.85rem;
         line-height: 1;
     }
 
@@ -3207,6 +3408,20 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
         display: inline-flex;
         align-items: center;
         flex: 0 0 auto;
+    }
+
+    /* Grid / GO / Gen : ouverture en mode menu mobile (type panneau settings). */
+    .pokehub-collection-fixed-expand[data-flow-expand]:not([hidden]) {
+        position: fixed;
+        right: 0.5rem;
+        top: calc(var(--pokehub-elementor-header-offset) + var(--pokehub-adminbar-offset) + 0.5rem);
+        width: min(92vw, 430px);
+        max-height: calc(100vh - (var(--pokehub-elementor-header-offset) + var(--pokehub-adminbar-offset) + 1rem));
+        margin-top: 0;
+        z-index: 10080;
+        border-radius: var(--me5rine-lab-radius-md, 10px);
+        box-shadow: 0 10px 28px rgba(12, 18, 28, 0.24);
+        background: var(--me5rine-lab-bg, #fff);
     }
 
     .pokehub-collections-reset-banner .pokehub-collections-reset-banner-actions {
@@ -3218,4 +3433,14 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
         flex: 1 1 auto;
         justify-content: center;
     }
+}
+
+/* Mobile : si une image de cover est présente, assurer contraste et lisibilité du centre. */
+.pokehub-collection-view-header:has(.pokehub-collection-header-bg) .pokehub-collection-view-title {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+.pokehub-collection-view-header:has(.pokehub-collection-header-bg) .pokehub-collection-progress-badge {
+    color: #fff;
 }

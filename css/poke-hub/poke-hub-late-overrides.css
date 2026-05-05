@@ -11,13 +11,6 @@
     line-height: 1.5;
 }
 
-/* Évite la bordure gauche “menu + contenu” prévue pour d’autres layouts */
-@media screen and (min-width: 783px) {
-    .pokehub-collections-wrap.me5rine-lab-dashboard {
-        border-left: none;
-    }
-}
-
 /* Grille des cartes : priorité sur reset de thème / navigateur */
 ul.pokehub-collections-grid {
     display: grid !important;

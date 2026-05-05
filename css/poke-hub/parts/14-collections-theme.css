@@ -18,13 +18,13 @@
     /* --pokehub-collections-card-overlay: rgba(0, 0, 0, 0.7); */
     /* --pokehub-collections-modal-backdrop: rgba(0, 0, 0, 0.5); */
 
-    /* Header vue collection : flou léger pour garder lisible tout en voyant la cover choisie */
-    --pokehub-collection-header-blur: 10px;
+    /* Header vue collection : image utilisateur nette (pas de flou fort). */
+    --pokehub-collection-header-blur: 0px;
     --pokehub-collection-header-scrim: linear-gradient(
         125deg,
-        rgba(8, 16, 28, 0.62) 0%,
-        rgba(8, 16, 28, 0.35) 45%,
-        rgba(8, 16, 28, 0.58) 100%
+        rgba(8, 16, 28, 0.46) 0%,
+        rgba(8, 16, 28, 0.32) 45%,
+        rgba(8, 16, 28, 0.42) 100%
     );
 
 }
@@ -38,8 +38,8 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    filter: blur(var(--pokehub-collection-header-blur)) brightness(0.92) saturate(1.08);
-    transform: scale(1.04);
+    filter: blur(var(--pokehub-collection-header-blur)) brightness(0.98) saturate(1.03);
+    transform: none;
 }
 
 .pokehub-collection-view-header--has-cover .pokehub-collection-header-scrim {
@@ -55,9 +55,9 @@
     min-height: 5.5rem;
     padding: var(--me5rine-lab-spacing-lg, 1.25rem) var(--me5rine-lab-spacing-lg, 1.5rem);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(8, 18, 32, 0.22);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(8, 18, 32, 0.12);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -68,25 +68,34 @@
     line-height: 1.2;
 }
 
+.pokehub-collection-view-header--has-cover .pokehub-collection-view-header-main {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
 .pokehub-collection-view-header--has-cover .pokehub-collection-progress-badge {
-    color: #fff;
+    color: #e9edf3;
     font-size: clamp(1.15rem, 3vw, 1.45rem);
-    padding: 0.35em 0.65em;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    padding: 0.18em 0.3em;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .pokehub-collection-view-header--has-cover .pokehub-collection-progress-sep {
-    opacity: 0.65;
+    opacity: 0.78;
     font-weight: 600;
     margin: 0 0.05em;
 }
 
 .pokehub-collection-view-header--has-cover .pokehub-collection-progress-total {
-    opacity: 0.88;
+    opacity: 0.9;
     font-weight: 700;
 }
 
@@ -174,11 +183,11 @@
     }
 
     .pokehub-collection-view-header--has-cover .pokehub-collection-view-title {
-        text-align: left;
-        width: 100%;
+        text-align: center;
+        width: auto;
     }
 
     .pokehub-collection-view-header--has-cover .pokehub-collection-view-header-main {
-        justify-content: space-between;
+        justify-content: center;
     }
 }

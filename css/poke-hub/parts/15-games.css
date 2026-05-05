@@ -531,6 +531,41 @@
     margin: 0 auto;
 }
 
+/* Norme header module (alignée Friend Codes) */
+.pokedle-module-header,
+.poke-hub-games-module-header {
+    margin-bottom: var(--me5rine-lab-spacing-lg, 1.25rem);
+}
+
+.pokedle-module-header > .me5rine-lab-title-large,
+.poke-hub-games-module-header > .me5rine-lab-title-large {
+    margin: 0 0 0.35rem;
+    text-align: left;
+}
+
+.pokedle-module-header .me5rine-lab-dashboard-header,
+.poke-hub-games-module-header .me5rine-lab-dashboard-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--me5rine-lab-spacing-sm, 10px);
+    margin: 0;
+}
+
+.pokedle-module-header .me5rine-lab-subtitle,
+.poke-hub-games-module-header .me5rine-lab-subtitle {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.pokedle-module-header .me5rine-lab-dashboard-header-actions,
+.poke-hub-games-module-header .me5rine-lab-dashboard-header-actions {
+    flex: 0 0 auto;
+}
+
 .poke-hub-leaderboard-content {
     margin-top: var(--me5rine-lab-spacing-lg, 24px);
 }
@@ -619,6 +654,12 @@
 @media (max-width: 768px) {
     .poke-hub-leaderboard-item {
         flex-wrap: wrap;
+    }
+
+    .pokedle-module-header .me5rine-lab-dashboard-header,
+    .poke-hub-games-module-header .me5rine-lab-dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .poke-hub-leaderboard-stats {
