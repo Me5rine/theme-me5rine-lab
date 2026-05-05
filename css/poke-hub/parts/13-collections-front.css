@@ -732,7 +732,6 @@
 .pokehub-collection-view-wrap.me5rine-lab-dashboard {
     max-width: 100%;
     min-width: 0;
-    margin: 0 auto;
     box-sizing: border-box;
     /* Sticky du header scroll: éviter le clipping parent qui peut désactiver position: sticky selon navigateur. */
     overflow-x: visible;
@@ -1092,6 +1091,7 @@ body.admin-bar {
 }
 
 /* Comme les autres notices : contenu regroupé pour que le flex du message (icône + bloc) reste aligné en hauteur — voir forms.css .me5rine-lab-form-message */
+/* Masquage [hidden] de la bannière reset : poke-hub-late-overrides.css (ordre de chargement après forms). */
 .pokehub-collections-reset-banner.me5rine-lab-form-message {
     width: 100%;
     max-width: 100%;

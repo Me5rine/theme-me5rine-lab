@@ -5,7 +5,7 @@ Cette arborescence est la **source de vérité** du CSS **public** (front) de Po
 ### Les trois réponses courantes
 
 1. **Où est le CSS front des modules (collections, blocs, profils, etc.) ?** → Ici : `poke-hub-front.css` et les `parts/`, **pas** le gros pack historique `assets/css/poke-hub-*-front.css` du plugin en production.
-2. **Que reste-t-il dans le plugin ?** → Surtout l’**admin** et un **minimum** (variables / notices, icônes de types en admin via `poke-hub-type-icons.css`, filet optionnel collections — voir la doc du plugin). Pas le « gros lot » front quand le filtre ci‑dessous est actif.
+2. **Que reste-t-il dans le plugin ?** → Surtout l’**admin** et un **minimum** (variables / notices, icônes de types en admin via `poke-hub-type-icons.css` — voir la doc du plugin). Pas le « gros lot » front quand le filtre ci‑dessous est actif.
 3. **Comment le plugin n’en double pas le thème ?** → Dans le `functions.php` du thème : `add_filter( 'poke_hub_load_default_plugin_front_css', '__return_false' );` + déqueue des handles côté plugin. **Détail et tableau** : dépôt **poke-hub** → `docs/THEME_FRONT_CSS.md`.
 
 ---
@@ -19,7 +19,15 @@ Le plugin n’enfile plus le gros lot front lorsque le filtre `poke_hub_load_def
 3. Chaque fichier `css/poke-hub/parts/*.css` — enqueued séparément dans `functions.php` (tri `01-…` … `16-…`, **`?ver=` = `filemtime` du fichier**).  
 4. `poke-hub-late-overrides.css` — surcharges toutes dernières (cascade, correctifs ciblés).
 
-Le fichier `poke-hub-front.css` conserve les `@import` des `parts/` comme **référence lisible** et pour **`add_editor_style()`** ; il n’est pas utilisé comme bundle unique en front navigateur.
+Le fichier `poke-hub-front.css` conserve les `@import` des `parts/` comme **référence lisible** et pour l’éditeur ; en front navigateur ce fichier n’est **pas** chargé comme bundle unique (ce sont les `parts/` enchaînés).
+
+## Versionnement des assets du thème enfant
+
+- **Poké HUB `parts/`** : **automatique**. Tout fichier `css/poke-hub/parts/*.css` est pris par `glob()` + tri naturel ; chaque feuille reçoit `ver = filemtime` via `me5rine_child_theme_asset_version()` dans `functions.php`. Ajouter un nouveau `17-….css` ne nécessite aucune modification PHP.
+- **`poke-hub-late-overrides.css`** : même logique (`filemtime` dédié).
+- **Autres CSS/JS du thème** (hors chaîne ci-dessus) : dans `wp_enqueue_style` / `wp_enqueue_script`, passer **`me5rine_child_theme_asset_version( 'chemin/relatif/depuis/la/racine-du-thème.css' )`** comme 4ᵉ argument `ver` (voir `ultimate-member/js/profile-menu.js` dans `functions.php`).
+- **Éditeur (blocs)** : `add_editor_style()` reçoit une **URL absolue** avec `?ver=` via `me5rine_child_theme_editor_style_url()` pour éviter un cache d’aperçu sans version.
+- Côté **plugin** Poké HUB, l’équivalent est `poke_hub_plugin_asset_version()` (voir `docs/THEME_FRONT_CSS.md` dans le dépôt du plugin).
 
 Détail : documentation du plugin **Poké HUB** : `docs/THEME_FRONT_CSS.md` (dépôt `poke-hub`).
 
@@ -28,7 +36,7 @@ Détail : documentation du plugin **Poké HUB** : `docs/THEME_FRONT_CSS.md` (dé
 | Fichier | Rôle |
 |---------|------|
 | `poke-hub-front.css` | Index `@import` des `parts/` (éditeur / doc) ; chargement front = un enqueue par fichier dans `parts/` |
-| `poke-hub-late-overrides.css` | Couche **après** `responsive.css` / `um-responsive` (chargée via `functions.php`, pas via `style.css`) |
+| `poke-hub-late-overrides.css` | Couche **après** tous les `parts/` (via `functions.php`) : correctifs Collections (liste, `<details>` avancé, tuiles filtrées, bannière reset `[hidden]`) et isolations vs `dashboard.css` / responsive |
 | `parts/` | Morceaux par domaine (global-colors, blocs, collections, friend codes, …) |
 | `parts/13-collections-front.css` | Vue collections + liste + **bloc recherche GO** + barre sticky (mode `.pokehub-collection--compact`), offsets `--pokehub-elementor-header-offset`, nav génération : préférer `--me5rine-lab-*` (`../variables.css`) ; détail fonctionnel **`modules/collections/COLLECTIONS_THEME_CSS.md`** côté plugin |
 | `parts/02-type-icons.css` | Styles des icônes **types** (SVG inline, `currentColor`, variantes admin-list / admin-preview). **Aligner** avec le fichier du plugin `poke-hub/assets/css/poke-hub-type-icons.css` si vous modifiez l’un ou l’autre (le plugin charge sa copie en **admin** toujours ; le front ici ne s’applique que lorsque le filtre `poke_hub_load_default_plugin_front_css` est à `false`). |

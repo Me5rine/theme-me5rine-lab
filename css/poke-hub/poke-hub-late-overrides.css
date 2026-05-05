@@ -1,6 +1,7 @@
 /**
- * Chargé en tout dernier (après responsive / um-responsive).
- * Rétablit le module Collections (et isolations similaires) face à dashboard.css + responsive.
+ * Chargé en tout dernier dans le thème (functions.php : après me5rine-child-style + tous les parts/01–16).
+ * Rétablit le module Collections (et isolations similaires) face à dashboard.css + responsive + forms.css
+ * (ex. bannière reset [hidden] vs .me5rine-lab-form-message { display:flex }).
  */
 
 /* --- Collections : ne pas traiter la page comme un “dashboard” admin --- */
@@ -53,4 +54,21 @@ ul.pokehub-collections-grid {
 
 .pokehub-collections-advanced-summary::-webkit-details-marker {
     display: none;
+}
+
+/* Filtre « afficher dans la grille » (JS) — display plutôt que hidden (compat thèmes). */
+.pokehub-collection-tile.pokehub-tile--filtered-out {
+    display: none !important;
+}
+
+.pokehub-collection-generation-block.pokehub-generation--all-filtered {
+    display: none !important;
+}
+
+/*
+ * Bannière reset : chargé ici (après me5rine-child-style + forms.css + parts/13…) pour que
+ * display:none batte .me5rine-lab-form-message { display:flex }.
+ */
+.pokehub-collections-reset-banner[hidden] {
+    display: none !important;
 }

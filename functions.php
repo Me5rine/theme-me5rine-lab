@@ -239,6 +239,31 @@ function me5rine_get_css_bundle_version( $relative_file ) {
 }
 
 /**
+ * Version `?ver=` pour un fichier du thème enfant (cache bust à chaque modification sur le disque).
+ * À utiliser pour tout `wp_enqueue_style` / `wp_enqueue_script` pointant vers ce thème.
+ *
+ * @param string $relative_path Chemin relatif depuis la racine du thème enfant (ex. `css/poke-hub/parts/13-collections-front.css`, `ultimate-member/js/profile-menu.js`).
+ */
+function me5rine_child_theme_asset_version( string $relative_path ): string {
+	$relative_path = str_replace( '\\', '/', $relative_path );
+	$relative_path = ltrim( $relative_path, '/' );
+	$full           = get_stylesheet_directory() . '/' . $relative_path;
+	if ( is_readable( $full ) ) {
+		return (string) filemtime( $full );
+	}
+	return ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? (string) time() : '1';
+}
+
+/**
+ * URL absolue d’une feuille du thème enfant avec `?ver=filemtime` (ex. `add_editor_style`).
+ */
+function me5rine_child_theme_editor_style_url( string $relative_path ): string {
+	$relative_path = str_replace( '\\', '/', ltrim( $relative_path, '/' ) );
+	$base          = trailingslashit( get_stylesheet_directory_uri() ) . $relative_path;
+	return add_query_arg( 'ver', me5rine_child_theme_asset_version( $relative_path ), $base );
+}
+
+/**
  * =========================
  * Vider le cache Elementor lors de modifications CSS
  * =========================
@@ -331,7 +356,8 @@ add_action( 'wp_enqueue_scripts', function() {
 
 /**
  * Couche 3 : Poké HUB, après toute la base Me5rine (style.css + @import).
- * Charge chaque fichier `css/poke-hub/parts/*.css` séparément avec son propre versioning.
+ * Charge chaque fichier `css/poke-hub/parts/*.css` séparément avec son propre versioning (filemtime par fichier).
+ * Tout nouveau `*.css` placé dans `parts/` est enqueued automatiquement (tri naturel du nom de fichier).
  * Ordre : parent Hello → me5rine-child-style → me5rine-poke-hub-part-* → me5rine-poke-hub-late
  */
 add_action( 'wp_enqueue_scripts', function() {
@@ -343,14 +369,10 @@ add_action( 'wp_enqueue_scripts', function() {
 
 	$dir = get_stylesheet_directory();
 	$uri = get_stylesheet_directory_uri();
-	$ver = function( $rel ) use ( $dir ) {
-		$p = $dir . $rel;
-		return file_exists( $p ) ? (string) filemtime( $p ) : ( defined( 'WP_DEBUG' ) && WP_DEBUG ? (string) time() : '1' );
-	};
 
 	$parts_dir = '/css/poke-hub/parts';
-	$late  = '/css/poke-hub/poke-hub-late-overrides.css';
-	$last_dep = $base;
+	$late       = '/css/poke-hub/poke-hub-late-overrides.css';
+	$last_dep   = $base;
 
 	$parts = glob( $dir . $parts_dir . '/*.css' );
 	if ( is_array( $parts ) && ! empty( $parts ) ) {
@@ -361,15 +383,16 @@ add_action( 'wp_enqueue_scripts', function() {
 				continue;
 			}
 			$part_basename = basename( $part_path, '.css' );
-			$part_rel = str_replace( $dir, '', $part_path );
-			$part_rel = str_replace( '\\', '/', $part_rel );
-			$handle = 'me5rine-poke-hub-part-' . sanitize_key( $part_basename );
+			$part_rel      = str_replace( $dir, '', $part_path );
+			$part_rel      = str_replace( '\\', '/', $part_rel );
+			$part_rel_trim = ltrim( $part_rel, '/' );
+			$handle        = 'me5rine-poke-hub-part-' . sanitize_key( $part_basename );
 
 			wp_enqueue_style(
 				$handle,
 				$uri . $part_rel,
 				[ $last_dep ],
-				(string) filemtime( $part_path )
+				me5rine_child_theme_asset_version( $part_rel_trim )
 			);
 			$last_dep = $handle;
 		}
@@ -380,14 +403,14 @@ add_action( 'wp_enqueue_scripts', function() {
 			'me5rine-poke-hub-late',
 			$uri . $late,
 			[ $last_dep ],
-			$ver( $late )
+			me5rine_child_theme_asset_version( ltrim( $late, '/' ) )
 		);
 	}
 }, 100000 );
 
 /**
  * =========================
- * ENQUEUE (avec filemtime safe)
+ * ENQUEUE (filemtime sur chemin absolu — préférer {@see me5rine_child_theme_asset_version()} pour les chemins relatifs au thème)
  * =========================
  */
 function me5rine_safe_file_version( $path ) {
@@ -406,7 +429,7 @@ function me5rine_enqueue_um_profile_assets() {
 			'me5rine-um-profile-script',
 			get_stylesheet_directory_uri() . $js_rel,
 			[],
-			filemtime( $js_path ),
+			me5rine_child_theme_asset_version( ltrim( $js_rel, '/' ) ),
 			true
 		);
 	}
@@ -519,6 +542,6 @@ if ( ! function_exists('me5rine_display_profile_notice') ) {
  */
 add_filter( 'poke_hub_load_default_plugin_front_css', '__return_false' );
 
-/* Aperçu éditeur : même ordre qu’en front (Poké HUB après le reste des editor styles du thème) */
-add_editor_style( 'css/poke-hub/poke-hub-front.css' );
-add_editor_style( 'css/poke-hub/poke-hub-late-overrides.css' );
+/* Aperçu éditeur : URLs absolues + ?ver=filemtime (add_editor_style ne versionne pas seul les chemins relatifs). */
+add_editor_style( esc_url_raw( me5rine_child_theme_editor_style_url( 'css/poke-hub/poke-hub-front.css' ) ) );
+add_editor_style( esc_url_raw( me5rine_child_theme_editor_style_url( 'css/poke-hub/poke-hub-late-overrides.css' ) ) );
