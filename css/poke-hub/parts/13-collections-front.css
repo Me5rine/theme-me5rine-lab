@@ -2502,15 +2502,6 @@ details[open] > .pokehub-collection-region-tile--summary .pokehub-collection-reg
     background: color-mix(in srgb, var(--me5rine-lab-secondary, #2b6cb0) 88%, var(--me5rine-lab-text, #1a1f26));
 }
 
-.pokehub-collection-generation-jump-links > .pokehub-collection-generation-jump-link.pokehub-collection-generation-jump-link--has-media::after {
-    content: none !important;
-}
-
-.pokehub-collection-generation-jump-links > .pokehub-collection-generation-jump-link.pokehub-collection-region-tile--jump.pokehub-collection-generation-jump-link--has-media {
-    grid-template-columns: minmax(0, 1fr) minmax(5.5rem, 40%) !important;
-    padding: var(--pokehub-region-tile-pad-y) var(--pokehub-region-tile-pad-x) !important;
-}
-
 .pokehub-collection-generation-jump-links > .pokehub-collection-generation-jump-link.pokehub-collection-generation-jump-link--empty.pokehub-collection-region-tile--jump,
 .pokehub-collection-generation-jump-links > .pokehub-collection-generation-jump-link.pokehub-collection-generation-jump-link--zero-progress.pokehub-collection-region-tile--jump {
     background: linear-gradient(165deg, #d4d9df 0%, #ffffff 82%) !important;
